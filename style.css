@@ -34,6 +34,13 @@ header p {
     color: #b0b0b0;
 }
 
+.divider-top {
+    border: 0;
+    height: 1px;
+    background-color: #8a2be2; /* Línea morada arriba */
+    margin-top: 20px;
+}
+
 .mensaje {
     background-color: #333;
     padding: 20px;
@@ -69,6 +76,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
+    margin-bottom: 20px;
 }
 
 button:hover {
@@ -78,8 +86,8 @@ button:hover {
 hr.divider {
     border: 0;
     height: 1px;
-    background-color: #8a2be2; /* Línea morada */
-    margin-top: 30px;
+    background-color: #8a2be2; /* Línea morada debajo del botón */
+    margin-top: 20px;
 }
 
 .mensajes-anteriores {
@@ -102,4 +110,23 @@ footer {
 
 footer p {
     font-size: 1rem;
+}
+
+/* Estilos para móviles */
+@media screen and (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    textarea {
+        width: 100%;
+    }
 }
