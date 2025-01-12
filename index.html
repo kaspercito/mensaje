@@ -78,28 +78,15 @@
             color: #87ceeb;
         }
 
-        .spotify {
+        .spotify-now-playing {
             margin-top: 20px;
             background-color: #1a1a1a;
-            color: #87ceeb;
-            padding: 15px;
+            color: #ffffff;
+            padding: 20px;
             border-radius: 12px;
-            text-align: left;
+            text-align: center;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-        }
-
-        .spotify h2 {
-            margin-bottom: 10px;
-            font-size: 1.5em;
-        }
-
-        .spotify ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .spotify li {
-            margin-bottom: 8px;
+            max-width: 600px;
         }
 
         footer {
@@ -112,106 +99,62 @@
             text-align: center;
             border-top: 1px solid #333333;
         }
-
-        #distance, #timezones, #connection, #flags {
-            margin: 10px 0;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.2em;
-            }
-
-            h2 {
-                font-size: 1.3em;
-            }
-
-            p {
-                font-size: 1em;
-            }
-
-            .quote {
-                font-size: 1.2em;
-            }
-        }
     </style>
 </head>
 <body>
     <h1>Para Milagros 🖤</h1>
     <h2>Desde el <span class="date">16 de septiembre de 2023</span>, mi corazón late solo por ti y siempre lo hará.</h2>
     <p>Te esperaré el tiempo que sea necesario, porque mi amor es eterno e inquebrantable.</p>
-    <div class="quote">"Cada día extraño saber como estás, como te va, recuerdo lo bueno, porque eso es lo que importa"</div>
+    <div class="quote">"Cada día extraño saber cómo estás, cómo te va, recuerdo lo bueno, porque eso es lo que importa."</div>
 
     <div class="messages">
         <h2>Mensajes</h2>
         <div class="message"><span>12/01/2025:</span> Hoy he decidido crear esto, porque realmente no puedo vivir sin saber de ti, no sé si lo vayas a leer siempre, pero me tomaré el tiempo de mi vida, todos los días para escribirte, no quiero incomodarte ni llenarte de mensajes tu MD, pero aquí te demostraré que nadie cambiará lo que yo siento por vos, porque realmente eres la mujer de mi vida y esperaré lo que haga falta, espero puedas leer esto, pero yo te escribiré cada día que pase, te amo MBO ❤️🤞🏻🐀</div>
     </div>
 
-    <div class="spotify">
-        <h2>Canciones recientes en Spotify</h2>
-        <ul id="spotify-tracks">
-            <li>Cargando canciones...</li>
-        </ul>
+    <!-- Spotify Now Playing -->
+    <div id="spotify-now-playing" class="spotify-now-playing">
+        <h2>Canción en reproducción</h2>
+        <p id="song-info">Cargando información...</p>
     </div>
 
     <footer>
-        <div id="distance">
-            <p>Entre nosotros hay aproximadamente <span id="kilometers">3800</span> km. Pero a mi corazón no le importa la distancia.</p>
-        </div>
-        <div id="timezones">
-            <p>Hora en Ecuador: <span id="ecuador-time">Cargando...</span></p>
-            <p>Hora en Argentina: <span id="argentina-time">Cargando...</span></p>
-        </div>
-        <div id="connection">
-            <p>Desde <span style="color: #ffffff; background-color: #87ceeb; padding: 2px 6px; border-radius: 4px;">Ecuador</span> hasta <span style="color: #000000; background-color: #ffffff; padding: 2px 6px; border-radius: 4px;">Argentina</span>, mi amor siempre te encuentra.</p>
-        </div>
-        <div id="flags">
-            <img src="https://flagcdn.com/w320/ec.png" alt="Bandera de Ecuador" width="80">
-            <span style="font-size: 2em;">❤️</span>
-            <img src="https://flagcdn.com/w320/ar.png" alt="Bandera de Argentina" width="80">
-        </div>
         <p>Es algo muy simple, pero lo hago con el 💙 porque eres lo más importante en mi vida y lo mereces.</p>
     </footer>
 
     <script>
-        function updateTimes() {
-            const ecuadorTime = new Date().toLocaleTimeString("es-EC", { 
-                timeZone: "America/Guayaquil",
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
-                hour12: true
-            });
+        async function fetchNowPlaying() {
+            const spotifyApiUrl = "https://mensaje-og98.onrender.com/spotify-now-playing"; // Cambia esto si tu URL es diferente
+            const songInfoElement = document.getElementById("song-info");
 
-            const argentinaTime = new Date().toLocaleTimeString("es-AR", { 
-                timeZone: "America/Argentina/Salta",
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
-                hour12: true
-            });
-
-            document.getElementById("ecuador-time").textContent = ecuadorTime;
-            document.getElementById("argentina-time").textContent = argentinaTime;
-        }
-
-        async function fetchSpotifyTracks() {
             try {
-                const response = await fetch("https://mensaje-og98.onrender.com/recent-tracks");
+                const response = await fetch(spotifyApiUrl);
+                if (!response.ok) {
+                    songInfoElement.textContent = "No se pudieron cargar las canciones.";
+                    return;
+                }
+
                 const data = await response.json();
-                const tracks = data.items.map(
-                    (item) => `<li>${item.track.name} - ${item.track.artists[0].name}</li>`
-                ).join("");
-                document.getElementById("spotify-tracks").innerHTML = tracks;
+                if (data.song) {
+                    songInfoElement.innerHTML = `
+                        <strong>Canción:</strong> ${data.song}<br>
+                        <strong>Artista:</strong> ${data.artist}<br>
+                        <strong>Álbum:</strong> ${data.album}<br>
+                        <a href="${data.url}" target="_blank">Escuchar en Spotify</a>
+                        <br><img src="${data.image}" alt="Álbum" style="margin-top: 10px; border-radius: 8px; max-width: 100%;">
+                    `;
+                } else {
+                    songInfoElement.textContent = data.message || "No estás escuchando música en este momento.";
+                }
             } catch (error) {
-                console.error("Error al obtener las canciones:", error);
-                document.getElementById("spotify-tracks").innerHTML = "<li>No se pudieron cargar las canciones.</li>";
+                console.error("Error al obtener la canción:", error);
+                songInfoElement.textContent = "Ocurrió un error al cargar la información.";
             }
         }
 
-        setInterval(updateTimes, 1000);
-        updateTimes();
-        fetchSpotifyTracks();
+        // Actualiza la información cada 30 segundos
+        fetchNowPlaying();
+        setInterval(fetchNowPlaying, 30000);
     </script>
 </body>
 </html>
