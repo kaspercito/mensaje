@@ -171,14 +171,14 @@
         <div class="message"><span>12/01/2025:</span> Hoy he decidido crear esto, porque realmente no puedo vivir sin saber de ti, no sé si lo vayas a leer siempre, pero me tomaré el tiempo de mi vida, todos los días para escribirte, no quiero incomodarte ni llenarte de mensajes tu MD, pero aquí te demostraré que nadie cambiará lo que yo siento por vos, porque realmente eres la mujer de mi vida y esperaré lo que haga falta, espero puedas leer esto, pero yo te escribiré cada día que pase, te amo MBO ❤️🤞🏻🐀</div>
     </div>
 
-    <div class="music-info">
+    <div class="music-info" id="music-info" style="display: none;">
         <h3 id="song">Canción</h3>
         <p id="artist">Artista</p>
         <img id="album-image" src="" alt="Portada del álbum">
     </div>
 
     <!-- Línea de tiempo de la canción -->
-    <div class="progress-container">
+    <div class="progress-container" id="progress-container" style="display: none;">
         <div class="progress-bar" id="progress-bar"></div>
         <div class="progress-time" id="progress-time">0:00</div>
     </div>
@@ -210,7 +210,35 @@
             const response = await fetch('https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=Mylosk&api_key=5b08afa13b775c295e820232b02c650a&format=json');
             const data = await response.json();
             const track = data.recenttracks.track[0];
+            
             if (track) {
                 document.getElementById('song').textContent = `Canción: ${track.name}`;
                 document.getElementById('artist').textContent = `Artista: ${track.artist['#text']}`;
-                document.getElementById('album-image').src = track.image[2]['#
+                document.getElementById('album-image').src = track.image[2]['#text'];
+                
+                document.getElementById('music-info').style.display = 'block';
+                document.getElementById('progress-container').style.display = 'block';
+
+                // Calculando la duración y la progresión de la canción
+                songDuration = track.duration;
+                currentTime = track.date ? track.date.unixtime : 0;
+                updateProgressBar();
+            } else {
+                // Si no hay canción, ocultar la sección
+                document.getElementById('music-info').style.display = 'none';
+                document.getElementById('progress-container').style.display = 'none';
+            }
+        }
+
+        function updateProgressBar() {
+            if (songDuration > 0) {
+                let progress = (currentTime / songDuration) * 100;
+                document.getElementById('progress-bar').style.width = `${progress}%`;
+                document.getElementById('progress-time').textContent = `${Math.floor(progress)}%`;
+            }
+        }
+
+        setInterval(fetchNowPlaying, 30000); // Actualiza la canción cada 30 segundos
+    </script>
+</body>
+</html>
