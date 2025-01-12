@@ -1,120 +1,74 @@
-/* Reset de estilos */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Estilo general */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #000;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-}
-
-/* Contenedor principal */
+/* Contenedor de la página */
 .container {
-    max-width: 900px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    background-color: #121212;
+    color: white;
 }
 
-/* Estilo del encabezado */
-header {
-    text-align: center;
-    margin-bottom: 20px;
+/* Estilo para los títulos */
+h1, h2 {
+    color: #A557E1;  /* Morado */
 }
 
-header h1 {
-    color: #9b59b6; /* Morado */
-    font-size: 2.5em;
-    margin-bottom: 10px;
-}
-
-header p {
-    font-size: 1.2em;
-}
-
-header .cita {
-    font-style: italic;
-    color: #9b59b6;
-}
-
-/* Línea morada arriba */
-.divider-top {
-    border: 1px solid #9b59b6;
-    margin: 20px 0;
-}
-
-/* Estilo para la sección de escribir mensaje */
-.mensaje {
-    text-align: center;
-    margin-bottom: 30px;
-    background-color: #333;
-    padding: 20px;
-    border-radius: 10px;
-    border: 2px solid #9b59b6;
-}
-
-.mensaje h2 {
-    font-size: 1.5em;
-    color: #9b59b6;
-    margin-bottom: 15px;
-}
-
-.mensaje textarea {
+/* Estilo para el div editable */
+.editable {
     width: 100%;
     height: 150px;
     padding: 10px;
-    font-size: 1em;
-    color: #fff;
-    background-color: #444;
-    border: 1px solid #9b59b6;
-    border-radius: 5px;
-    resize: none;
-    margin-bottom: 20px;
+    background-color: #222;
+    color: white;
+    border: 1px solid #A557E1;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    min-height: 100px;
+    outline: none;
 }
 
-.mensaje button {
-    background-color: #9b59b6;
+.editable:empty:before {
+    content: attr(placeholder);
+    color: #A557E1;
+    font-size: 16px;
+}
+
+/* Botón para guardar */
+button {
+    background-color: #A557E1;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1.2em;
-    transition: background-color 0.3s ease;
+    font-size: 16px;
 }
 
-.mensaje button:hover {
-    background-color: #8e44ad;
+button:hover {
+    background-color: #8726B5;
 }
 
 /* Estilo para los mensajes anteriores */
-.mensajes-anteriores {
-    margin-top: 40px;
+.mensaje-anterior {
+    background-color: #333;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #A557E1;
 }
 
-.mensajes-anteriores h2 {
-    font-size: 1.5em;
-    color: #9b59b6;
-    margin-bottom: 20px;
+.mensaje-anterior p {
+    margin: 0;
 }
 
-.mensajes-anteriores div {
-    background-color: #444;
-    color: #fff;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    border: 2px solid #9b59b6;
+/* Estilo de la línea separadora */
+hr {
+    border: 0;
+    border-top: 1px solid #A557E1;
+    margin-top: 20px;
 }
 
-footer {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 1.2em;
-    color: #9b59b6;
+/* Cita */
+.cita {
+    font-style: italic;
 }
