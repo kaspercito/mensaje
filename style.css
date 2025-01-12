@@ -129,4 +129,8 @@ footer p {
     textarea {
         width: 100%;
     }
+
+    .mensaje, .mensajes-anteriores {
+        padding: 15px;
+    }
 }
