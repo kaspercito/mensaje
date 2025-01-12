@@ -18,25 +18,21 @@
             padding: 20px;
             text-align: center;
         }
-
         h1 {
             font-size: 2.8em;
             color: #ffffff;
             margin-bottom: 20px;
         }
-
         h2 {
             font-size: 1.5em;
             color: #ffffff;
             margin: 10px 0;
         }
-
         p {
             font-size: 1.2em;
             color: #ffffff;
             margin: 15px 0;
         }
-
         .quote {
             font-size: 1.4em;
             font-style: italic;
@@ -48,12 +44,10 @@
             max-width: 600px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
-
         .date {
             font-weight: bold;
             color: #87ceeb;
         }
-
         .messages {
             width: 100%;
             max-width: 600px;
@@ -63,7 +57,6 @@
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
-
         .message {
             background-color: #333333;
             color: #ffffff;
@@ -72,12 +65,10 @@
             margin-bottom: 10px;
             text-align: left;
         }
-
         .message span {
             font-weight: bold;
             color: #87ceeb;
         }
-
         footer {
             margin-top: auto;
             padding: 20px;
@@ -88,24 +79,19 @@
             text-align: center;
             border-top: 1px solid #333333;
         }
-
         #distance, #timezones, #connection, #flags {
             margin: 10px 0;
         }
-
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.2em;
             }
-
             h2 {
                 font-size: 1.3em;
             }
-
             p {
                 font-size: 1em;
             }
-
             .quote {
                 font-size: 1.2em;
             }
@@ -121,6 +107,12 @@
     <div class="messages">
         <h2>Mensajes</h2>
         <div class="message"><span>12/01/2025:</span> Hoy he decidido crear esto, porque realmente no puedo vivir sin saber de ti, no sé si lo vayas a leer siempre, pero me tomaré el tiempo de mi vida, todos los días para escribirte, no quiero incomodarte ni llenarte de mensajes tu MD, pero aquí te demostraré que nadie cambiará lo que yo siento por vos, porque realmente eres la mujer de mi vida y esperaré lo que haga falta, espero puedas leer esto, pero yo te escribiré cada día que pase, te amo MBO ❤️🤞🏻🐀</div>
+    </div>
+
+    <div class="quote">
+        <h2>Lo que estoy escuchando ahora:</h2>
+        <p id="song"></p>
+        <p id="artist"></p>
     </div>
 
     <footer>
@@ -143,29 +135,19 @@
     </footer>
 
     <script>
-        function updateTimes() {
-            const ecuadorTime = new Date().toLocaleTimeString("es-EC", { 
-                timeZone: "America/Guayaquil",
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
-                hour12: true
-            });
-
-            const argentinaTime = new Date().toLocaleTimeString("es-AR", { 
-                timeZone: "America/Argentina/Salta",
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
-                hour12: true
-            });
-
-            document.getElementById("ecuador-time").textContent = ecuadorTime;
-            document.getElementById("argentina-time").textContent = argentinaTime;
+        // Function to fetch the latest track played
+        async function fetchNowPlaying() {
+            const response = await fetch('https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=Mylosk&api_key=5b08afa13b775c295e820232b02c650a&format=json');
+            const data = await response.json();
+            const track = data.recenttracks.track[0];
+            if (track) {
+                document.getElementById('song').textContent = `Canción: ${track.name}`;
+                document.getElementById('artist').textContent = `Artista: ${track.artist['#text']}`;
+            }
         }
-        
-        setInterval(updateTimes, 1000);
-        updateTimes();
+
+        fetchNowPlaying();
+        setInterval(fetchNowPlaying, 10000);  // Update every 10 seconds
     </script>
 </body>
 </html>
