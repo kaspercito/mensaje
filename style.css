@@ -63,6 +63,7 @@ header hr.linea {
     color: #fff;
     resize: none;  /* Deshabilita el redimensionamiento */
     box-sizing: border-box; /* Asegura que el padding no haga que se salga */
+    display: block; /* Asegura que el cuadro ocupe todo el espacio posible */
 }
 
 .mensaje button {
@@ -73,7 +74,9 @@ header hr.linea {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    margin-bottom: 30px; /* Baje el botón un poco más */
+    margin-top: 20px; /* El botón ahora tiene más espacio encima */
+    display: block; /* Asegura que el botón esté debajo del cuadro de texto */
+    width: 100%; /* Hace que el botón ocupe todo el espacio disponible */
 }
 
 .mensaje button:hover {
