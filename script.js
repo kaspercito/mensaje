@@ -8,7 +8,7 @@ document.getElementById("guardar-btn").addEventListener("click", function() {
         nuevoMensaje.classList.add("mensaje-anterior");
         nuevoMensaje.innerHTML = "<p>" + mensaje + "</p>";
 
-        // Agregar la línea separadora
+        // Agregar la línea separadora después de cada mensaje
         var linea = document.createElement("div");
         linea.classList.add("mensaje-separador");
 
