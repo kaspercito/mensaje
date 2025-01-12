@@ -125,7 +125,7 @@
 
     <footer>
         <div id="distance">
-            <p>Entre nosotros hay aproximadamente <span id="kilometers">3800</span> km. Pero a mi corazón no le importo la distancia.</p>
+            <p>Entre nosotros hay aproximadamente <span id="kilometers">3800</span> km. Pero a mi corazón no le importa la distancia.</p>
         </div>
         <div id="timezones">
             <p>Hora en Ecuador: <span id="ecuador-time">Cargando...</span></p>
@@ -144,11 +144,26 @@
 
     <script>
         function updateTimes() {
-            const ecuadorTime = new Date().toLocaleTimeString("es-EC", { timeZone: "America/Guayaquil" });
-            const argentinaTime = new Date().toLocaleTimeString("es-AR", { timeZone: "America/Argentina/Salta" });
+            const ecuadorTime = new Date().toLocaleTimeString("es-EC", { 
+                timeZone: "America/Guayaquil",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true
+            });
+
+            const argentinaTime = new Date().toLocaleTimeString("es-AR", { 
+                timeZone: "America/Argentina/Salta",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true
+            });
+
             document.getElementById("ecuador-time").textContent = ecuadorTime;
             document.getElementById("argentina-time").textContent = argentinaTime;
         }
+        
         setInterval(updateTimes, 1000);
         updateTimes();
     </script>
