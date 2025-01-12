@@ -1,115 +1,111 @@
-/* Estilos generales */
+/* Estilo general */
 body {
     font-family: Arial, sans-serif;
-    background-color: #000; /* Fondo negro */
+    background-color: #121212; /* Fondo negro */
     color: #fff; /* Texto blanco */
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
 /* Contenedor principal */
 .container {
     width: 80%;
-    max-width: 900px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #1e1e1e; /* Gris oscuro para el contenedor */
-    border-radius: 10px;
 }
 
-/* Encabezado */
+/* Estilo del encabezado */
 header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
-h1 {
-    font-size: 3em; /* Aumentar el tamaño de la fuente */
+header h1 {
+    font-size: 2.5em;
     color: #9b4dca; /* Morado */
 }
 
-p {
+header p {
     font-size: 1.2em;
-    line-height: 1.5;
 }
 
-.cita {
+header .cita {
     font-style: italic;
-    color: #9b4dca; /* Morado */
+    color: #9b4dca;
+    margin-top: 10px;
 }
 
-/* Línea debajo de la cita */
-.linea {
-    width: 100%;
-    height: 2px;
-    background-color: #9b4dca; /* Línea morada */
+header hr.linea {
+    border: 1px solid #9b4dca;
     margin: 20px 0;
 }
 
-/* Sección de mensaje */
+/* Estilo de los mensajes */
 .mensaje {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
-textarea {
+.mensaje textarea {
     width: 100%;
     height: 150px;
-    margin-bottom: 20px;
     padding: 10px;
-    background-color: #333; /* Fondo oscuro para el texto */
-    color: #fff; /* Texto blanco */
-    border: 2px solid #9b4dca; /* Borde morado */
-    border-radius: 5px;
-    font-size: 1.1em;
+    font-size: 1.2em;
+    border: 2px solid #9b4dca;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: #1e1e1e;
+    color: #fff;
 }
 
-button {
+.mensaje button {
     padding: 10px 20px;
-    background-color: #9b4dca; /* Botón morado */
+    font-size: 1.2em;
+    background-color: #9b4dca;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 1.2em;
 }
 
-button:hover {
-    background-color: #7a2d9c; /* Morado más oscuro al pasar el mouse */
+.mensaje button:hover {
+    background-color: #7b2b9d;
 }
 
-/* Raya debajo del botón */
-.linea-separadora {
-    width: 100%;
-    height: 2px;
-    background-color: #9b4dca; /* Línea morada */
-    margin-top: 20px;
+.mensaje hr.linea {
+    border: 1px solid #9b4dca;
+    margin: 20px 0;
 }
 
-/* Mensajes anteriores */
+/* Estilo de mensajes anteriores */
 .mensajes-anteriores {
     margin-top: 40px;
+    text-align: center;
 }
 
 .mensajes-anteriores h2 {
-    font-size: 1.8em;
-    text-align: center;
-    color: #9b4dca; /* Morado */
+    font-size: 1.5em;
+    color: #9b4dca;
 }
 
-.mensajes-previos {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #333;
-    border-radius: 5px;
+/* Estilo del pie de página (footer) */
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #9b4dca; /* Color morado para el fondo */
+    color: #fff; /* Texto blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    text-align: center; /* Centrado del texto */
+    font-size: 1.2em; /* Tamaño de fuente adecuado */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra para hacerlo resaltar */
+    margin-bottom: 20px; /* Espacio debajo */
 }
 
-/* Línea después de cada mensaje */
-.mensaje-separador {
-    margin-top: 20px;
-    border-top: 2px solid #9b4dca; /* Línea morada */
+footer p {
+    margin: 0;
+    padding: 0;
+}
+
+footer .corazon {
+    font-size: 1.5em; /* Tamaño grande para el corazón */
 }
