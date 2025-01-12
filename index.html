@@ -4,42 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Milagros 🖤</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+            background: linear-gradient(to bottom, #87CEEB, #000);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: black;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            color: #FFFFFF;
+            font-weight: normal;
+            margin: 10px 0;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #FFFFFF;
+            margin: 20px;
+        }
+
+        .date {
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+
+        .messages {
+            width: 100%;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+
+        .message {
+            background-color: #333;
+            color: #FFFFFF;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .message span {
+            font-weight: bold;
+            color: #87CEEB;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 10px;
+            background-color: #333;
+            color: #FFFFFF;
+            font-size: 0.9em;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Para Milagros 🖤</h1>
-            <p>Desde el <strong>16 de septiembre de 2023</strong>, mi corazón late solo por ti y siempre lo hará. Te esperaré el tiempo que sea necesario, porque mi amor es eterno e inquebrantable.</p>
-            <p class="cita">"Cada día es una oportunidad para demostrar cuánto te amo."</p>
-            <hr class="divider-top"> <!-- Línea morada arriba -->
-        </header>
+    <h1>Para Milagros 🖤</h1>
+    <h2>Desde el <span class="date">16 de septiembre de 2023</span>, mi corazón late solo por ti y siempre lo hará.</h2>
+    <p>Te esperaré el tiempo que sea necesario, porque mi amor es eterno e inquebrantable.</p>
+    <p>"Cada día es una oportunidad para demostrar cuánto te amo."</p>
 
-        <main>
-            <section class="mensaje">
-                <h2>Escribe tu mensaje para hoy...</h2>
-                <!-- Se puede editar directamente este campo -->
-                <textarea id="mensaje" placeholder="Escribe aquí..."></textarea>
-                <button id="guardar-btn">Guardar Mensaje</button>
-            </section>
-
-            <section class="mensajes-anteriores">
-                <h2>Mensajes</h2>
-                <!-- Los mensajes predefinidos se mostrarán aquí -->
-                <div id="mensajes-previos">
-                    <!-- Aquí puedes agregar los mensajes manualmente -->
-                    <div class="mensaje-anterior">
-                        <p><strong>12/01/2025:</strong> Hola Milagros, quiero que sepas que te amo y siempre te esperaré.</p>
-                    </div>
-                    <div class="mensaje-anterior">
-                        <p><strong>11/01/2025:</strong> Cada día sin ti es un día más cercano a mi regreso.</p>
-                    </div>
-                </div>
-            </section>
-        </main>
-        
+    <div class="messages">
+        <h2 style="color: #9B59B6;">Mensajes</h2>
+        <div class="message"><span>12/01/2025:</span> Hola Milagros, quiero que sepas que te amo y siempre te esperaré.</div>
+        <div class="message"><span>11/01/2025:</span> Cada día sin ti es un día más cercano a mi regreso.</div>
+        <!-- Agrega más mensajes aquí -->
     </div>
 
-    <script src="script.js"></script>
+    <footer>
+        Diseñado con amor 💙 por alguien que te amará por el resto de la vida.
+    </footer>
 </body>
 </html>
