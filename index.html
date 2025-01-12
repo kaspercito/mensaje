@@ -93,55 +93,6 @@
             margin: 10px 0;
         }
 
-        .spotify-now-playing {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #1db954;
-            color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-            max-width: 600px;
-            text-align: left;
-        }
-
-        .spotify-now-playing img {
-            width: 100px;
-            height: 100px;
-            border-radius: 10px;
-            margin-right: 20px;
-        }
-
-        .spotify-now-playing .info {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-        }
-
-        .spotify-now-playing .info h3 {
-            margin: 0;
-            font-size: 1.5em;
-        }
-
-        .spotify-now-playing .info p {
-            margin: 5px 0;
-            color: #ddd;
-        }
-
-        .spotify-now-playing .track-link {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 8px 12px;
-            background-color: #000000;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-
-        .spotify-now-playing .track-link:hover {
-            background-color: #333333;
-        }
-
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.2em;
@@ -159,6 +110,23 @@
                 font-size: 1.2em;
             }
         }
+
+        .spotify-now-playing {
+            margin-top: 30px;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 12px;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .spotify-now-playing img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -172,18 +140,12 @@
         <div class="message"><span>12/01/2025:</span> Hoy he decidido crear esto, porque realmente no puedo vivir sin saber de ti, no sé si lo vayas a leer siempre, pero me tomaré el tiempo de mi vida, todos los días para escribirte, no quiero incomodarte ni llenarte de mensajes tu MD, pero aquí te demostraré que nadie cambiará lo que yo siento por vos, porque realmente eres la mujer de mi vida y esperaré lo que haga falta, espero puedas leer esto, pero yo te escribiré cada día que pase, te amo MBO ❤️🤞🏻🐀</div>
     </div>
 
-    <!-- Spotify Now Playing Section -->
     <div class="spotify-now-playing">
-        <h2>¿Qué está sonando ahora?</h2>
-        <div class="info">
-            <img src="https://i.scdn.co/image/ab67616d0000b273ee7c743ddf076b2fae91c351" alt="Imagen del álbum" />
-            <div>
-                <h3>Nombre de la canción</h3>
-                <p>Artista: Nombre del Artista</p>
-                <p>Álbum: Nombre del Álbum</p>
-                <a href="https://open.spotify.com" class="track-link" target="_blank">Escuchar en Spotify</a>
-            </div>
-        </div>
+        <h3>Canción Actual:</h3>
+        <p>Cargando...</p>
+        <p>Artista: Cargando...</p>
+        <p>Álbum: Cargando...</p>
+        <img src="" alt="Portada del álbum">
     </div>
 
     <footer>
@@ -206,29 +168,27 @@
     </footer>
 
     <script>
-        function updateTimes() {
-            const ecuadorTime = new Date().toLocaleTimeString("es-EC", { 
-                timeZone: "America/Guayaquil",
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
-                hour12: true
-            });
-
-            const argentinaTime = new Date().toLocaleTimeString("es-AR", { 
-                timeZone: "America/Argentina/Salta",
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
-                hour12: true
-            });
-
-            document.getElementById("ecuador-time").textContent = ecuadorTime;
-            document.getElementById("argentina-time").textContent = argentinaTime;
+        function getCurrentTrack() {
+            fetch('/spotify-now-playing') // La ruta en tu servidor para obtener la canción
+                .then(response => response.json())
+                .then(data => {
+                    if (data.name) {
+                        document.querySelector('.spotify-now-playing h3').textContent = data.name;
+                        document.querySelector('.spotify-now-playing p:nth-child(2)').textContent = `Artista: ${data.artists}`;
+                        document.querySelector('.spotify-now-playing p:nth-child(3)').textContent = `Álbum: ${data.album}`;
+                        document.querySelector('.spotify-now-playing img').src = data.album_image_url;
+                    } else {
+                        document.querySelector('.spotify-now-playing p').textContent = "No hay música reproduciéndose actualmente.";
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.querySelector('.spotify-now-playing p').textContent = "Error al obtener la canción.";
+                });
         }
-        
-        setInterval(updateTimes, 1000);
-        updateTimes();
+
+        setInterval(getCurrentTrack, 5000); // Actualizar cada 5 segundos
+        getCurrentTrack(); // Inicializar la función
     </script>
 </body>
 </html>
