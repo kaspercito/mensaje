@@ -40,6 +40,7 @@ header .cita {
 header hr.linea {
     border: 1px solid #9b4dca;
     margin: 20px 0;
+    width: 50%; /* Hacer la línea más corta */
 }
 
 /* Estilo de los mensajes */
@@ -60,6 +61,7 @@ header hr.linea {
     background-color: #1e1e1e;
     color: #fff;
     resize: vertical;  /* Permite redimensionar solo verticalmente */
+    box-sizing: border-box; /* Asegura que el padding no haga que se salga */
 }
 
 .mensaje button {
@@ -79,6 +81,7 @@ header hr.linea {
 .mensaje hr.linea {
     border: 1px solid #9b4dca;
     margin: 20px 0;
+    width: 50%; /* Hacer la línea más corta */
 }
 
 /* Estilo de mensajes anteriores */
