@@ -20,7 +20,6 @@ guardarBtn.addEventListener('click', () => {
         // Mostrar el mensaje con la fecha en formato 12/1/2025: Hola
         nuevoMensaje.innerHTML = `
             <p><strong>${fechaFormateada}:</strong> ${mensajeTexto}</p>
-            <hr>
         `;
 
         // Agregar el mensaje al contenedor de mensajes anteriores
