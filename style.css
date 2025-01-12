@@ -42,6 +42,12 @@ header .cita {
     color: #9b59b6;
 }
 
+/* Línea morada arriba */
+.divider-top {
+    border: 1px solid #9b59b6;
+    margin: 20px 0;
+}
+
 /* Estilo para la sección de escribir mensaje */
 .mensaje {
     text-align: center;
@@ -82,12 +88,6 @@ header .cita {
     background-color: #8e44ad;
 }
 
-/* Línea morada */
-hr {
-    border: 1px solid #9b59b6;
-    margin: 20px 0;
-}
-
 /* Estilo para los mensajes anteriores */
 .mensajes-anteriores {
     margin-top: 40px;
@@ -109,11 +109,6 @@ hr {
 
 .mensaje-anterior p {
     margin: 5px 0;
-}
-
-.mensaje-anterior hr {
-    border: 1px solid #9b59b6;
-    margin-top: 10px;
 }
 
 footer {
