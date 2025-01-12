@@ -1,130 +1,100 @@
-/* General styles */
-* {
-    box-sizing: border-box;
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000; /* Fondo negro */
+    color: #fff; /* Texto blanco */
     margin: 0;
     padding: 0;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f6f8fb;
-    color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(to right, #f8a8d8, #f078b1);
-    padding: 20px;
 }
 
+/* Contenedor principal */
 .container {
-    max-width: 800px;
-    width: 100%;
-    background-color: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1e1e1e; /* Un gris oscuro para resaltar */
+    border-radius: 10px;
 }
 
+/* Encabezado */
 header {
     text-align: center;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #f1c6da;
+    margin-bottom: 30px;
 }
 
-header h1 {
-    font-size: 3em;
-    color: #e57f94;
+h1 {
+    font-size: 2.5em;
+    color: #9b4dca; /* Morado */
 }
 
-header p {
+p {
     font-size: 1.2em;
-    color: #555;
     line-height: 1.5;
-    margin-top: 10px;
 }
 
-header .cita {
+/* Citas */
+.cita {
     font-style: italic;
-    font-size: 1.1em;
-    color: #8a4c65;
-    margin-top: 10px;
+    color: #9b4dca; /* Morado */
 }
 
-main {
-    margin-top: 30px;
-}
-
-.mensaje h2 {
-    font-size: 2em;
-    color: #e57f94;
-    margin-bottom: 15px;
+/* Sección de mensaje */
+.mensaje {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 textarea {
     width: 100%;
-    height: 160px;
-    font-size: 1.2em;
-    padding: 20px;
-    border: 2px solid #f078b1;
-    border-radius: 10px;
-    resize: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    background-color: #fdfdff;
-    color: #333;
-}
-
-textarea:focus {
-    outline: none;
-    border-color: #f8a8d8;
+    height: 150px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #333; /* Fondo oscuro para el texto */
+    color: #fff; /* Texto blanco */
+    border: 2px solid #9b4dca; /* Borde morado */
+    border-radius: 5px;
+    font-size: 1.1em;
 }
 
 button {
-    width: 100%;
-    background-color: #f78da7;
-    color: white;
-    font-size: 1.4em;
-    padding: 15px;
+    padding: 10px 20px;
+    background-color: #9b4dca; /* Botón morado */
+    color: #fff;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s;
+    font-size: 1.2em;
 }
 
 button:hover {
-    background-color: #f6c2c2;
+    background-color: #7a2d9c; /* Morado más oscuro al pasar el mouse */
+}
+
+/* Mensajes anteriores */
+.mensajes-anteriores {
+    margin-top: 40px;
 }
 
 .mensajes-anteriores h2 {
     font-size: 1.8em;
-    color: #e57f94;
-    margin-bottom: 20px;
-}
-
-#mensajes-previos {
-    max-height: 300px;
-    overflow-y: auto;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.mensaje-previo {
-    background-color: #fff;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-footer {
     text-align: center;
-    margin-top: 30px;
-    font-size: 1.2em;
-    color: #555;
+    color: #9b4dca; /* Morado */
+}
+
+.mensajes-previos {
+    margin-top: 20px;
     padding: 10px;
-    background-color: #f1c6da;
-    border-radius: 10px;
+    background-color: #333;
+    border-radius: 5px;
+}
+
+/* Línea después de cada mensaje */
+.mensaje-separador {
+    margin-top: 20px;
+    border-top: 2px solid #9b4dca; /* Línea morada */
 }
