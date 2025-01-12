@@ -1,23 +1,26 @@
-// Mostrar la fecha en la que se conocieron
+// Mostrar la fecha en que nos conocimos
 const fechaConocidos = "16 de septiembre de 2023";
 document.getElementById("fecha-conocidos").textContent = fechaConocidos;
 
-// Guardar el mensaje del día
+// Función para guardar el mensaje
 function guardarMensaje() {
     const mensaje = document.getElementById("mensaje").value;
     if (mensaje.trim() !== "") {
+        // Guardar el mensaje en el almacenamiento local
         localStorage.setItem("mensajeDia", mensaje);
-        mostrarMensaje();
+        mostrarMensaje(); // Mostrar el mensaje guardado
     } else {
-        alert("Por favor, escribe un mensaje.");
+        alert("Por favor, escribe un mensaje antes de guardar.");
     }
 }
 
-// Mostrar el mensaje guardado
+// Función para mostrar el mensaje guardado
 function mostrarMensaje() {
     const mensajeGuardado = localStorage.getItem("mensajeDia");
     if (mensajeGuardado) {
         document.getElementById("mensaje-dia").textContent = mensajeGuardado;
+    } else {
+        document.getElementById("mensaje-dia").textContent = "Aún no has escrito un mensaje.";
     }
 }
 
