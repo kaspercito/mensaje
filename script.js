@@ -9,18 +9,17 @@ guardarBtn.addEventListener('click', () => {
     if (mensajeTexto.trim() !== '') {
         // Obtener la fecha actual
         const fechaActual = new Date();
-        const fechaFormateada = fechaActual.toLocaleDateString('es-ES', {
-            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-        });
+        const fechaFormateada = (fechaActual.getDate().toString().padStart(2, '0')) + '/' +
+                               (fechaActual.getMonth() + 1).toString().padStart(2, '0') + '/' +
+                               fechaActual.getFullYear();
 
         // Crear el contenedor del mensaje
         const nuevoMensaje = document.createElement('div');
         nuevoMensaje.classList.add('mensaje-anterior');
 
-        // Mostrar el mensaje con la fecha
+        // Mostrar el mensaje con la fecha en formato 12/1/2025: Hola
         nuevoMensaje.innerHTML = `
-            <p><strong>Fecha:</strong> ${fechaFormateada}</p>
-            <p><strong>Mensaje:</strong> ${mensajeTexto}</p>
+            <p><strong>${fechaFormateada}:</strong> ${mensajeTexto}</p>
             <hr>
         `;
 
