@@ -10,6 +10,7 @@ body {
 /* Contenedor principal */
 .container {
     width: 80%;
+    max-width: 1200px; /* Limita el tamaño máximo para evitar que se estire demasiado */
     margin: 0 auto;
     padding: 20px;
 }
@@ -60,7 +61,7 @@ header hr.linea {
     margin-bottom: 10px;
     background-color: #1e1e1e;
     color: #fff;
-    resize: vertical;  /* Permite redimensionar solo verticalmente */
+    resize: none;  /* Deshabilita el redimensionamiento */
     box-sizing: border-box; /* Asegura que el padding no haga que se salga */
 }
 
