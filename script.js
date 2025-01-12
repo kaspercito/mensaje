@@ -1,7 +1,3 @@
-// Mostrar la fecha en que nos conocimos
-const fechaConocidos = "16 de septiembre de 2023";
-document.getElementById("fecha-conocidos").textContent = fechaConocidos;
-
 // Función para guardar el mensaje
 function guardarMensaje() {
     const mensaje = document.getElementById("mensaje").value;
