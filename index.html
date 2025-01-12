@@ -110,23 +110,6 @@
                 font-size: 1.2em;
             }
         }
-
-        .spotify-now-playing {
-            margin-top: 30px;
-            background-color: #1a1a1a;
-            padding: 20px;
-            border-radius: 12px;
-            color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
-            text-align: center;
-        }
-
-        .spotify-now-playing img {
-            max-width: 100%;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
     </style>
 </head>
 <body>
@@ -138,14 +121,6 @@
     <div class="messages">
         <h2>Mensajes</h2>
         <div class="message"><span>12/01/2025:</span> Hoy he decidido crear esto, porque realmente no puedo vivir sin saber de ti, no sé si lo vayas a leer siempre, pero me tomaré el tiempo de mi vida, todos los días para escribirte, no quiero incomodarte ni llenarte de mensajes tu MD, pero aquí te demostraré que nadie cambiará lo que yo siento por vos, porque realmente eres la mujer de mi vida y esperaré lo que haga falta, espero puedas leer esto, pero yo te escribiré cada día que pase, te amo MBO ❤️🤞🏻🐀</div>
-    </div>
-
-    <div class="spotify-now-playing">
-        <h3>Canción Actual:</h3>
-        <p>Cargando...</p>
-        <p>Artista: Cargando...</p>
-        <p>Álbum: Cargando...</p>
-        <img src="" alt="Portada del álbum">
     </div>
 
     <footer>
@@ -168,27 +143,29 @@
     </footer>
 
     <script>
-        function getCurrentTrack() {
-            fetch('https://mensaje-og98.onrender.com/spotify-now-playing') // Asegúrate de que la URL sea la correcta de tu servidor
-                .then(response => response.json())
-                .then(data => {
-                    if (data.name) {
-                        document.querySelector('.spotify-now-playing h3').textContent = data.name;
-                        document.querySelector('.spotify-now-playing p:nth-child(2)').textContent = `Artista: ${data.artists}`;
-                        document.querySelector('.spotify-now-playing p:nth-child(3)').textContent = `Álbum: ${data.album}`;
-                        document.querySelector('.spotify-now-playing img').src = data.album_image_url;
-                    } else {
-                        document.querySelector('.spotify-now-playing p').textContent = "No hay música reproduciéndose actualmente.";
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    document.querySelector('.spotify-now-playing p').textContent = "Error al obtener la canción.";
-                });
-        }
+        function updateTimes() {
+            const ecuadorTime = new Date().toLocaleTimeString("es-EC", { 
+                timeZone: "America/Guayaquil",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true
+            });
 
-        setInterval(getCurrentTrack, 5000); // Actualizar cada 5 segundos
-        getCurrentTrack(); // Inicializar la función
+            const argentinaTime = new Date().toLocaleTimeString("es-AR", { 
+                timeZone: "America/Argentina/Salta",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true
+            });
+
+            document.getElementById("ecuador-time").textContent = ecuadorTime;
+            document.getElementById("argentina-time").textContent = argentinaTime;
+        }
+        
+        setInterval(updateTimes, 1000);
+        updateTimes();
     </script>
 </body>
 </html>
