@@ -47,7 +47,7 @@ header hr.linea {
 /* Estilo de los mensajes */
 .mensaje {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px; /* Aumenté el margen inferior */
 }
 
 .mensaje textarea {
@@ -58,7 +58,7 @@ header hr.linea {
     font-size: 1.2em;
     border: 2px solid #9b4dca;
     border-radius: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 20px; /* Aumenté el margen inferior */
     background-color: #1e1e1e;
     color: #fff;
     resize: none;  /* Deshabilita el redimensionamiento */
@@ -66,13 +66,14 @@ header hr.linea {
 }
 
 .mensaje button {
-    padding: 10px 20px;
-    font-size: 1.2em;
+    padding: 12px 20px;
+    font-size: 1.3em; /* Aumenté un poco el tamaño del texto */
     background-color: #9b4dca;
     color: #fff;
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    margin-bottom: 30px; /* Baje el botón un poco más */
 }
 
 .mensaje button:hover {
@@ -82,7 +83,7 @@ header hr.linea {
 .mensaje hr.linea {
     border: 1px solid #9b4dca;
     margin: 20px 0;
-    width: 50%; /* Hacer la línea más corta */
+    width: 80%; /* Hice la línea más larga */
 }
 
 /* Estilo de mensajes anteriores */
