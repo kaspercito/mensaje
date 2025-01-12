@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Mensaje Diario para Milagros</title>
+    <title>Mensaje Diario para Milagros</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Mi Mensaje Diario para Milagros</h1>
-            <p>Te amo y te quiero en mi vida por siempre, te necesito, se que te gusta lo simple, asi que esto es lo que puedo hacer.</p>
+            <h1>Para Milagros</h1>
+            <p>Milagros Belén Ojeda, desde el 16 de septiembre de 2023, mi corazón late solo por ti y siempre lo hará. Te esperaré el tiempo que sea necesario, porque mi amor es eterno e inquebrantable.</p>
+            <p>"Cada día es una oportunidad para demostrar cuánto te amo."</p>
         </header>
         
         <main>
             <section class="fecha">
-                <p>Fecha en que nos conocimos: <span id="fecha-conocidos"></span></p>
+                <p><strong>Fecha en que nos conocimos:</strong> <span id="fecha-conocidos">16 de septiembre de 2023</span></p>
             </section>
             
             <section class="mensaje">
-                <h2>Tu Mensaje de Hoy:</h2>
-                <div id="mensaje-dia">
-                    <!-- El mensaje del día aparecerá aquí -->
-                </div>
+                <h2>Escribe tu mensaje para hoy...</h2>
+                <textarea id="mensaje" placeholder="Escribe aquí..."></textarea>
+                <button id="guardar-btn">Guardar Mensaje</button>
             </section>
-            
-            <section class="nuevo-mensaje">
-                <textarea id="mensaje" placeholder="Escribe tu mensaje para Milagros..."></textarea>
-                <button onclick="guardarMensaje()">Guardar Mensaje</button>
+
+            <section class="mensajes-anteriores">
+                <h2>Mensajes Anteriores</h2>
+                <div id="mensajes-previos"></div>
             </section>
         </main>
         
