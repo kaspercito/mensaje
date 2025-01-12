@@ -9,7 +9,7 @@
             margin: 0;
             font-family: Arial, sans-serif;
             color: #333;
-            background: linear-gradient(to bottom, #87CEEB, #000);
+            background: radial-gradient(circle, #000000, #1a1a1a, #444, #87CEEB);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -17,72 +17,81 @@
             min-height: 100vh;
             text-align: center;
             padding: 20px;
+            background-attachment: fixed;
         }
 
         h1 {
-            color: black;
-            font-size: 2.5em;
+            color: #FFD700;
+            font-size: 3em;
+            text-shadow: 2px 2px 5px #000;
             margin-bottom: 20px;
         }
 
         h2 {
-            font-size: 1.5em;
+            font-size: 1.8em;
             color: #FFFFFF;
             font-weight: normal;
             margin: 10px 0;
         }
 
         p {
-            font-size: 1.2em;
+            font-size: 1.4em;
             color: #FFFFFF;
             margin: 20px;
+            text-shadow: 1px 1px 3px #000;
         }
 
         .date {
             font-weight: bold;
-            color: #FFFFFF;
+            color: #FFD700;
         }
 
         .messages {
             width: 100%;
             max-width: 600px;
             margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
 
         .message {
-            background-color: #333;
+            background-color: rgba(255, 255, 255, 0.1);
             color: #FFFFFF;
             padding: 10px;
             border-radius: 8px;
             margin-bottom: 10px;
             text-align: left;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         }
 
         .message span {
             font-weight: bold;
-            color: #87CEEB;
+            color: #FFD700;
         }
 
         footer {
             margin-top: auto;
             padding: 10px;
-            background-color: #333;
+            background-color: #222;
             color: #FFFFFF;
             font-size: 0.9em;
             width: 100%;
+            text-shadow: 1px 1px 3px #000;
         }
 
         @media (max-width: 768px) {
             h1 {
-                font-size: 2em;
+                font-size: 2.5em;
             }
 
             h2 {
-                font-size: 1.3em;
+                font-size: 1.5em;
             }
 
             p {
-                font-size: 1em;
+                font-size: 1.2em;
             }
         }
     </style>
@@ -97,29 +106,11 @@
         <h2 style="color: #9B59B6;">Mensajes</h2>
         <div class="message"><span>12/01/2025:</span> Hola Milagros, quiero que sepas que te amo y siempre te esperaré.</div>
         <div class="message"><span>11/01/2025:</span> Cada día sin ti es un día más cercano a mi regreso.</div>
-        <div class="message"><span>12/01/2025:</span> Hola Milagros, quiero que sepas que te amo y siempre te esperaré.</div>
-        <div class="message"><span>11/01/2025:</span> Cada día sin ti es un día más cercano a mi regreso.</div>
-        <div class="message"><span>12/01/2025:</span> Hola Milagros, quiero que sepas que te amo y siempre te esperaré.</div>
-        <div class="message"><span>11/01/2025:</span> Cada día sin ti es un día más cercano a mi regreso.</div>
-        <div class="message"><span>12/01/2025:</span> Hola Milagros, quiero que sepas que te amo y siempre te esperaré.</div>
-        <div class="message"><span>11/01/2025:</span> Cada día sin ti es un día más cercano a mi regreso.</div>
-        <div class="message"><span>12/01/2025:</span> Hola Milagros, quiero que sepas que te amo y siempre te esperaré.</div>
-        <div class="message"><span>11/01/2025:</span> Cada día sin ti es un día más cercano a mi regreso.</div>
-        <div class="message"><span>12/01/2025:</span> Hola Milagros, quiero que sepas que te amo y siempre te esperaré.</div>
-        <div class="message"><span>11/01/2025:</span> Cada día sin ti es un día más cercano a mi regreso.</div>
-        <div class="message"><span>12/01/2025:</span> Hola Milagros, quiero que sepas que te amo y siempre te esperaré.</div>
-        <div class="message"><span>11/01/2025:</span> Cada día sin ti es un día más cercano a mi regreso.</div>
-        <div class="message"><span>12/01/2025:</span> Hola Milagros, quiero que sepas que te amo y siempre te esperaré.</div>
-        <div class="message"><span>11/01/2025:</span> Cada día sin ti es un día más cercano a mi regreso.</div>
-        <div class="message"><span>12/01/2025:</span> Hola Milagros, quiero que sepas que te amo y siempre te esperaré.</div>
-        <div class="message"><span>11/01/2025:</span> Cada día sin ti es un día más cercano a mi regreso.</div>
-        <div class="message"><span>12/01/2025:</span> Hola Milagros, quiero que sepas que te amo y siempre te esperaré.</div>
-        <div class="message"><span>11/01/2025:</span> Cada día sin ti es un día más cercano a mi regreso.</div>
         <!-- Agrega más mensajes aquí -->
     </div>
 
     <footer>
-        Diseñado con amor 💙 por alguien que te amará por el resto de la vida.
+        Diseñado con amor 💙 por alguien que te ama infinitamente.
     </footer>
 </body>
 </html>
