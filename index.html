@@ -9,7 +9,7 @@
             margin: 0;
             font-family: 'Arial', sans-serif;
             color: #ffffff;
-            background-color: #000000;
+            background-color: #1c1c1c;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -82,6 +82,34 @@
         #distance, #timezones, #connection, #flags {
             margin: 10px 0;
         }
+        .music-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 20px;
+            background-color: #333333;
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        .music-info img {
+            width: 200px;
+            height: 200px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .music-info h3 {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin: 10px 0;
+        }
+        .music-info p {
+            font-size: 1.2em;
+            color: #87ceeb;
+        }
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.2em;
@@ -94,6 +122,10 @@
             }
             .quote {
                 font-size: 1.2em;
+            }
+            .music-info img {
+                width: 150px;
+                height: 150px;
             }
         }
     </style>
@@ -109,9 +141,10 @@
         <div class="message"><span>12/01/2025:</span> Hoy he decidido crear esto, porque realmente no puedo vivir sin saber de ti, no sé si lo vayas a leer siempre, pero me tomaré el tiempo de mi vida, todos los días para escribirte, no quiero incomodarte ni llenarte de mensajes tu MD, pero aquí te demostraré que nadie cambiará lo que yo siento por vos, porque realmente eres la mujer de mi vida y esperaré lo que haga falta, espero puedas leer esto, pero yo te escribiré cada día que pase, te amo MBO ❤️🤞🏻🐀</div>
     </div>
 
-    <div class="quote">
-        <h2>Lo que estoy escuchando ahora:</h2>
-        <p id="song"></p>
+    <div class="music-info">
+        <h3>Lo que estoy escuchando ahora:</h3>
+        <img id="album-image" src="" alt="Portada del álbum">
+        <h3 id="song"></h3>
         <p id="artist"></p>
     </div>
 
@@ -143,6 +176,7 @@
             if (track) {
                 document.getElementById('song').textContent = `Canción: ${track.name}`;
                 document.getElementById('artist').textContent = `Artista: ${track.artist['#text']}`;
+                document.getElementById('album-image').src = track.image[2]['#text'];  // Get the large image
             }
         }
 
