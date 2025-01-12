@@ -169,11 +169,11 @@
 
     <script>
         function getCurrentTrack() {
-            fetch('https://mensaje-og98.onrender.com/spotify-now-playing') // Asegúrate de reemplazar con la URL correcta de tu servidor
+            fetch('https://tu-servidor-en-render.com/spotify-now-playing') // Cambia esta URL por la URL de tu servidor
                 .then(response => response.json())
                 .then(data => {
                     if (data.name) {
-                        document.querySelector('.spotify-now-playing h3').textContent = "Canción Actual: " + data.name;
+                        document.querySelector('.spotify-now-playing h3').textContent = data.name;
                         document.querySelector('.spotify-now-playing p:nth-child(2)').textContent = `Artista: ${data.artists}`;
                         document.querySelector('.spotify-now-playing p:nth-child(3)').textContent = `Álbum: ${data.album}`;
                         document.querySelector('.spotify-now-playing img').src = data.album_image_url;
