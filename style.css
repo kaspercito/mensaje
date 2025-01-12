@@ -1,68 +1,94 @@
+/* General settings */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
     margin: 0;
     padding: 0;
     color: #333;
 }
 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
 header {
-    background-color: #f08a5d;
-    color: white;
     text-align: center;
-    padding: 20px 0;
+    background-color: #ff9f9f;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
-    font-size: 2.5em;
+    font-size: 3em;
     margin: 0;
 }
 
 header p {
     font-size: 1.2em;
+    color: #555;
 }
 
 main {
-    padding: 20px;
     text-align: center;
+    margin-top: 40px;
+}
+
+.fecha p {
+    font-size: 1.2em;
+    color: #777;
 }
 
 .mensaje {
-    margin-top: 30px;
-    font-size: 1.5em;
-    background-color: #ffffff;
-    border: 2px solid #ddd;
-    border-radius: 10px;
+    margin-top: 40px;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .mensaje h2 {
     font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+#mensaje-dia {
+    font-size: 1.2em;
+    color: #555;
+    margin-top: 20px;
+    min-height: 100px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
 .nuevo-mensaje textarea {
     width: 80%;
-    height: 100px;
+    height: 120px;
     font-size: 1.2em;
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
     margin-top: 20px;
+    resize: none;
 }
 
 .nuevo-mensaje button {
-    background-color: #f08a5d;
+    background-color: #ff9f9f;
     color: white;
     font-size: 1.2em;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 footer {
@@ -70,7 +96,5 @@ footer {
     color: white;
     text-align: center;
     padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    margin-top: 40px;
 }
