@@ -110,6 +110,19 @@
             font-size: 1.2em;
             color: #87ceeb;
         }
+        .music-info button {
+            background-color: #87ceeb;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .music-info button:hover {
+            background-color: #66c0d5;
+        }
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.2em;
@@ -146,6 +159,11 @@
         <img id="album-image" src="" alt="Portada del álbum">
         <h3 id="song"></h3>
         <p id="artist"></p>
+        <audio id="audio-player" controls>
+            <source id="audio-source" src="" type="audio/mp3">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+        <button id="play-button">Reproducir Música</button>
     </div>
 
     <footer>
@@ -168,7 +186,7 @@
     </footer>
 
     <script>
-        // Function to fetch the latest track played
+        // Función para obtener la canción actual que se está reproduciendo
         async function fetchNowPlaying() {
             const response = await fetch('https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=Mylosk&api_key=5b08afa13b775c295e820232b02c650a&format=json');
             const data = await response.json();
@@ -176,21 +194,37 @@
             if (track) {
                 document.getElementById('song').textContent = `Canción: ${track.name}`;
                 document.getElementById('artist').textContent = `Artista: ${track.artist['#text']}`;
-                document.getElementById('album-image').src = track.image[2]['#text'];  // Get the large image
+                document.getElementById('album-image').src = track.image[2]['#text'];  // Obtener la imagen más grande
+
+                // Configuramos la fuente del audio
+                const audioSource = document.getElementById('audio-source');
+                audioSource.src = track.url; // Usamos el URL de la canción si es un enlace directo
+                document.getElementById('audio-player').load();
             }
         }
 
         fetchNowPlaying();
-        setInterval(fetchNowPlaying, 10000);  // Update every 10 seconds
-    </script>
-    <script>
+        setInterval(fetchNowPlaying, 10000);  // Actualizar cada 10 segundos
+
+        // Función para reproducir la música al hacer clic en el botón
+        document.getElementById('play-button').addEventListener('click', () => {
+            const audioPlayer = document.getElementById('audio-player');
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                document.getElementById('play-button').textContent = "Pausar Música";
+            } else {
+                audioPlayer.pause();
+                document.getElementById('play-button').textContent = "Reproducir Música";
+            }
+        });
+
+        // Actualizar la hora
         function updateTime() {
             const ecuadorTimeElement = document.getElementById('ecuador-time');
             const argentinaTimeElement = document.getElementById('argentina-time');
 
             const ecuadorTime = new Date().toLocaleTimeString('es-EC', { timeZone: 'America/Guayaquil', hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit' });
             const argentinaTime = new Date().toLocaleTimeString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires', hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit' });
-
 
             ecuadorTimeElement.textContent = ecuadorTime;
             argentinaTimeElement.textContent = argentinaTime;
