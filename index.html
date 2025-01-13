@@ -183,5 +183,20 @@
         fetchNowPlaying();
         setInterval(fetchNowPlaying, 10000);  // Update every 10 seconds
     </script>
+<script>
+        function updateTime() {
+            const ecuadorTimeElement = document.getElementById('ecuador-time');
+            const argentinaTimeElement = document.getElementById('argentina-time');
+
+            const ecuadorTime = new Date().toLocaleTimeString('es-EC', { timeZone: 'America/Guayaquil', hour12: true });
+            const argentinaTime = new Date().toLocaleTimeString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires', hour12: true });
+
+            ecuadorTimeElement.textContent = ecuadorTime;
+            argentinaTimeElement.textContent = argentinaTime;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
 </body>
 </html>
