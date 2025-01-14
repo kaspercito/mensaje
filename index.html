@@ -177,9 +177,10 @@
         <h3 id="song"></h3>
         <p id="artist"></p>
         <div id="progress-container" style="width: 100%; max-width: 600px; background-color: #444; border-radius: 10px; margin-top: 10px; height: 15px;">
-        <div id="progress-bar" style="width: 0%; height: 100%; background-color: #87ceeb; border-radius: 10px;"></div>
+            <div id="progress-bar" style="width: 0%; height: 100%; background-color: #87ceeb; border-radius: 10px;"></div>
         </div>
         <p id="time-info" style="margin-top: 5px; color: #ccc;">0:00 / 0:00</p>
+        <p id="status-message" style="color: #ffcc00; font-size: 1.1em;">Si la canción está quieta, puede que no esté en casa, esté dormido o ocupado.</p>
     </div>
     
     <footer>
@@ -212,6 +213,11 @@
         setInterval(updatePageCounter, 86400000);
     </script>
     <script>
+    let currentTrackId = null; // Variable para guardar el ID de la canción actual
+    let currentTime = 0; // Variable para el tiempo actual de la canción
+    let duration = 0; // Variable para la duración de la canción
+    let progressInterval; // Variable para el intervalo de progreso
+    
     async function fetchNowPlaying() {
         try {
             const response = await fetch('https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=Mylosk&api_key=5b08afa13b775c295e820232b02c650a&format=json');
@@ -220,45 +226,56 @@
             // Comprueba si hay pistas recientes
             if (data.recenttracks && data.recenttracks.track.length > 0) {
                 const track = data.recenttracks.track[0];
-                document.getElementById('song').textContent = `Canción: ${track.name}`;
-                document.getElementById('artist').textContent = `Artista: ${track.artist['#text']}`;
-                document.getElementById('album-image').src = track.image[2]['#text'];  // Obtén la imagen más grande
-                
-                // Obtener la duración de la canción si está disponible
-                const duration = parseInt(track['@attr']?.nowplaying ? track.duration : 0) || 240; // Usa una duración por defecto si no hay
-                let currentTime = 0;
+                const newTrackId = track['@attr']?.nowplaying ? track.name + track.artist['#text'] : null; // Crear un ID único para la pista actual
     
-                // Función para actualizar el progreso de la barra
-                function updateProgress() {
-                    if (currentTime < duration) {
-                        const progressPercent = (currentTime / duration) * 100;
-                        document.getElementById('progress-bar').style.width = `${progressPercent}%`;
-                        document.getElementById('time-info').textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
-                        currentTime++;
-                    } else {
-                        clearInterval(progressInterval);
-                    }
+                // Solo actualizar si la canción ha cambiado
+                if (newTrackId !== currentTrackId) {
+                    currentTrackId = newTrackId; // Actualizar el ID de la canción actual
+                    document.getElementById('song').textContent = `Canción: ${track.name}`;
+                    document.getElementById('artist').textContent = `Artista: ${track.artist['#text']}`;
+                    document.getElementById('album-image').src = track.image[2]['#text']; // Obtén la imagen más grande
+    
+                    duration = parseInt(track.duration) || 240; // Duración de la canción
+                    currentTime = 0; // Reiniciar el tiempo actual
+                    clearInterval(progressInterval); // Limpiar el intervalo anterior
+                    progressInterval = setInterval(updateProgress, 1000); // Iniciar un nuevo intervalo para actualizar el progreso
                 }
     
-                function formatTime(seconds) {
-                    const minutes = Math.floor(seconds / 60);
-                    const secs = seconds % 60;
-                    return `${minutes}:${secs.toString().padStart(2, '0')}`;
+                // Si la canción no está reproduciendo, detener el progreso
+                if (!track['@attr']?.nowplaying) {
+                    clearInterval(progressInterval); // Detener el intervalo de progreso
+                    currentTime = 0; // Reiniciar el tiempo actual
+                    document.getElementById('progress-bar').style.width = '0%'; // Reiniciar la barra de progreso
                 }
-    
-                // Reiniciar el progreso y empezar a actualizar
-                currentTime = 0;
-                clearInterval(window.progressInterval);
-                window.progressInterval = setInterval(updateProgress, 1000); // Actualizar cada segundo
             } else {
                 document.getElementById('song').textContent = 'No se está reproduciendo ninguna canción.';
                 document.getElementById('artist').textContent = '';
                 document.getElementById('album-image').src = '';
-                clearInterval(window.progressInterval); // Detener el intervalo si no hay canción
+                clearInterval(progressInterval); // Detener el intervalo si no hay canción
+                currentTime = 0; // Reiniciar el tiempo actual
+                document.getElementById('progress-bar').style.width = '0%'; // Reiniciar la barra de progreso
             }
         } catch (error) {
             console.error('Error al obtener la canción actual:', error);
         }
+    }
+    
+    // Función para actualizar el progreso de la barra
+    function updateProgress() {
+        if (currentTime < duration) {
+            const progressPercent = (currentTime / duration) * 100;
+            document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+            document.getElementById('time-info').textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+            currentTime++;
+        } else {
+            clearInterval(progressInterval); // Detener el intervalo cuando la canción termine
+        }
+    }
+    
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${minutes}:${secs.toString().padStart(2, '0')}`;
     }
     
     fetchNowPlaying();
