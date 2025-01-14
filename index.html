@@ -171,11 +171,11 @@
 </head>
 <body>
 
-    <h1>¿Qué estás escuchando?</h1>
-
-    <div id="song-container">
-        <!-- Aquí se mostrará la información de la canción -->
-        <p>Cargando...</p>
+    <h1>Bienvenido a mi página</h1>
+    <div id="song-info">
+        <p>Estás escuchando: <span id="track-name">Cargando...</span></p>
+        <p>Artista(s): <span id="artists">Cargando...</span></p>
+        <img id="album-art" src="" alt="Portada del álbum" style="width: 200px; height: 200px;">
     </div>
     </style>
 </head>
@@ -257,32 +257,31 @@
         updateTime();
     </script>
     <script>
-        // Función para obtener y mostrar la canción actual
-        async function getCurrentSong() {
+        // Función para obtener la canción que se está reproduciendo
+        async function getCurrentTrack() {
             try {
+                // Realizar una solicitud al backend
                 const response = await fetch('http://localhost:8888/current-track');
                 const data = await response.json();
 
                 if (data.track) {
-                    const { name, artists, albumImage } = data.track;
-                    document.getElementById('song-container').innerHTML = `
-                        <div class="song-info">
-                            <img src="${albumImage}" alt="Album Image">
-                            <h2>${name}</h2>
-                            <p>Por: ${artists.join(', ')}</p>
-                        </div>
-                    `;
+                    // Si hay una canción en reproducción, mostrarla
+                    document.getElementById('track-name').textContent = data.track.name;
+                    document.getElementById('artists').textContent = data.track.artists.join(', ');
+                    document.getElementById('album-art').src = data.track.albumImage;
                 } else {
-                    document.getElementById('song-container').innerHTML = '<p>No hay ninguna canción reproduciéndose.</p>';
+                    // Si no hay canción en reproducción
+                    document.getElementById('track-name').textContent = 'No estás escuchando ninguna canción';
+                    document.getElementById('artists').textContent = '';
+                    document.getElementById('album-art').src = '';
                 }
             } catch (error) {
                 console.error('Error al obtener la canción:', error);
-                document.getElementById('song-container').innerHTML = '<p>Error al obtener la canción.</p>';
             }
         }
 
-        // Llamar a la función cuando la página cargue
-        window.onload = getCurrentSong;
+        // Llamar a la función para obtener la canción al cargar la página
+        getCurrentTrack();
     </script>
 </body>
 </html>
