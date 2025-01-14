@@ -213,34 +213,35 @@
         setInterval(updatePageCounter, 86400000);
     </script>
     <script>
-        let currentTrackDuration = 240; // Duración de la canción actual, valor por defecto de 4 minutos (240 segundos)
-        let currentTime = 0; // Tiempo actual en segundos
-        let isPlaying = false; // Estado de reproducción
-        
         async function fetchNowPlaying() {
+    try {
         const response = await fetch('https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=Mylosk&api_key=5b08afa13b775c295e820232b02c650a&format=json');
         const data = await response.json();
         console.log('Datos de la API:', data);
-    
+
         const track = data.recenttracks.track[0];
-    
+
         if (track) {
             document.getElementById('song').textContent = `Canción: ${track.name}`;
             document.getElementById('artist').textContent = `Artista: ${track.artist['#text']}`;
             document.getElementById('album-image').src = track.image[2]['#text'];
-    
-            // Comprobar si la canción se está reproduciendo
+
+            // Verificar si la canción está en reproducción
             if (track['@attr'] && track['@attr'].nowplaying) {
                 isPlaying = true;
-                currentTrackDuration = track.duration ? parseInt(track.duration) : 240; // Duración por defecto
-                currentTime = 0; // Reinicia el tiempo actual al inicio de la canción
+                currentTrackDuration = 240; // Reemplazar con la duración real si está disponible en la API
+                currentTime = 0; // Reiniciar el tiempo actual
+                console.log('Nueva canción detectada. Reiniciando barra de progreso.');
             } else {
-                isPlaying = false;
+                isPlaying = false; // Si la canción no se está reproduciendo
             }
-    
+
             updateProgressBar();
         } else {
             console.log('No hay pista disponible');
+        }
+    } catch (error) {
+        console.error('Error al obtener los datos:', error);
         }
     }
     
