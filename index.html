@@ -270,15 +270,15 @@
             timeInfo.textContent = formatTime(currentTime); // Solo muestra los segundos transcurridos
         } else {
             progressBar.style.width = '0%'; // Si no hay duración, la barra estará vacía
-            timeInfo.textContent = "0:00"; // Muestra que no se conoce la duración
+            timeInfo.textContent = formatTime(currentTime); // Mostrar el tiempo acumulado
         }
 
         // Actualizar el mensaje de estado
-        //if (!isPlaying) {
-        //    statusMessage.textContent = "Si la canción está quieta, puede que no esté en casa, esté dormido o ocupado.";
-        //} else {
-        //    statusMessage.textContent = ""; // Limpia el mensaje cuando está reproduciendo
-        //}
+        if (!isPlaying) {
+            statusMessage.textContent = "Si la canción está quieta, puede que no esté en casa, esté dormido o ocupado.";
+        } else {
+            statusMessage.textContent = ""; // Limpia el mensaje cuando está reproduciendo
+        }
     }
 
     // Formatear tiempo en minutos y segundos
@@ -290,17 +290,16 @@
 
     // Actualiza el progreso cada segundo si está en reproducción
     setInterval(() => {
-        if (isPlaying && currentTrackDuration !== null) {
-            currentTime = Math.min(currentTime + 1, currentTrackDuration); // Aumenta el tiempo actual cada segundo
+        if (isPlaying) {
+            currentTime = Math.min(currentTime + 1, currentTrackDuration || currentTime + 1); // Aumenta el tiempo actual cada segundo
             updateProgressBar();
         }
     }, 1000);
 
-    // Llamar a la función para obtener la canción actual y actualizar cada 10 segundos
+    // Llamar a la función para obtener la canción actual y actualizar cada 1 segundo
     fetchNowPlaying();
     setInterval(fetchNowPlaying, 1000); // Actualiza cada 1 segundo
     </script>
-
     <script>
         function updateTime() {
             const ecuadorTimeElement = document.getElementById('ecuador-time');
