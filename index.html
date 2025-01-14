@@ -227,14 +227,13 @@
             document.getElementById('artist').textContent = `Artista: ${track.artist['#text']}`;
             document.getElementById('album-image').src = track.image[2]['#text'];  // Obtener la imagen grande
     
-            // Obtener la duración de la canción
-            currentTrackDuration = track['@attr'] && track['@attr'].nowplaying ? track.duration : currentTrackDuration;
-            
+            // Comprobar si la canción se está reproduciendo y obtener la duración
             if (track['@attr'] && track['@attr'].nowplaying) {
                 isPlaying = true; // Si está en reproducción
-                currentTime = Math.min(currentTime + 10, currentTrackDuration); // Simular progreso de 10 segundos
+                currentTrackDuration = track.duration ? parseInt(track.duration) : currentTrackDuration; // Obtener la duración de la canción
+                currentTime = Math.min(currentTime + 10, currentTrackDuration); // Aumentar el tiempo actual en 10 segundos
             } else {
-                isPlaying = false; // Si no está en reproducción, mantén el tiempo actual
+                isPlaying = false; // Si no está en reproducción, mantenemos el tiempo actual
             }
     
             updateProgressBar();
@@ -245,9 +244,22 @@
         const progressBar = document.getElementById('progress-bar');
         const timeInfo = document.getElementById('time-info');
     
-        const progressPercent = (currentTime / currentTrackDuration) * 100;
-        progressBar.style.width = `${progressPercent}%`;
-        timeInfo.textContent = `${formatTime(currentTime)} / ${formatTime(currentTrackDuration)}`;
+        // Evitar que currentTrackDuration sea 0 o NaN
+        if (currentTrackDuration > 0) {
+            const progressPercent = (currentTime / currentTrackDuration) * 100;
+            progressBar.style.width = `${progressPercent}%`;
+            timeInfo.textContent = `${formatTime(currentTime)} / ${formatTime(currentTrackDuration)}`;
+        } else {
+            timeInfo.textContent = "0:00 / 0:00"; // Valor por defecto si no hay duración
+        }
+    
+        // Actualizar el mensaje de estado
+        const statusMessage = document.getElementById('status-message');
+        if (!isPlaying) {
+            statusMessage.textContent = "Si la canción está quieta, puede que no esté en casa, esté dormido o ocupado.";
+        } else {
+            statusMessage.textContent = ""; // Limpia el mensaje cuando está reproduciendo
+        }
     }
     
     function formatTime(seconds) {
