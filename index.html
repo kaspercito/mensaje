@@ -172,11 +172,17 @@
 <body>
 
     <h1>Bienvenido a mi página</h1>
-    <div id="song-info">
-        <p>Estás escuchando: <span id="track-name">Cargando...</span></p>
-        <p>Artista(s): <span id="artists">Cargando...</span></p>
-        <img id="album-art" src="" alt="Portada del álbum" style="width: 200px; height: 200px;">
-    </div>
+
+    <!-- Elementos para mostrar la información de la canción -->
+    <h2>Estás escuchando: <span id="track-name">Cargando...</span></h2>
+    <h3>Artista(s): <span id="artists">Cargando...</span></h3>
+    <img id="album-cover" src="" alt="Portada del álbum" style="max-width: 200px;">
+
+    <!-- Botón para iniciar sesión en Spotify -->
+    <a href="http://localhost:8888/login">
+        <button>Iniciar sesión con Spotify</button>
+    </a>
+
     </style>
 </head>
 <body>
@@ -256,32 +262,28 @@
         setInterval(updateTime, 1000);
         updateTime();
     </script>
+    <!-- JavaScript para actualizar la página con los datos -->
     <script>
-        // Función para obtener la canción que se está reproduciendo
-        async function getCurrentTrack() {
-            try {
-                // Realizar una solicitud al backend
-                const response = await fetch('http://localhost:8888/current-track');
-                const data = await response.json();
-
-                if (data.track) {
-                    // Si hay una canción en reproducción, mostrarla
-                    document.getElementById('track-name').textContent = data.track.name;
-                    document.getElementById('artists').textContent = data.track.artists.join(', ');
-                    document.getElementById('album-art').src = data.track.albumImage;
-                } else {
-                    // Si no hay canción en reproducción
-                    document.getElementById('track-name').textContent = 'No estás escuchando ninguna canción';
-                    document.getElementById('artists').textContent = '';
-                    document.getElementById('album-art').src = '';
-                }
-            } catch (error) {
-                console.error('Error al obtener la canción:', error);
+        // Función para obtener la canción actual desde el servidor
+        async function fetchCurrentTrack() {
+            const response = await fetch('http://localhost:8888/current-track');
+            const data = await response.json();
+            
+            if (data && data.track) {
+                // Si hay información de la canción, actualizamos la página
+                document.getElementById('track-name').textContent = data.track.name;
+                document.getElementById('artists').textContent = data.track.artists.join(', ');
+                document.getElementById('album-cover').src = data.track.album.images[0].url;
+            } else {
+                // Si no hay canción, mostramos el mensaje correspondiente
+                document.getElementById('track-name').textContent = 'No estás escuchando ninguna canción';
+                document.getElementById('artists').textContent = '';
+                document.getElementById('album-cover').src = '';
             }
         }
 
-        // Llamar a la función para obtener la canción al cargar la página
-        getCurrentTrack();
+        // Llamar a la función para obtener la canción actual cuando se carga la página
+        window.onload = fetchCurrentTrack;
     </script>
 </body>
 </html>
