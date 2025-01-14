@@ -208,17 +208,6 @@
         setInterval(updatePageCounter, 86400000);
     </script>
     <script>
-        // Function to fetch the latest track played
-        async function fetchNowPlaying() {
-            const response = await fetch('https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=Mylosk&api_key=5b08afa13b775c295e820232b02c650a&format=json');
-            const data = await response.json();
-            const track = data.recenttracks.track[0];
-            if (track) {
-                document.getElementById('song').textContent = `Canción: ${track.name}`;
-                document.getElementById('artist').textContent = `Artista: ${track.artist['#text']}`;
-                document.getElementById('album-image').src = track.image[2]['#text'];  // Get the large image
-            }
-        }
 
         fetchNowPlaying();
         setInterval(fetchNowPlaying, 10000);  // Update every 10 seconds
