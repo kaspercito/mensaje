@@ -150,63 +150,63 @@
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
         }
         /* Estilo para el botón */
+    .toggle-btn {
+        display: inline-block;
+        padding: 15px 30px;
+        margin: 20px auto;
+        background-color: #ff69b4;
+        color: #fff;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 50px;
+        cursor: pointer;
+        border: none;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Hover del botón */
+    .toggle-btn:hover {
+        background-color: #e60073;
+        transform: scale(1.1);
+    }
+
+    /* Contenedor de los mensajes (inicialmente oculto) */
+    .messages-container {
+        display: none; /* Aquí aseguramos que el contenedor esté oculto al principio */
+        max-width: 800px;
+        margin: 30px auto;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ddd;
+    }
+
+    /* Estilo de los cuadros de mensaje */
+    .message-box {
+        background-color: #ffffff;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        border-left: 8px solid #ff69b4;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Fecha en el cuadro */
+    .message-date {
+        font-weight: bold;
+        color: #4a90e2;
+        font-size: 1.2em;
+    }
+
+    /* Ajustes responsivos para pantallas más pequeñas */
+    @media screen and (max-width: 768px) {
         .toggle-btn {
-            display: inline-block;
-            padding: 15px 30px;
-            margin: 20px auto;
-            background-color: #ff69b4;
-            color: #fff;
-            font-size: 1.2em;
-            font-weight: bold;
-            text-align: center;
-            border-radius: 50px;
-            cursor: pointer;
-            border: none;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            padding: 12px 25px;
+            font-size: 1em;
         }
-    
-        /* Hover del botón */
-        .toggle-btn:hover {
-            background-color: #e60073;
-            transform: scale(1.1);
-        }
-    
-        /* Contenedor de los mensajes (inicialmente oculto) */
-        .messages-container {
-            display: none; /* Aquí aseguramos que el contenedor esté oculto al principio */
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 20px;
-            background: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border: 1px solid #ddd;
-        }
-    
-        /* Estilo de los cuadros de mensaje */
-        .message-box {
-            background-color: #ffffff;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            border-left: 8px solid #ff69b4;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-    
-        /* Fecha en el cuadro */
-        .message-date {
-            font-weight: bold;
-            color: #4a90e2;
-            font-size: 1.2em;
-        }
-        
-        /* Ajustes responsivos para pantallas más pequeñas */
-        @media screen and (max-width: 768px) {
-            .toggle-btn {
-                padding: 12px 25px;
-                font-size: 1em;
-            }
-        }
+    }
     </style>
 </head>
 <body>
