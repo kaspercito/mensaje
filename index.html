@@ -149,17 +149,15 @@
             background-color: #fff0f5;
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
         }
-        /* Contenedor de la sección */
+        /* Contenedor principal de la sección */
         .daily-life-container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 30px auto;
             padding: 20px;
             background: #ffffff;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            background: linear-gradient(135deg, #4a90e2, #9b59b6);
-            color: white;
         }
     
         /* Título de la sección */
@@ -168,31 +166,47 @@
             font-size: 2.5em;
             margin-bottom: 30px;
             font-weight: 700;
+            color: #4a90e2;
         }
     
-        /* Estilo del cuadro de cada mensaje diario */
+        /* Contenedor para cada mensaje diario */
         .day-message {
-            background-color: rgba(255, 255, 255, 0.85);
+            background-color: #fff;
             margin-bottom: 20px;
             padding: 20px;
             border-radius: 10px;
+            border-left: 8px solid #ff69b4; /* Línea de color */
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
     
-        /* Hover en cada mensaje diario */
+        /* Hover de los cuadros de mensaje */
         .day-message:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
     
-        .day-message h3 {
+        /* Estilo para el encabezado de fecha y hora */
+        .day-message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+    
+        .day-message-header h3 {
             font-size: 1.8em;
-            color: #333;
-            margin-bottom: 15px;
+            color: #4a90e2;
             font-weight: bold;
         }
     
+        .day-message-header span {
+            font-size: 1.2em;
+            color: #888;
+            font-style: italic;
+        }
+    
+        /* Estilo del texto de mensaje */
         .day-message p {
             font-size: 1.2em;
             color: #555;
@@ -227,8 +241,12 @@
                 font-size: 2em;
             }
     
-            .day-message h3 {
+            .day-message-header h3 {
                 font-size: 1.6em;
+            }
+    
+            .day-message-header span {
+                font-size: 1em;
             }
     
             .day-message p {
@@ -271,22 +289,30 @@
 
             <!-- Día 1 -->
             <div class="day-message">
-                <h3>14/01/2025 💖</h3>
+                <div class="day-message-header">
+                    <h3>14/01/2025</h3> <!-- Fecha -->
+                    <span>09:00 AM</span> <!-- Hora -->
+                </div>
                 <p>Hoy fue un día increíble, me desperté pensando en ti 🌅. Pasé el día soñando con momentos juntos 🥰. Mi amor por ti crece cada vez más 🌹.</p>
             </div>
 
             <!-- Día 2 -->
             <div class="day-message">
-                <h3>15/01/2025 💌</h3>
+                <div class="day-message-header">
+                    <h3>15/01/2025</h3>
+                    <span>10:30 AM</span>
+                </div>
                 <p>Este día fue especial porque me hizo reflexionar sobre todo lo que hemos vivido. A pesar de la distancia, siento que estamos más cerca que nunca ❤️.</p>
             </div>
 
             <!-- Día 3 -->
             <div class="day-message">
-                <h3>16/01/2025 ✨</h3>
+                <div class="day-message-header">
+                    <h3>16/01/2025</h3>
+                    <span>07:45 PM</span>
+                </div>
                 <p>Pasé el día recordando todos los momentos felices. Cada día que pasa, me doy cuenta de lo afortunado que soy de tenerte en mi vida 💕.</p>
             </div>
-
         </div>
     </div>
 
