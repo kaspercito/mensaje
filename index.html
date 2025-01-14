@@ -171,17 +171,48 @@
 </head>
 <body>
 
-    <h1>Bienvenido a mi página</h1>
-
-    <!-- Elementos para mostrar la información de la canción -->
-    <h2>Estás escuchando: <span id="track-name">Cargando...</span></h2>
-    <h3>Artista(s): <span id="artists">Cargando...</span></h3>
-    <img id="album-cover" src="" alt="Portada del álbum" style="max-width: 200px;">
-
-    <!-- Botón para iniciar sesión en Spotify -->
+    <p>Estás escuchando: <span id="trackName">Cargando...</span></p>
+    <p>Artista(s): <span id="artists">Cargando...</span></p>
+    
+    <img id="albumCover" src="" alt="Portada del álbum">
+    
+    <br><br>
+    
     <a href="http://localhost:8888/login">
         <button>Iniciar sesión con Spotify</button>
     </a>
+
+    <div id="songInfo"></div>
+
+    <!-- Reproductor de Spotify Embed -->
+    <div id="spotifyPlayer">
+        <!-- Este iframe es el reproductor de Spotify donde puede escuchar tu música -->
+        <iframe id="spotifyEmbed" src="" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    </div>
+
+    <script>
+        // Obtén los datos de la canción a través del servidor
+        fetch('http://localhost:8888/callback?code=' + new URLSearchParams(window.location.search).get('code'))
+            .then(response => response.json())
+            .then(data => {
+                if (data.trackName && data.artists) {
+                    // Actualiza el texto de la canción y el artista
+                    document.getElementById('trackName').textContent = data.trackName;
+                    document.getElementById('artists').textContent = data.artists;
+                    document.getElementById('albumCover').src = data.albumImage;
+                    
+                    // Cargar el reproductor con la canción actual
+                    const trackUri = `https://open.spotify.com/embed/track/${data.trackUri.split(':')[2]}`;
+                    document.getElementById('spotifyEmbed').src = trackUri;
+                } else {
+                    document.getElementById('trackName').textContent = "No estás escuchando ninguna canción";
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('trackName').textContent = 'Error al obtener la canción';
+            });
+    </script>
 
     </style>
 </head>
@@ -261,29 +292,6 @@
 
         setInterval(updateTime, 1000);
         updateTime();
-    </script>
-    <!-- JavaScript para actualizar la página con los datos -->
-    <script>
-        // Función para obtener la canción actual desde el servidor
-        async function fetchCurrentTrack() {
-            const response = await fetch('http://localhost:8888/current-track');
-            const data = await response.json();
-            
-            if (data && data.track) {
-                // Si hay información de la canción, actualizamos la página
-                document.getElementById('track-name').textContent = data.track.name;
-                document.getElementById('artists').textContent = data.track.artists.join(', ');
-                document.getElementById('album-cover').src = data.track.album.images[0].url;
-            } else {
-                // Si no hay canción, mostramos el mensaje correspondiente
-                document.getElementById('track-name').textContent = 'No estás escuchando ninguna canción';
-                document.getElementById('artists').textContent = '';
-                document.getElementById('album-cover').src = '';
-            }
-        }
-
-        // Llamar a la función para obtener la canción actual cuando se carga la página
-        window.onload = fetchCurrentTrack;
     </script>
 </body>
 </html>
