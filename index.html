@@ -148,40 +148,7 @@
             background-color: #fff0f5;
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
         }
-        #puzzle-container {
-            display: grid;
-            grid-template-columns: repeat(3, 100px); /* 3 columnas */
-            grid-template-rows: repeat(3, 100px); /* 3 filas */
-            gap: 2px;
-            width: 300px; /* Tamaño total del contenedor */
-            height: 300px;
-            margin: 20px auto;
-            border: 2px solid #fff;
-        }
 
-        .puzzle-piece {
-            width: 100px;
-            height: 100px;
-            border: 1px solid #ccc;
-            background-size: 300px 300px; /* Ajusta el tamaño de la imagen para cubrir las piezas */
-            background-repeat: no-repeat;
-            cursor: pointer;
-        }
-
-        button {
-            background-color: #87ceeb;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.2em;
-        }
-
-        button:hover {
-            background-color: #48c6e5;
-        }
-        }
     </style>
 </head>
 <body>
@@ -207,11 +174,7 @@
         <p id="artist"></p>
         <h3>Si la música no cambia, es porque no estoy en casa, estoy dormido o estoy ocupado ayudando.</h3>
     </div>
-    <!-- Puzzle Section -->
-    <h1>Rompecabezas para ti ❤️</h1>
-    <div id="puzzle-container"></div>
-    <button onclick="checkPuzzle()">Comprobar Rompecabezas</button>
-
+    
     <footer>
         <div id="distance">
             <p>Entre nosotros hay aproximadamente <span id="kilometers">3800</span> km. Pero a mi corazón no le importa la distancia.</p>
@@ -272,76 +235,6 @@
 
         setInterval(updateTime, 1000);
         updateTime();
-    </script>
-    <script>
-        const puzzleContainer = document.getElementById('puzzle-container');
-        const rows = 3;
-        const cols = 3;
-        let pieces = [];
-
-        // Crear el rompecabezas
-        function createPuzzle() {
-            const imageSrc = 'https://i.imgur.com/iqt6Dbd.jpeg'; // Ruta de la imagen
-            for (let i = 0; i < rows * cols; i++) {
-                const piece = document.createElement('div');
-                piece.classList.add('puzzle-piece');
-                piece.style.backgroundImage = `url(${imageSrc})`; // Asignar la imagen a cada pieza
-                piece.style.backgroundSize = `${cols * 100}px ${rows * 100}px`; // Ajustar el tamaño del fondo
-                piece.style.backgroundPosition = `-${(i % cols) * 100}px -${Math.floor(i / cols) * 100}px`; // Ajustar la posición de fondo
-                piece.setAttribute('data-index', i);
-                piece.draggable = true;
-
-                // Eventos para el drag-and-drop
-                piece.addEventListener('dragstart', dragStart);
-                piece.addEventListener('dragover', dragOver);
-                piece.addEventListener('drop', drop);
-
-                pieces.push(piece);
-            }
-
-            shufflePuzzle(); // Mezcla las piezas aleatoriamente
-        }
-
-        // Función para mezclar las piezas
-        function shufflePuzzle() {
-            pieces.sort(() => Math.random() - 0.5);
-            pieces.forEach(piece => puzzleContainer.appendChild(piece));
-        }
-
-        // Funciones del drag-and-drop
-        function dragStart(event) {
-            event.dataTransfer.setData('text/plain', event.target.dataset.index);
-        }
-
-        function dragOver(event) {
-            event.preventDefault();
-        }
-
-        function drop(event) {
-            const draggedIndex = event.dataTransfer.getData('text/plain');
-            const targetIndex = event.target.dataset.index;
-
-            const draggedElement = pieces[draggedIndex];
-            const targetElement = pieces[targetIndex];
-
-            puzzleContainer.insertBefore(draggedElement, targetElement);
-            puzzleContainer.insertBefore(targetElement, pieces[draggedIndex]);
-
-            pieces = Array.from(puzzleContainer.children); // Actualiza el arreglo de piezas
-        }
-
-        // Función para comprobar si el rompecabezas está resuelto
-        function checkPuzzle() {
-            const correct = pieces.every((piece, index) => parseInt(piece.dataset.index) === index);
-            if (correct) {
-                alert('¡Felicidades! Lo completaste. ❤️');
-            } else {
-                alert('Aún no está bien. ¡Sigue intentando!');
-            }
-        }
-
-        createPuzzle(); // Llamada para generar el rompecabezas
-
     </script>
 </body>
 </html>
