@@ -228,6 +228,7 @@
 
             if (track) {
                 const currentTrackName = track.name;
+                // Verifica si la canción ha cambiado
                 if (currentTrackName !== lastTrackName) {
                     lastTrackName = currentTrackName; // Actualiza el último nombre de la canción
 
@@ -244,17 +245,15 @@
                         console.log('Duración de la canción:', currentTrackDuration); // Verifica la duración
                     } else {
                         isPlaying = false; // Si no está en reproducción
-                        currentTrackDuration = null; // Mantiene null si no se reproduce
                         console.log('La canción no se está reproduciendo'); // Mensaje de depuración
                     }
-                    updateProgressBar();
                 }
             } else {
                 console.log('No hay pista disponible'); // Mensaje de depuración si no hay pista
                 currentTrackDuration = null; // Si no se puede obtener, mantén en null
                 isPlaying = false; // Asumir que no está en reproducción
-                updateProgressBar(); // Actualiza la barra de progreso
             }
+            updateProgressBar(); // Actualiza la barra de progreso en cada llamada
         } catch (error) {
             console.error('Error al obtener la canción:', error); // Mensaje de error
         }
@@ -275,11 +274,11 @@
         }
 
         // Actualizar el mensaje de estado
-        //if (!isPlaying) {
-        //    statusMessage.textContent = "Si la canción está quieta, puede que no esté en casa, esté dormido o ocupado.";
-        //} else {
-        //    statusMessage.textContent = ""; // Limpia el mensaje cuando está reproduciendo
-        //}
+        if (!isPlaying) {
+            statusMessage.textContent = "Si la canción está quieta, puede que no esté en casa, esté dormido o ocupado.";
+        } else {
+            statusMessage.textContent = ""; // Limpia el mensaje cuando está reproduciendo
+        }
     }
 
     // Formatear tiempo en minutos y segundos
@@ -297,10 +296,11 @@
         }
     }, 1000);
 
-    // Llamar a la función para obtener la canción actual y actualizar cada 1 segundo
+    // Llamar a la función para obtener la canción actual y actualizar cada 10 segundos
     fetchNowPlaying();
     setInterval(fetchNowPlaying, 1000); // Actualiza cada 1 segundo
     </script>
+
     <script>
         function updateTime() {
             const ecuadorTimeElement = document.getElementById('ecuador-time');
