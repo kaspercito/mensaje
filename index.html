@@ -229,39 +229,24 @@
         updateTime();
     </script>
     <script>
-    // Function to fetch the Spotify access token from the backend
-    async function fetchSpotifyToken() {
-        const response = await fetch('http://localhost:3000/get-spotify-token');
-        const data = await response.json();
-        return data.access_token;  // Return the access token
-    }
-
-    // Function to fetch the latest track from Spotify
     async function fetchNowPlaying() {
-        const token = await fetchSpotifyToken();  // Get the token
+    try {
+        const response = await fetch('http://localhost:8888/current-track'); // Endpoint del backend
+        const data = await response.json(); // Esperar la respuesta en formato JSON
 
-        const response = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
-            headers: {
-                'Authorization': `Bearer ${token}`,
-            },
-        });
-
-        const data = await response.json();
-
-        if (data.item) {
-            document.getElementById('song').textContent = `Canción: ${data.item.name}`;
-            document.getElementById('artist').textContent = `Artista: ${data.item.artists[0].name}`;
-            document.getElementById('album-image').src = data.item.album.images[0].url;
+        if (data.track) {
+            document.getElementById('song').textContent = `Canción: ${data.track.name}`;
+            document.getElementById('artist').textContent = `Artista: ${data.track.artists.join(', ')}`;
+            document.getElementById('album-image').src = data.track.albumImage;
         } else {
             document.getElementById('song').textContent = 'No estás reproduciendo música en este momento.';
             document.getElementById('artist').textContent = '';
             document.getElementById('album-image').src = '';
         }
+    } catch (error) {
+        console.error('Error fetching track:', error);
     }
-
-    // Call fetchNowPlaying initially
-    fetchNowPlaying();
-    setInterval(fetchNowPlaying, 10000);  // Update every 10 seconds
+}
     </script>
 </body>
 </html>
