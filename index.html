@@ -177,6 +177,7 @@
         <p id="artist"></p>
         <div id="progress-container" style="width: 100%; max-width: 600px; background-color: #444; border-radius: 10px; margin-top: 10px; height: 15px;">
             <div id="progress-bar" style="width: 0%; height: 100%; background-color: #87ceeb; border-radius: 10px;"></div>
+        <h3>Si la música no cambia, es porque no estoy en casa, estoy dormido o estoy ocupado ayudando.</h3>
         </div>
         <p id="time-info" style="margin-top: 5px; color: #ccc;">0:00 / 0:00</p>
     </div>
@@ -255,7 +256,7 @@
     
     // Llamar a la función de actualización de la canción en intervalos regulares
     fetchNowPlaying();
-    setInterval(fetchNowPlaying, 30000); // Actualizar cada 30 segundos
+    setInterval(fetchNowPlaying, 10000); // Actualizar cada 10 segundos
     </script>
     <script>
         function updateTime() {
