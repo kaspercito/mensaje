@@ -155,17 +155,31 @@
             gap: 2px;
             width: 300px; /* Tamaño total del contenedor */
             height: 300px;
+            margin: 20px auto;
             border: 2px solid #fff;
-            margin: 0 auto;
         }
-        
+
         .puzzle-piece {
             width: 100px;
             height: 100px;
             border: 1px solid #ccc;
-            background-size: 300px 300px; /* Tamaño de la imagen para cubrir las piezas */
+            background-size: 300px 300px; /* Ajusta el tamaño de la imagen para cubrir las piezas */
             background-repeat: no-repeat;
             cursor: pointer;
+        }
+
+        button {
+            background-color: #87ceeb;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        button:hover {
+            background-color: #48c6e5;
         }
         }
     </style>
@@ -194,7 +208,7 @@
         <h3>Si la música no cambia, es porque no estoy en casa, estoy dormido o estoy ocupado ayudando.</h3>
     </div>
     <!-- Puzzle Section -->
-    <h2>Rompecabezas para ti ❤️</h2>
+    <h1>Rompecabezas para ti ❤️</h1>
     <div id="puzzle-container"></div>
     <button onclick="checkPuzzle()">Comprobar Rompecabezas</button>
 
@@ -264,9 +278,10 @@
         const rows = 3;
         const cols = 3;
         let pieces = [];
-        
+
+        // Crear el rompecabezas
         function createPuzzle() {
-            const imageSrc = 'https://i.imgur.com/iNAg989.jpeg'; // Ruta de la imagen
+            const imageSrc = 'https://i.imgur.com/iqt6Dbd.jpeg'; // Ruta de la imagen
             for (let i = 0; i < rows * cols; i++) {
                 const piece = document.createElement('div');
                 piece.classList.add('puzzle-piece');
@@ -275,43 +290,47 @@
                 piece.style.backgroundPosition = `-${(i % cols) * 100}px -${Math.floor(i / cols) * 100}px`; // Ajustar la posición de fondo
                 piece.setAttribute('data-index', i);
                 piece.draggable = true;
-        
+
+                // Eventos para el drag-and-drop
                 piece.addEventListener('dragstart', dragStart);
                 piece.addEventListener('dragover', dragOver);
                 piece.addEventListener('drop', drop);
-        
+
                 pieces.push(piece);
             }
-        
-            shufflePuzzle();
+
+            shufflePuzzle(); // Mezcla las piezas aleatoriamente
         }
-        
+
+        // Función para mezclar las piezas
         function shufflePuzzle() {
-            pieces.sort(() => Math.random() - 0.5); // Mezcla las piezas aleatoriamente
-            pieces.forEach(piece => puzzleContainer.appendChild(piece)); // Agrega las piezas al contenedor
+            pieces.sort(() => Math.random() - 0.5);
+            pieces.forEach(piece => puzzleContainer.appendChild(piece));
         }
-        
+
+        // Funciones del drag-and-drop
         function dragStart(event) {
             event.dataTransfer.setData('text/plain', event.target.dataset.index);
         }
-        
+
         function dragOver(event) {
             event.preventDefault();
         }
-        
+
         function drop(event) {
             const draggedIndex = event.dataTransfer.getData('text/plain');
             const targetIndex = event.target.dataset.index;
-        
+
             const draggedElement = pieces[draggedIndex];
             const targetElement = pieces[targetIndex];
-        
+
             puzzleContainer.insertBefore(draggedElement, targetElement);
             puzzleContainer.insertBefore(targetElement, pieces[draggedIndex]);
-        
-            pieces = Array.from(puzzleContainer.children);
+
+            pieces = Array.from(puzzleContainer.children); // Actualiza el arreglo de piezas
         }
-        
+
+        // Función para comprobar si el rompecabezas está resuelto
         function checkPuzzle() {
             const correct = pieces.every((piece, index) => parseInt(piece.dataset.index) === index);
             if (correct) {
@@ -320,7 +339,7 @@
                 alert('Aún no está bien. ¡Sigue intentando!');
             }
         }
-        
+
         createPuzzle(); // Llamada para generar el rompecabezas
 
     </script>
