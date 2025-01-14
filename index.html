@@ -149,55 +149,6 @@
             background-color: #fff0f5;
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
         }
-.dia-dia-container {
-            margin-top: 30px;
-            width: 100%;
-            max-width: 600px;
-        }
-        .btn-dia-dia {
-            background-color: #ff69b4;
-            color: #ffffff;
-            border: none;
-            padding: 12px 20px;
-            font-size: 1.2em;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .btn-dia-dia:hover {
-            background-color: #e0569b;
-        }
-        .dia-dia-section {
-            margin-top: 20px;
-            display: none;
-            background-color: #333333;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-        }
-        .entry {
-            margin-bottom: 15px;
-            padding: 15px;
-            background-color: #444444;
-            color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-        .entry-date {
-            font-weight: bold;
-            color: #87ceeb;
-            margin-bottom: 5px;
-        }
-        .entry-time {
-            font-size: 1em;
-            color: #ff69b4;
-            margin-bottom: 10px;
-        }
-        .entry-message {
-            font-size: 1.2em;
-            color: #ffffff;
-        }
     </style>
 </head>
 <body>
@@ -219,17 +170,43 @@
     <p>Te esperaré el tiempo que sea necesario, pero extraño a mi novia, esa mujer que me amaba, que me llenaba de paz y alegría, porque mi amor por ti es infinito.</p>
     <div class="quote">"Cada día extraño saber como estás, como te va, recuerdo lo bueno, porque eso es lo que importa."</div>
 
-    <div class="dia-dia-container">
-        <button class="btn-dia-dia" onclick="toggleDiaDiaSection()">Mi Día a Día</button>
-        <div class="dia-dia-section" id="dia-dia-section">
-            <div class="entry">
-                <div class="entry-date">14/01/2025</div>
-                <div class="entry-time">Hora: 16:17 PM</div>
-                <div class="entry-message">Voy a salir para acompañar a mi tía y mi hermana que tiene que ir donde una amiga, asi no la dejo sola</div>
+    <section id="mi-dia" style="padding: 20px; background-color: #f4f4f4; text-align: center;">
+    <h2 style="font-size: 2em; color: #333;">Sección: Mi Día a Día</h2>
+    
+    <!-- Botón para alternar el cuadro -->
+    <button id="toggle-daily" style="
+        background-color: #87ceeb; 
+        color: #fff; 
+        border: none; 
+        padding: 10px 20px; 
+        font-size: 1.2em; 
+        border-radius: 10px; 
+        cursor: pointer; 
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);">
+        Mostrar / Ocultar
+    </button>
+    
+    <!-- Contenedor del cuadro de mensajes -->
+    <div id="daily-container" style="
+        display: none; 
+        margin-top: 20px; 
+        background-color: #333333; 
+        color: #ffffff; 
+        padding: 20px; 
+        border-radius: 12px; 
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); 
+        text-align: left;">
+        
+        <!-- Aquí puedes agregar mensajes dinámicos -->
+        <div style="margin-bottom: 15px; padding: 10px; border: 1px solid #87ceeb; border-radius: 8px;">
+            <h3 style="margin: 0; font-size: 1.2em;">Fecha: 14/01/2025</h3>
+            <div style="margin-top: 10px;">
+                <p style="margin: 0; font-size: 1em;">Hora: 16:22 PM</p>
+                <p style="margin: 0; font-size: 1em;">Voy a salir para acompañar a mi tía y mi hermana que tiene que ir donde una amiga, asi no la dejo sola</p>
             </div>
-            <!-- Puedes agregar más entradas aquí -->
         </div>
     </div>
+</section>
     
     <div class="music-info">
         <h3>Lo que estoy escuchando ahora:</h3>
@@ -380,10 +357,17 @@
         updateTime();
     </script>
     <script>
-        function toggleDiaDiaSection() {
-            const section = document.getElementById('dia-dia-section');
-            section.style.display = section.style.display === 'none' || section.style.display === '' ? 'block' : 'none';
+    // Script para alternar visibilidad del cuadro
+    const toggleButton = document.getElementById('toggle-daily');
+    const dailyContainer = document.getElementById('daily-container');
+
+    toggleButton.addEventListener('click', () => {
+        if (dailyContainer.style.display === 'none' || dailyContainer.style.display === '') {
+            dailyContainer.style.display = 'block'; // Muestra el cuadro
+        } else {
+            dailyContainer.style.display = 'none'; // Oculta el cuadro
         }
+    });
     </script>
 </body>
 </html>
