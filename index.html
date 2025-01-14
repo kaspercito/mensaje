@@ -213,7 +213,7 @@
         setInterval(updatePageCounter, 86400000);
     </script>
     <script>
-    let currentTrackDuration = 240; // Duración de la canción actual, valor por defecto de 4 minutos (240 segundos)
+    let currentTrackDuration = null; // Duración de la canción actual, valor por defecto es null
     let currentTime = 0; // Tiempo actual en segundos
     let isPlaying = false; // Estado de reproducción
     let lastTrackName = ''; // Último nombre de la canción detectada
@@ -238,9 +238,9 @@
                 // Comprobar si la canción se está reproduciendo y obtener la duración
                 if (track['@attr'] && track['@attr'].nowplaying) {
                     isPlaying = true; // Si está en reproducción
-                    currentTrackDuration = track.duration ? parseInt(track.duration) : 240; // Establece 240 segundos si no hay duración
-                    console.log('Duración de la canción:', currentTrackDuration); // Verifica la duración
+                    currentTrackDuration = track.duration ? parseInt(track.duration) : null; // Establece null si no hay duración
                     currentTime = 0; // Reinicia el tiempo actual al cambiar de canción
+                    console.log('Duración de la canción:', currentTrackDuration); // Verifica la duración
                 } else {
                     isPlaying = false; // Si no está en reproducción
                     console.log('La canción no se está reproduciendo'); // Mensaje de depuración
@@ -249,8 +249,7 @@
             }
         } else {
             console.log('No hay pista disponible'); // Mensaje de depuración si no hay pista
-            // Si no hay pista, manten la duración en 240 segundos
-            currentTrackDuration = 240; // Si no se puede obtener, mantén el valor por defecto
+            currentTrackDuration = null; // Si no se puede obtener, mantén en null
             isPlaying = false; // Asumir que no está en reproducción
             updateProgressBar(); // Actualiza la barra de progreso
         }
@@ -261,21 +260,21 @@
         const timeInfo = document.getElementById('time-info');
         const statusMessage = document.getElementById('status-message');
 
-        // Evitar que currentTrackDuration sea 0 o NaN
-        if (currentTrackDuration > 0) {
+        if (currentTrackDuration !== null) {
             const progressPercent = (currentTime / currentTrackDuration) * 100;
             progressBar.style.width = `${progressPercent}%`;
             timeInfo.textContent = `${formatTime(currentTime)} / ${formatTime(currentTrackDuration)}`;
         } else {
-            timeInfo.textContent = "0:00 / 0:00"; // Valor por defecto si no hay duración
+            progressBar.style.width = '0%'; // Si no hay duración, la barra estará vacía
+            timeInfo.textContent = "0:00 / -:--"; // Muestra que no se conoce la duración
         }
 
         // Actualizar el mensaje de estado
-        //if (!isPlaying) {
-        //    statusMessage.textContent = "Si la canción está quieta, puede que no esté en casa, esté dormido o ocupado.";
-        //} else {
-        //    statusMessage.textContent = ""; // Limpia el mensaje cuando está reproduciendo
-        //}
+        if (!isPlaying) {
+            statusMessage.textContent = "Si la canción está quieta, puede que no esté en casa, esté dormido o ocupado.";
+        } else {
+            statusMessage.textContent = ""; // Limpia el mensaje cuando está reproduciendo
+        }
     }
 
     // Formatear tiempo en minutos y segundos
@@ -287,7 +286,7 @@
 
     // Actualiza el progreso cada segundo si está en reproducción
     setInterval(() => {
-        if (isPlaying) {
+        if (isPlaying && currentTrackDuration !== null) {
             currentTime = Math.min(currentTime + 1, currentTrackDuration); // Aumenta el tiempo actual cada segundo
             updateProgressBar();
         }
@@ -297,6 +296,7 @@
     fetchNowPlaying();
     setInterval(fetchNowPlaying, 1000); // Actualiza cada 1 segundo
     </script>
+
 
     <script>
         function updateTime() {
