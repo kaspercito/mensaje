@@ -213,7 +213,7 @@
         setInterval(updatePageCounter, 86400000);
     </script>
     <script>
-    let currentTrackDuration = null; // Duración de la canción actual, valor por defecto es null
+    let currentTrackDuration = null; // Duración de la canción actual
     let currentTime = 0; // Tiempo actual en segundos
     let isPlaying = false; // Estado de reproducción
     let lastTrackName = ''; // Último nombre de la canción detectada
@@ -239,7 +239,7 @@
                     // Comprobar si la canción se está reproduciendo y obtener la duración
                     if (track['@attr'] && track['@attr'].nowplaying) {
                         isPlaying = true; // Si está en reproducción
-                        currentTrackDuration = track.duration ? parseInt(track.duration) : null; // Establece null si no hay duración
+                        currentTrackDuration = track.duration ? parseInt(track.duration) : 240; // Establece un valor por defecto si no hay duración
                         currentTime = 0; // Reinicia el tiempo actual al cambiar de canción
                         console.log('Duración de la canción:', currentTrackDuration); // Verifica la duración
                     } else {
@@ -268,18 +268,18 @@
         if (currentTrackDuration !== null) {
             const progressPercent = (currentTime / currentTrackDuration) * 100;
             progressBar.style.width = `${progressPercent}%`;
-            timeInfo.textContent = `${formatTime(currentTime)} / ${formatTime(currentTrackDuration)}`;
+            timeInfo.textContent = formatTime(currentTime); // Solo muestra los segundos transcurridos
         } else {
             progressBar.style.width = '0%'; // Si no hay duración, la barra estará vacía
-            timeInfo.textContent = "0:00 / -:--"; // Muestra que no se conoce la duración
+            timeInfo.textContent = "0:00"; // Muestra que no se conoce la duración
         }
 
         // Actualizar el mensaje de estado
-        //if (!isPlaying) {
-        //    statusMessage.textContent = "Si la canción está quieta, puede que no esté en casa, esté dormido o ocupado.";
-        //} else {
-        //    statusMessage.textContent = ""; // Limpia el mensaje cuando está reproduciendo
-        //}
+        if (!isPlaying) {
+            statusMessage.textContent = "Si la canción está quieta, puede que no esté en casa, esté dormido o ocupado.";
+        } else {
+            statusMessage.textContent = ""; // Limpia el mensaje cuando está reproduciendo
+        }
     }
 
     // Formatear tiempo en minutos y segundos
