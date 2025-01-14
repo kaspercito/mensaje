@@ -213,75 +213,82 @@
         setInterval(updatePageCounter, 86400000);
     </script>
     <script>
+        let currentTrackDuration = 0; // Duración de la canción actual
+        let currentTime = 0; // Tiempo actual en segundos
+        let isPlaying = false; // Estado de reproducción
+        
         async function fetchNowPlaying() {
-        const response = await fetch('https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=Mylosk&api_key=5b08afa13b775c295e820232b02c650a&format=json');
-        const data = await response.json();
-        console.log(data); // Agregar para verificar la respuesta
-    
-        const track = data.recenttracks.track[0];
-    
-        if (track) {
-            document.getElementById('song').textContent = `Canción: ${track.name}`;
-            document.getElementById('artist').textContent = `Artista: ${track.artist['#text']}`;
-            document.getElementById('album-image').src = track.image[2]['#text'];  // Obtener la imagen grande
-    
-            // Comprobar si la canción se está reproduciendo y obtener la duración
-            if (track['@attr'] && track['@attr'].nowplaying) {
-                isPlaying = true; // Si está en reproducción
-                currentTrackDuration = track.duration ? parseInt(track.duration) : 1; // Asegúrate de que la duración sea al menos 1
-                currentTime = Math.min(currentTime + 10, currentTrackDuration); // Aumentar el tiempo actual en 10 segundos
-            } else {
-                isPlaying = false; // Si no está en reproducción, mantenemos el tiempo actual
-                if (currentTime < currentTrackDuration) {
-                    // Si no está en reproducción, no avanzamos el tiempo
-                    currentTime = currentTime; // No se actualiza
+            const response = await fetch('https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=Mylosk&api_key=5b08afa13b775c295e820232b02c650a&format=json');
+            const data = await response.json();
+            console.log('Datos de la API:', data); // Verifica qué datos estás recibiendo
+        
+            const track = data.recenttracks.track[0];
+        
+            if (track) {
+                document.getElementById('song').textContent = `Canción: ${track.name}`;
+                document.getElementById('artist').textContent = `Artista: ${track.artist['#text']}`;
+                document.getElementById('album-image').src = track.image[2]['#text']; // Obtener la imagen grande
+        
+                // Comprobar si la canción se está reproduciendo y obtener la duración
+                if (track['@attr'] && track['@attr'].nowplaying) {
+                    isPlaying = true; // Si está en reproducción
+                    currentTrackDuration = track.duration ? parseInt(track.duration) : 0; // Obtener la duración de la canción
+                    console.log('Duración de la canción:', currentTrackDuration); // Verifica la duración
+                    if (currentTrackDuration === 0) {
+                        currentTrackDuration = 1; // Evitar división por cero
+                    }
+                    currentTime = Math.min(currentTime + 10, currentTrackDuration); // Aumentar el tiempo actual en 10 segundos
+                } else {
+                    isPlaying = false; // Si no está en reproducción
+                    console.log('La canción no se está reproduciendo'); // Mensaje de depuración
                 }
+        
+                updateProgressBar();
+            } else {
+                console.log('No hay pista disponible'); // Mensaje de depuración si no hay pista
             }
-    
-            updateProgressBar();
         }
-    }
-    
-    function updateProgressBar() {
-        const progressBar = document.getElementById('progress-bar');
-        const timeInfo = document.getElementById('time-info');
-        const statusMessage = document.getElementById('status-message');
-    
-        // Evitar que currentTrackDuration sea 0 o NaN
-        if (currentTrackDuration > 0) {
-            const progressPercent = (currentTime / currentTrackDuration) * 100;
-            progressBar.style.width = `${progressPercent}%`;
-            timeInfo.textContent = `${formatTime(currentTime)} / ${formatTime(currentTrackDuration)}`;
-        } else {
-            timeInfo.textContent = "0:00 / 0:00"; // Valor por defecto si no hay duración
+        
+        function updateProgressBar() {
+            const progressBar = document.getElementById('progress-bar');
+            const timeInfo = document.getElementById('time-info');
+            const statusMessage = document.getElementById('status-message');
+        
+            // Evitar que currentTrackDuration sea 0 o NaN
+            if (currentTrackDuration > 0) {
+                const progressPercent = (currentTime / currentTrackDuration) * 100;
+                progressBar.style.width = `${progressPercent}%`;
+                timeInfo.textContent = `${formatTime(currentTime)} / ${formatTime(currentTrackDuration)}`;
+            } else {
+                timeInfo.textContent = "0:00 / 0:00"; // Valor por defecto si no hay duración
+            }
+        
+            // Actualizar el mensaje de estado
+            if (!isPlaying) {
+                statusMessage.textContent = "Si la canción está quieta, puede que no esté en casa, esté dormido o ocupado.";
+            } else {
+                statusMessage.textContent = ""; // Limpia el mensaje cuando está reproduciendo
+            }
         }
-    
-        // Actualizar el mensaje de estado
-        if (!isPlaying) {
-            statusMessage.textContent = "Si la canción está quieta, puede que no esté en casa, esté dormido o ocupado.";
-        } else {
-            statusMessage.textContent = ""; // Limpia el mensaje cuando está reproduciendo
+        
+        // Formatear tiempo en minutos y segundos
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${minutes}:${secs.toString().padStart(2, '0')}`;
         }
-    }
-    
-    // Formatear tiempo en minutos y segundos
-    function formatTime(seconds) {
-        const minutes = Math.floor(seconds / 60);
-        const secs = seconds % 60;
-        return `${minutes}:${secs.toString().padStart(2, '0')}`;
-    }
-    
-    // Actualiza el progreso cada segundo si está en reproducción
-    setInterval(() => {
-        if (isPlaying) {
-            currentTime = Math.min(currentTime + 1, currentTrackDuration); // Aumenta el tiempo actual cada segundo
-            updateProgressBar();
-        }
-    }, 1000);
-    
-    // Llamar a la función para obtener la canción actual y actualizar cada 10 segundos
-    fetchNowPlaying();
-    setInterval(fetchNowPlaying, 10000); // Actualiza cada 10 segundos
+        
+        // Actualiza el progreso cada segundo si está en reproducción
+        setInterval(() => {
+            if (isPlaying) {
+                currentTime = Math.min(currentTime + 1, currentTrackDuration); // Aumenta el tiempo actual cada segundo
+                updateProgressBar();
+            }
+        }, 1000);
+        
+        // Llamar a la función para obtener la canción actual y actualizar cada 10 segundos
+        fetchNowPlaying();
+        setInterval(fetchNowPlaying, 10000); // Actualiza cada 10 segundos
     </script>
     <script>
         function updateTime() {
