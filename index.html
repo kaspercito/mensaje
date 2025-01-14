@@ -170,8 +170,8 @@
     <p>Te esperaré el tiempo que sea necesario, pero extraño a mi novia, esa mujer que me amaba, que me llenaba de paz y alegría, porque mi amor por ti es infinito.</p>
     <div class="quote">"Cada día extraño saber como estás, como te va, recuerdo lo bueno, porque eso es lo que importa."</div>
 
-    <section id="mi-dia" style="padding: 20px; background-color: #f4f4f4; text-align: center;">
-    <h2 style="font-size: 2em; color: #333;">Sección: Mi Día a Día</h2>
+    <section id="mi-dia" style="padding: 20px; background-color: #1a1a1a; text-align: center;">
+    <h2 style="font-size: 2em; color: #ffffff;">🌞 Mi Día a Día</h2>
     
     <!-- Botón para alternar el cuadro -->
     <button id="toggle-daily" style="
@@ -341,20 +341,31 @@
     setInterval(fetchNowPlaying, 1000); // Actualiza cada 1 segundo
     </script>
     <script>
-        function updateTime() {
-            const ecuadorTimeElement = document.getElementById('ecuador-time');
-            const argentinaTimeElement = document.getElementById('argentina-time');
+    function updateTime() {
+        const ecuadorTimeElement = document.getElementById('ecuador-time');
+        const argentinaTimeElement = document.getElementById('argentina-time');
 
-            const ecuadorTime = new Date().toLocaleTimeString('es-EC', { timeZone: 'America/Guayaquil', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
-            const argentinaTime = new Date().toLocaleTimeString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        const ecuadorDate = new Date().toLocaleString('en-US', { timeZone: 'America/Guayaquil' });
+        const argentinaDate = new Date().toLocaleString('en-US', { timeZone: 'America/Argentina/Buenos_Aires' });
 
+        const ecuadorTime = new Date(ecuadorDate);
+        const argentinaTime = new Date(argentinaDate);
 
-            ecuadorTimeElement.textContent = ecuadorTime;
-            argentinaTimeElement.textContent = argentinaTime;
-        }
+        const ecuadorHours = ecuadorTime.getHours();
+        const argentinaHours = argentinaTime.getHours();
 
-        setInterval(updateTime, 1000);
-        updateTime();
+        const ecuadorAmPm = ecuadorHours >= 12 ? 'PM' : 'AM';
+        const argentinaAmPm = argentinaHours >= 12 ? 'PM' : 'AM';
+
+        const ecuadorFormattedTime = `${ecuadorHours.toString().padStart(2, '0')}:${ecuadorTime.getMinutes().toString().padStart(2, '0')}:${ecuadorTime.getSeconds().toString().padStart(2, '0')} ${ecuadorAmPm}`;
+        const argentinaFormattedTime = `${argentinaHours.toString().padStart(2, '0')}:${argentinaTime.getMinutes().toString().padStart(2, '0')}:${argentinaTime.getSeconds().toString().padStart(2, '0')} ${argentinaAmPm}`;
+
+        ecuadorTimeElement.textContent = ecuadorFormattedTime;
+        argentinaTimeElement.textContent = argentinaFormattedTime;
+    }
+
+    setInterval(updateTime, 1000);
+    updateTime();
     </script>
     <script>
     // Script para alternar visibilidad del cuadro
