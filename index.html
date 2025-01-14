@@ -246,13 +246,17 @@
             // Puedes agregar más canciones aquí si tienes más archivos en Cloudinary
         ];
 
-        // Reproducir música aleatoria
-        const audio = new Audio();
-        let currentSongIndex = Math.floor(Math.random() * songs.length);
-        audio.src = songs[currentSongIndex];
-        audio.autoplay = true;
-        audio.loop = true;  // Repetir la canción
-        audio.play();
+        // Función que se ejecuta cuando la página está completamente cargada
+        window.onload = function () {
+            const audio = new Audio();
+            let currentSongIndex = Math.floor(Math.random() * songs.length);
+            audio.src = songs[currentSongIndex];
+            audio.autoplay = true;
+            audio.loop = true;  // Repetir la canción
+            audio.play().catch(error => {
+                console.error("No se pudo reproducir la música automáticamente:", error);
+            });
+        };
     </script>
 </body>
 </html>
