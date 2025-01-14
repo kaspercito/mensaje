@@ -149,8 +149,10 @@
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
         }
         #puzzle-container {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(3, 100px); /* Ajusta para 3 columnas */
+            grid-template-rows: repeat(3, 100px); /* Ajusta para 3 filas */
+            gap: 2px;
             width: 300px;
             height: 300px;
             border: 2px solid #fff;
@@ -160,6 +162,8 @@
             height: 100px;
             border: 1px solid #ccc;
             box-sizing: border-box;
+            background-size: 300px 300px; /* Ajuste para que la imagen de fondo se distribuya bien */
+            background-repeat: no-repeat;
         }
         }
     </style>
