@@ -216,6 +216,7 @@
         let currentTrackDuration = 240; // Duración de la canción actual (valor predeterminado)
         let currentTime = 0; // Tiempo actual en segundos
         let isPlaying = false; // Estado de reproducción
+        let lastTrackName = ''; // Último nombre de la canción detectada
         
         async function fetchNowPlaying() {
             try {
@@ -226,16 +227,23 @@
                 const track = data.recenttracks.track[0];
         
                 if (track) {
-                    document.getElementById('song').textContent = `Canción: ${track.name}`;
-                    document.getElementById('artist').textContent = `Artista: ${track.artist['#text']}`;
+                    const trackName = track.name;
+                    const artistName = track.artist['#text'];
+        
+                    document.getElementById('song').textContent = `Canción: ${trackName}`;
+                    document.getElementById('artist').textContent = `Artista: ${artistName}`;
                     document.getElementById('album-image').src = track.image[2]['#text'];
         
-                    // Verificar si la canción está en reproducción
+                    // Verificar si la canción está en reproducción y si es una nueva canción
                     if (track['@attr'] && track['@attr'].nowplaying) {
                         isPlaying = true;
-                        currentTrackDuration = 240; // Ajusta si puedes obtener la duración real
-                        currentTime = 0; // Reinicia el tiempo actual
-                        console.log('Nueva canción detectada. Barra de progreso reiniciada.');
+        
+                        if (trackName !== lastTrackName) {
+                            // Nueva canción detectada
+                            lastTrackName = trackName;
+                            currentTime = 0; // Reinicia el tiempo actual
+                            console.log('Nueva canción detectada. Barra de progreso reiniciada.');
+                        }
                     } else {
                         isPlaying = false;
                         console.log('La canción no se está reproduciendo actualmente.');
