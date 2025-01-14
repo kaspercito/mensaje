@@ -239,34 +239,6 @@
         setInterval(updateTime, 1000);
         updateTime();
     </script>
-    <script>
-        // Lista de canciones (añade el nombre correcto de los archivos MP3)
-        const songs = [
-            "https://res.cloudinary.com/deyz5zyo3/video/upload/v1736830385/song1_uud7qk.mp3",
-            "https://res.cloudinary.com/deyz5zyo3/video/upload/v1736830640/song2_inxh0b.mp3",
-            "https://res.cloudinary.com/deyz5zyo3/video/upload/v1736830681/song3_nhxt5j.mp3",
-        ];
-
-        let hasInteracted = false;
-
-        // Función para reproducir música
-        function playMusic() {
-            let audio = new Audio();
-            let currentSongIndex = Math.floor(Math.random() * songs.length);
-            audio.src = songs[currentSongIndex];
-            audio.autoplay = true;
-            audio.loop = true;  // Repetir la canción
-            audio.play();
-        }
-
-        // Activar música tras el primer scroll
-        window.addEventListener('scroll', function() {
-            if (!hasInteracted) {
-                playMusic();
-                hasInteracted = true;
-                document.querySelector('.message').textContent = "¡La música ya está sonando!";
-            }
-        });
-    </script>
+    
 </body>
 </html>
