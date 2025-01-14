@@ -150,70 +150,70 @@
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
         }
         /* Estilo para el botón */
-    .toggle-btn {
-        display: inline-block;
-        padding: 15px 30px;
-        margin: 20px auto;
-        background-color: #ff69b4;
-        color: #fff;
-        font-size: 1.2em;
-        font-weight: bold;
-        text-align: center;
-        border-radius: 50px;
-        cursor: pointer;
-        border: none;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-    /* Hover del botón */
-    .toggle-btn:hover {
-        background-color: #e60073;
-        transform: scale(1.1);
-    }
-
-    /* Contenedor de los mensajes */
-    .messages-container {
-        display: none;
-        max-width: 800px;
-        margin: 30px auto;
-        padding: 20px;
-        background: #ffffff;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        border: 1px solid #ddd;
-    }
-
-    /* Estilo de los cuadros de mensaje */
-    .message-box {
-        background-color: #ffffff;
-        padding: 20px;
-        margin-bottom: 20px;
-        border-radius: 10px;
-        border-left: 8px solid #ff69b4;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Fecha en el cuadro */
-    .message-date {
-        font-weight: bold;
-        color: #4a90e2;
-        font-size: 1.2em;
-    }
-
-    /* Estilo de los mensajes dentro del cuadro */
-    .message {
-        font-size: 1.1em;
-        color: #555;
-        margin-top: 10px;
-    }
-
-    /* Ajustes responsivos para pantallas más pequeñas */
-    @media screen and (max-width: 768px) {
         .toggle-btn {
-            padding: 12px 25px;
-            font-size: 1em;
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 20px auto;
+            background-color: #ff69b4;
+            color: #fff;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 50px;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
-    }
+    
+        /* Hover del botón */
+        .toggle-btn:hover {
+            background-color: #e60073;
+            transform: scale(1.1);
+        }
+    
+        /* Contenedor de los mensajes (inicialmente oculto) */
+        .messages-container {
+            display: none; /* Aquí aseguramos que el contenedor esté oculto al principio */
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+        }
+    
+        /* Estilo de los cuadros de mensaje */
+        .message-box {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border-left: 8px solid #ff69b4;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    
+        /* Fecha en el cuadro */
+        .message-date {
+            font-weight: bold;
+            color: #4a90e2;
+            font-size: 1.2em;
+        }
+    
+        /* Estilo de los mensajes dentro del cuadro */
+        .message {
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 10px;
+        }
+    
+        /* Ajustes responsivos para pantallas más pequeñas */
+        @media screen and (max-width: 768px) {
+            .toggle-btn {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -234,6 +234,9 @@
     <p id="page-counter"></p>
     <p>Te esperaré el tiempo que sea necesario, pero extraño a mi novia, esa mujer que me amaba, que me llenaba de paz y alegría, porque mi amor por ti es infinito.</p>
     <div class="quote">"Cada día extraño saber como estás, como te va, recuerdo lo bueno, porque eso es lo que importa."</div>
+
+    <!-- Botón para alternar los mensajes -->
+    <button class="toggle-btn" onclick="toggleMessages()">📝 Ver Mis Mensajes Diarios</button>
 
     <!-- Contenedor de los mensajes (inicialmente oculto) -->
     <div class="messages-container" id="messages-container">
@@ -417,7 +420,8 @@
     <script>
         function toggleMessages() {
             var container = document.getElementById('messages-container');
-            if (container.style.display === 'none') {
+            // Alterna la visibilidad del contenedor de mensajes
+            if (container.style.display === 'none' || container.style.display === '') {
                 container.style.display = 'block';
             } else {
                 container.style.display = 'none';
