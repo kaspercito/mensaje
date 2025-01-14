@@ -149,55 +149,6 @@
             background-color: #fff0f5;
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
         }
-        #day-by-day {
-            text-align: center;
-            margin-top: 30px;
-            width: 100%;
-            max-width: 600px;
-            margin-bottom: 20px;
-        }
-        
-        #day-by-day button {
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        
-        #day-by-day button:hover {
-            background-color: #45a049;
-        }
-        
-        #daily-life-section {
-            margin-top: 20px;
-            text-align: left;
-            background-color: #333333;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-        }
-        
-        .daily-card {
-            background-color: #333333;
-            color: #ffffff;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            text-align: left;
-        }
-        
-        .daily-card span {
-            background-color: #333333;
-            color: #ffffff;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            text-align: left;
-        }
-
     </style>
 </head>
 <body>
@@ -218,22 +169,6 @@
     <p id="page-counter"></p>
     <p>Te esperaré el tiempo que sea necesario, pero extraño a mi novia, esa mujer que me amaba, que me llenaba de paz y alegría, porque mi amor por ti es infinito.</p>
     <div class="quote">"Cada día extraño saber como estás, como te va, recuerdo lo bueno, porque eso es lo que importa."</div>
-
-    <div id="day-by-day">
-    <button onclick="toggleDailyLife()">📖 Mi Día a Día</button>
-    <div id="daily-life-section" style="display: none;">
-        <h2>Mi Día a Día 🌟</h2>
-        <p>Este espacio lo hago para compartir contigo un poco de lo que hago cada día. No es mucho, ni se si lo veas, pero es algo que quiero que sepas. ❤️</p>
-        <div class="daily-card">
-            <span>14/01/2025 16:06 p.m.</span>
-            <p>Saldré para acompañar a mi tía y mi hermana que la dejaremos donde una amiga, supongo irá a dormir allá, ya que le queda mas cerca a la universidad</p>
-        </div>
-        <!-- Aquí puedes ir agregando más registros, por ejemplo: -->
-        <!-- <div class="daily-card">
-            <p>Hoy cociné una receta especial, me acordé de ti mientras la preparaba. 🍝</p>
-            <span>13/01/2025</span>
-        </div> -->
-    </div>
 
     <div class="music-info">
         <h3>Lo que estoy escuchando ahora:</h3>
@@ -382,16 +317,6 @@
 
         setInterval(updateTime, 1000);
         updateTime();
-    </script>
-    <script>
-        function toggleDailyLife() {
-        const dailyLifeSection = document.getElementById('daily-life-section');
-        if (dailyLifeSection.style.display === 'none') {
-            dailyLifeSection.style.display = 'block';
-        } else {
-            dailyLifeSection.style.display = 'none';
-        }
-    }
     </script>
 </body>
 </html>
