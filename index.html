@@ -149,8 +149,31 @@
             background-color: #fff0f5;
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
         }
-        /* Contenedor principal de los mensajes diarios */
-    .daily-life-container {
+        /* Estilo para el botón */
+    .toggle-btn {
+        display: inline-block;
+        padding: 15px 30px;
+        margin: 20px auto;
+        background-color: #ff69b4;
+        color: #fff;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 50px;
+        cursor: pointer;
+        border: none;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Hover del botón */
+    .toggle-btn:hover {
+        background-color: #e60073;
+        transform: scale(1.1);
+    }
+
+    /* Contenedor de los mensajes */
+    .messages-container {
+        display: none;
         max-width: 800px;
         margin: 30px auto;
         padding: 20px;
@@ -160,53 +183,34 @@
         border: 1px solid #ddd;
     }
 
-    /* Título de la sección de mensajes */
-    .daily-life-container h2 {
-        text-align: center;
-        font-size: 2.5em;
-        margin-bottom: 30px;
-        font-weight: 700;
-        color: #4a90e2;
-    }
-
-    /* Estilo para cada mensaje */
-    .message {
+    /* Estilo de los cuadros de mensaje */
+    .message-box {
         background-color: #ffffff;
         padding: 20px;
         margin-bottom: 20px;
         border-radius: 10px;
         border-left: 8px solid #ff69b4;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    /* Efecto hover para los mensajes */
-    .message:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Estilo para el texto de fecha y hora */
-    .message span {
+    /* Fecha en el cuadro */
+    .message-date {
         font-weight: bold;
         color: #4a90e2;
-        font-size: 1.1em;
+        font-size: 1.2em;
     }
 
-    /* Estilo para los enlaces dentro de los mensajes */
-    .message a {
-        color: #ff69b4;
-        text-decoration: none;
-        font-weight: bold;
+    /* Estilo de los mensajes dentro del cuadro */
+    .message {
+        font-size: 1.1em;
+        color: #555;
+        margin-top: 10px;
     }
 
     /* Ajustes responsivos para pantallas más pequeñas */
     @media screen and (max-width: 768px) {
-        .daily-life-container h2 {
-            font-size: 2em;
-        }
-
-        .message span {
+        .toggle-btn {
+            padding: 12px 25px;
             font-size: 1em;
         }
     }
@@ -231,33 +235,35 @@
     <p>Te esperaré el tiempo que sea necesario, pero extraño a mi novia, esa mujer que me amaba, que me llenaba de paz y alegría, porque mi amor por ti es infinito.</p>
     <div class="quote">"Cada día extraño saber como estás, como te va, recuerdo lo bueno, porque eso es lo que importa."</div>
 
-    <div class="daily-life-container">
-        <h2>📜 Mi Diario Diario</h2>
-
-        <!-- Mensaje 1 -->
-        <div class="message">
-            <span>13/01/2025 20:31 p.m:</span> Este es el último mensaje de hoy, quería comprobar que todo esté bien hecho. Espero que esté funcionando como debería. No sé si lo leerás, pero seguiré escribiendo aquí todos los días.
+    <!-- Contenedor de los mensajes (inicialmente oculto) -->
+    <div class="messages-container" id="messages-container">
+        <!-- Mensajes agregados manualmente -->
+        <div class="message-box">
+            <div class="message-date">13/01/2025 20:31 p.m:</div>
+            <div class="message">Este es el último mensaje de hoy, quería comprobar que todo esté bien hecho. Espero que esté funcionando como debería. No sé si lo leerás, pero seguiré escribiendo aquí todos los días.</div>
         </div>
 
-        <!-- Mensaje 2 -->
-        <div class="message">
-            <span>13/01/2025 19:34 p.m:</span> Al parecer el bot que hice comenzó a funcionar, fue lo más difícil de hacer, pero supongo que está todo bien hecho ahora.
+        <div class="message-box">
+            <div class="message-date">13/01/2025 19:34 p.m:</div>
+            <div class="message">Al parecer el bot que hice comenzó a funcionar, fue lo más difícil de hacer, pero supongo que está todo bien hecho ahora.</div>
         </div>
 
-        <!-- Mensaje 3 -->
-        <div class="message">
-            <span>13/01/2025:</span> No he podido dormir como debería y quisiera, pero me he dado cuenta que el amor de mi vida, mi novia, a quien yo amaba por siempre, desapareció. Ella me amaba, me cuidaba. Te extraño mi ratón pequeño, me haces falta. Te seguiré pensando donde estés, espero poder encontrarte donde sea que hayas ido. TE EXTRAÑO COMO NO LO PUEDES IMAGINAR ❤️🤞🏻🐀
+        <div class="message-box">
+            <div class="message-date">13/01/2025:</div>
+            <div class="message">No he podido dormir como debería y quisiera, pero me he dado cuenta que el amor de mi vida, mi novia, a quien yo amaba por siempre, desapareció. Ella me amaba, me cuidaba. Te extraño mi ratón pequeño, me haces falta. Te seguiré pensando donde estés, espero poder encontrarte donde sea que hayas ido. TE EXTRAÑO COMO NO LO PUEDES IMAGINAR ❤️🤞🏻🐀</div>
         </div>
 
-        <!-- Mensaje 4 -->
-        <div class="message">
-            <span>12/01/2025 21:27 p.m:</span> Acaba de ocurrir un sismo de 5.1, se sintió feo. El epicentro fue aquí. <a href="https://imgur.com/a/zjFehKj" target="_blank">Ver imagen</a>, pero estamos bien.
+        <div class="message-box">
+            <div class="message-date">12/01/2025 21:27 p.m:</div>
+            <div class="message">Acaba de ocurrir un sismo de 5.1, se sintió feo. El epicentro fue aquí. <a href="https://imgur.com/a/zjFehKj" target="_blank">Ver imagen</a>, pero estamos bien.</div>
         </div>
 
-        <!-- Mensaje 5 -->
-        <div class="message">
-            <span>12/01/2025:</span> Hoy he decidido crear esto, lo hago con el corazón, y mi vida porque realmente no puedo vivir sin saber de ti. No sé si lo vayas a leer siempre, pero me tomaré el tiempo de mi vida, cada minuto, cada segundo por vos. Siempre te amaré ❤️🤞🏻🐀
+        <div class="message-box">
+            <div class="message-date">12/01/2025:</div>
+            <div class="message">Hoy he decidido crear esto, lo hago con el corazón, y mi vida porque realmente no puedo vivir sin saber de ti. No sé si lo vayas a leer siempre, pero me tomaré el tiempo de mi vida, cada minuto, cada segundo por vos. Siempre te amaré ❤️🤞🏻🐀</div>
         </div>
+
+        <!-- Puedes agregar más mensajes aquí manualmente -->
     </div>
 
     <div class="music-info">
@@ -409,13 +415,12 @@
         updateTime();
     </script>
     <script>
-        // Función para mostrar u ocultar los mensajes de Mi Día a Día
-        function toggleDailyLife() {
-            const dailyLifeSection = document.getElementById('daily-life-section');
-            if (dailyLifeSection.style.display === 'none') {
-                dailyLifeSection.style.display = 'block';
+        function toggleMessages() {
+            var container = document.getElementById('messages-container');
+            if (container.style.display === 'none') {
+                container.style.display = 'block';
             } else {
-                dailyLifeSection.style.display = 'none';
+                container.style.display = 'none';
             }
         }
     </script>
