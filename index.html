@@ -228,6 +228,7 @@
 
             if (track) {
                 const currentTrackName = track.name;
+
                 // Verifica si la canción ha cambiado
                 if (currentTrackName !== lastTrackName) {
                     lastTrackName = currentTrackName; // Actualiza el último nombre de la canción
@@ -237,7 +238,7 @@
                     document.getElementById('artist').textContent = `Artista: ${track.artist['#text']}`;
                     document.getElementById('album-image').src = track.image[2]['#text']; // Obtener la imagen grande
 
-                    // Comprobar si la canción se está reproduciendo y obtener la duración
+                    // Comprobar si la canción se está reproduciendo
                     if (track['@attr'] && track['@attr'].nowplaying) {
                         isPlaying = true; // Si está en reproducción
                         currentTrackDuration = track.duration ? parseInt(track.duration) : 240; // Establece un valor por defecto si no hay duración
@@ -273,9 +274,9 @@
             timeInfo.textContent = formatTime(currentTime); // Mostrar el tiempo acumulado
         }
 
-        // Actualizar el mensaje de estado
+        // Mensaje de estado
         //if (!isPlaying) {
-        //    statusMessage.textContent = "Si la canción está quieta, puede que no esté en casa, esté dormido o ocupado.";
+        //   statusMessage.textContent = "Si la canción está quieta, puede que no esté en casa, esté dormido o ocupado.";
         //} else {
         //    statusMessage.textContent = ""; // Limpia el mensaje cuando está reproduciendo
         //}
