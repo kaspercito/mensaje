@@ -137,12 +137,24 @@
                 width: 150px;
                 height: 150px;
             }
+        #page-counter {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            color: #ff69b4;
+            padding: 10px;
+            border: 2px solid #ff69b4;
+            border-radius: 10px;
+            background-color: #fff0f5;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
+        }
         }
     </style>
 </head>
 <body>
     <h1>Para mi Novia 🖤</h1>
     <h2>Desde el <span class="date">16 de septiembre de 2023</span>, mi corazón late solo por ti y siempre lo hará.</h2>
+    <p id="page-counter"></p>
     <p>Te esperaré el tiempo que sea necesario, pero extraño a mi novia, la mujer que me amaba, porque mi amor es eterno.</p>
     <div class="quote">"Cada día extraño saber como estás, como te va, recuerdo lo bueno, porque eso es lo que importa."</div>
 
@@ -181,7 +193,17 @@
         </div>
         <p>Es algo muy simple, pero lo hago con el 💙 porque eres lo más importante en mi vida y lo mereces.</p>
     </footer>
-
+    <script>
+        const pageCreationDate = new Date(2024, 0, 12);
+        function updatePageCounter() {
+            const today = new Date();
+            const diffTime = today - pageCreationDate;
+            const daysPassed = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            document.getElementById("page-counter").textContent = `Esta página lleva ${daysPassed} días mostrando lo que siento por ti.`;
+        }
+        updatePageCounter();
+        setInterval(updatePageCounter, 86400000);
+    </script>
     <script>
         // Function to fetch the latest track played
         async function fetchNowPlaying() {
