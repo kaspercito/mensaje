@@ -148,75 +148,6 @@
             background-color: #fff0f5;
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
         }
-    .song-info {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: inline-block;
-        }
-        .song-info img {
-            width: 150px;
-            height: 150px;
-            border-radius: 8px;
-        }
-        .song-info h2 {
-            margin-top: 20px;
-            color: #333;
-        }
-        .song-info p {
-            color: #555;
-        }
-    }
-        #songInfo {
-            margin-top: 20px;
-        }
-        #albumCover {
-            max-width: 200px;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Bienvenido a mi página</h1>
-    
-    <p>Estás escuchando: <span id="trackName">Cargando...</span></p>
-    <p>Artista(s): <span id="artists">Cargando...</span></p>
-    
-    <img id="albumCover" src="" alt="Portada del álbum">
-    
-    <br><br>
-
-    <div id="songInfo"></div>
-
-    <!-- Reproductor de Spotify Embed -->
-    <div id="spotifyPlayer">
-        <iframe id="spotifyEmbed" src="" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-    </div>
-
-    <script>
-        // Obtén los datos de la canción a través del servidor
-        fetch('http://localhost:8888/callback?code=' + new URLSearchParams(window.location.search).get('code'))
-            .then(response => response.json())
-            .then(data => {
-                if (data.trackName && data.artists) {
-                    // Actualiza el texto de la canción y el artista
-                    document.getElementById('trackName').textContent = data.trackName;
-                    document.getElementById('artists').textContent = data.artists;
-                    document.getElementById('albumCover').src = data.albumImage;
-                    
-                    // Cargar el reproductor con la canción actual
-                    const trackUri = `https://open.spotify.com/embed/track/${data.trackUri.split(':')[2]}`;
-                    document.getElementById('spotifyEmbed').src = trackUri;
-                } else {
-                    document.getElementById('trackName').textContent = "No estás escuchando ninguna canción";
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById('trackName').textContent = 'Error al obtener la canción';
-            });
-    </script>
 
     </style>
 </head>
@@ -277,6 +208,17 @@
         setInterval(updatePageCounter, 86400000);
     </script>
     <script>
+        // Function to fetch the latest track played
+        async function fetchNowPlaying() {
+            const response = await fetch('https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=Mylosk&api_key=5b08afa13b775c295e820232b02c650a&format=json');
+            const data = await response.json();
+            const track = data.recenttracks.track[0];
+            if (track) {
+                document.getElementById('song').textContent = `Canción: ${track.name}`;
+                document.getElementById('artist').textContent = `Artista: ${track.artist['#text']}`;
+                document.getElementById('album-image').src = track.image[2]['#text'];  // Get the large image
+            }
+        }
 
         fetchNowPlaying();
         setInterval(fetchNowPlaying, 10000);  // Update every 10 seconds
@@ -297,5 +239,6 @@
         setInterval(updateTime, 1000);
         updateTime();
     </script>
+    
 </body>
 </html>
