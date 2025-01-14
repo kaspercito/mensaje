@@ -149,98 +149,96 @@
             background-color: #fff0f5;
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
         }
-        #daily-life-section {
-        display: none;
-        margin-top: 30px;
-        padding: 30px;
-        background: linear-gradient(135deg, #4a90e2, #9b59b6);
-        border-radius: 15px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        width: 100%;
-        max-width: 850px;
-        margin: 30px auto;
-        color: #fff;
-        font-family: 'Arial', sans-serif;
+        /* Contenedor de la sección */
+        .daily-life-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            background: linear-gradient(135deg, #4a90e2, #9b59b6);
+            color: white;
         }
     
-        #daily-life-section h2 {
+        /* Título de la sección */
+        .daily-life-container h2 {
             text-align: center;
             font-size: 2.5em;
-            margin-bottom: 25px;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            margin-bottom: 30px;
+            font-weight: 700;
         }
     
+        /* Estilo del cuadro de cada mensaje diario */
         .day-message {
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+            background-color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
     
+        /* Hover en cada mensaje diario */
         .day-message:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
     
         .day-message h3 {
             font-size: 1.8em;
-            color: #f1c40f;
-            margin-bottom: 10px;
+            color: #333;
+            margin-bottom: 15px;
             font-weight: bold;
-            letter-spacing: 1px;
         }
     
         .day-message p {
-            font-size: 1.1em;
-            color: #eaeaea;
+            font-size: 1.2em;
+            color: #555;
             line-height: 1.6;
-            letter-spacing: 0.5px;
         }
     
-        .day-message:last-child {
-            margin-bottom: 0;
-        }
-    
-        /* Botón personalizado para escritorio */
-        button {
+        /* Botón que alterna la visibilidad */
+        .toggle-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 20px auto;
             background-color: #ff69b4;
             color: #fff;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
             font-size: 1.2em;
             font-weight: bold;
-            transition: background-color 0.3s, transform 0.3s;
-            display: inline-flex;
-            align-items: center;
+            text-align: center;
+            border-radius: 50px;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
     
-        button:hover {
+        /* Hover del botón */
+        .toggle-btn:hover {
             background-color: #e60073;
             transform: scale(1.1);
         }
     
-        button svg {
-            margin-right: 10px;
-            font-size: 1.5em;
-        }
-    
-        /* Asegurarse de que el botón se vea bien en móviles */
+        /* Estilos responsivos para dispositivos móviles */
         @media screen and (max-width: 768px) {
-            button {
-                font-size: 1em;
-                padding: 12px 25px;
+            .daily-life-container h2 {
+                font-size: 2em;
             }
-        }
     
-        /* Agregar un espacio entre el emoji y el texto en el botón */
-        button span {
-            margin-left: 10px;
+            .day-message h3 {
+                font-size: 1.6em;
+            }
+    
+            .day-message p {
+                font-size: 1.1em;
+            }
+    
+            .toggle-btn {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
         }
     </style>
 </head>
@@ -263,34 +261,32 @@
     <p>Te esperaré el tiempo que sea necesario, pero extraño a mi novia, esa mujer que me amaba, que me llenaba de paz y alegría, porque mi amor por ti es infinito.</p>
     <div class="quote">"Cada día extraño saber como estás, como te va, recuerdo lo bueno, porque eso es lo que importa."</div>
 
-    <!-- Botón para alternar la visibilidad de la sección Mi Día a Día -->
-    <button onclick="toggleDailyLife">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path>
-        </svg>
-        Ver Mi Día a Día
-    </button>
+    <div class="daily-life-container">
+        <!-- Botón para mostrar/ocultar los mensajes -->
+        <button class="toggle-btn" onclick="toggleDailyLife()">Ver Mi Día a Día</button>
 
-    <!-- Sección de Mi Día a Día -->
-    <div id="daily-life-section">
-        <h2>Mi Día a Día 🌞</h2>
+        <!-- Contenedor de los mensajes diarios -->
+        <div id="daily-life-section" style="display: none;">
+            <h2>Mi Día a Día 🌟</h2>
 
-        <!-- Día 1 -->
-        <div class="day-message">
-            <h3>14/01/2025 ❤️</h3>
-            <p>Hoy fue un día tranquilo, me levanté temprano 🌅 y me dediqué a pensar en ti todo el día 🥰. Te extraño mucho y cada segundo sin ti me parece eterno ⏳.</p>
-        </div>
+            <!-- Día 1 -->
+            <div class="day-message">
+                <h3>14/01/2025 💖</h3>
+                <p>Hoy fue un día increíble, me desperté pensando en ti 🌅. Pasé el día soñando con momentos juntos 🥰. Mi amor por ti crece cada vez más 🌹.</p>
+            </div>
 
-        <!-- Día 2 -->
-        <div class="day-message">
-            <h3>15/01/2025 💖</h3>
-            <p>Hoy, aunque estaba ocupado 🗓️ con algunas cosas, no dejé de pensar en lo afortunado que soy de tenerte en mi vida 🌹. Cada día más agradecido por ti 🙏.</p>
-        </div>
+            <!-- Día 2 -->
+            <div class="day-message">
+                <h3>15/01/2025 💌</h3>
+                <p>Este día fue especial porque me hizo reflexionar sobre todo lo que hemos vivido. A pesar de la distancia, siento que estamos más cerca que nunca ❤️.</p>
+            </div>
 
-        <!-- Día 3 -->
-        <div class="day-message">
-            <h3>16/01/2025 💌</h3>
-            <p>Pasé un día complicado 😔, pero saber que estás allí, aunque no pueda verte, me da fuerzas 💪. Mi amor por ti sigue creciendo cada día más 💓.</p>
+            <!-- Día 3 -->
+            <div class="day-message">
+                <h3>16/01/2025 ✨</h3>
+                <p>Pasé el día recordando todos los momentos felices. Cada día que pasa, me doy cuenta de lo afortunado que soy de tenerte en mi vida 💕.</p>
+            </div>
+
         </div>
     </div>
 
@@ -443,6 +439,7 @@
         updateTime();
     </script>
     <script>
+        // Función para mostrar u ocultar los mensajes de Mi Día a Día
         function toggleDailyLife() {
             const dailyLifeSection = document.getElementById('daily-life-section');
             if (dailyLifeSection.style.display === 'none') {
