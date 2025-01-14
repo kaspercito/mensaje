@@ -275,11 +275,11 @@
         }
 
         // Mensaje de estado
-        //if (!isPlaying) {
-        //   statusMessage.textContent = "Si la canción está quieta, puede que no esté en casa, esté dormido o ocupado.";
-        //} else {
-        //    statusMessage.textContent = ""; // Limpia el mensaje cuando está reproduciendo
-        //}
+        if (!isPlaying) {
+            statusMessage.textContent = "No estoy escuchando musica asi que seguramente este ocupado, durmiendo o no estoy en casa";
+        } else {
+            statusMessage.textContent = "Estoy escuchando musica asi que seguramente este en casa"; // Limpia el mensaje cuando está reproduciendo
+        }
     }
 
     // Formatear tiempo en minutos y segundos
