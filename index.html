@@ -213,48 +213,61 @@
     </script>
     <script>
         async function fetchNowPlaying() {
-        const response = await fetch('https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=Mylosk&api_key=5b08afa13b775c295e820232b02c650a&format=json');
-        const data = await response.json();
-        const track = data.recenttracks.track[0];
+        try {
+            const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=Mylosk&api_key=5b08afa13b775c295e820232b02c650a&format=json&_=${Date.now()}`);
+            const data = await response.json();
+            const track = data.recenttracks.track[0];
     
-        if (track) {
-            // Actualizar la información de la canción y el artista
-            document.getElementById('song').textContent = `Canción: ${track.name}`;
-            document.getElementById('artist').textContent = `Artista: ${track.artist['#text']}`;
-            document.getElementById('album-image').src = track.image[2]['#text']; // Imagen del álbum
+            if (track) {
+                document.getElementById('song').textContent = `Canción: ${track.name}`;
+                document.getElementById('artist').textContent = `Artista: ${track.artist['#text']}`;
+                document.getElementById('album-image').src = track.image[2]['#text'] || 'ruta_por_defecto.jpg';
     
-            // Duración del track y simulación del progreso
-            const duration = 240; // Cambiar esto a la duración real si está disponible en la API
-            let currentTime = 0;
+                // Obtener la duración de la canción
+                const duration = parseInt(track['@attr'].nowplaying ? track['@attr'].duration : 240); // Cambia 240 por la duración real si está disponible
     
-            const progressBar = document.getElementById('progress-bar');
-            const timeInfo = document.getElementById('time-info');
+                // Controlar el tiempo de reproducción
+                if (!track['@attr'].nowplaying) {
+                    clearInterval(window.progressInterval); // Detener el intervalo si la canción no está en reproducción
+                    return; // No actualizar si no hay canción en reproducción
+                }
     
-            function updateProgress() {
-                if (currentTime <= duration) {
-                    const progressPercent = (currentTime / duration) * 100;
-                    progressBar.style.width = `${progressPercent}%`;
-                    timeInfo.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
-                    currentTime++;
-                } else {
-                    clearInterval(window.progressInterval);
+                // Si es una nueva canción, reiniciar el progreso
+                if (!window.currentTrack || window.currentTrack !== track.name) {
+                    window.currentTrack = track.name; // Guardar el nombre de la canción actual
+                    window.currentTime = 0; // Reiniciar el tiempo actual
+                    clearInterval(window.progressInterval); // Limpiar el intervalo anterior
+                    window.progressInterval = setInterval(updateProgress, 1000); // Iniciar nuevo intervalo
                 }
             }
-    
-            function formatTime(seconds) {
-                const minutes = Math.floor(seconds / 60);
-                const secs = seconds % 60;
-                return `${minutes}:${secs.toString().padStart(2, '0')}`;
-            }
-    
-            // Reiniciar la barra de progreso
-            currentTime = 0;
-            clearInterval(window.progressInterval);
-            window.progressInterval = setInterval(updateProgress, 1000); // Actualizar cada segundo
+        } catch (error) {
+            console.error('Error al obtener la música actual:', error);
         }
     }
     
-    // Llamar a la función de actualización de la canción en intervalos regulares
+    // Función para actualizar la barra de progreso
+    function updateProgress() {
+        if (window.currentTime <= duration) { // Usar la duración real
+            const progressPercent = (window.currentTime / duration) * 100;
+            document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+            document.getElementById('time-info').textContent = `${formatTime(window.currentTime)} / ${formatTime(duration)}`;
+            window.currentTime++;
+        } else {
+            clearInterval(window.progressInterval); // Detener el intervalo si se alcanza la duración
+        }
+    }
+    
+    // Función para formatear el tiempo
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${minutes}:${secs.toString().padStart(2, '0')}`;
+    }
+    
+    // Iniciar el seguimiento de la canción actual y la barra de progreso
+    let window.currentTrack = null;
+    let window.currentTime = 0;
+    
     fetchNowPlaying();
     setInterval(fetchNowPlaying, 10000); // Actualizar cada 10 segundos
     </script>
