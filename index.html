@@ -14,11 +14,6 @@
         gtag('config', 'G-149JEMEZSC');
     </script>
     <!-- Fin del Código de Google Analytics -->
-    <!-- Reproductor de audio -->
-    <audio id="audio-player" controls autoplay loop>
-    <source src="https://raw.githubusercontent.com/kaspercito/mensaje/472db5665835c9e2f0273e5c8e65d73b6fc08928/musica/song1.mp3" type="audio/mp3">
-    Tu navegador no soporta el elemento de audio.
-    </audio>
     <style>
         body {
             margin: 0;
@@ -245,22 +240,19 @@
         updateTime();
     </script>
     <script>
-    // Lista de canciones (añade el nombre correcto de los archivos MP3)
-    const songs = [
-        "https://raw.githubusercontent.com/kaspercito/mensaje/472db5665835c9e2f0273e5c8e65d73b6fc08928/musica/song1.mp3"
-        // Agrega más canciones aquí si lo deseas
-    ];
+        // Lista de canciones (añade el nombre correcto de los archivos MP3)
+        const songs = [
+            "https://res.cloudinary.com/deyz5zyo3/video/upload/v1736830385/song1_uud7qk.mp3",
+            // Puedes agregar más canciones aquí si tienes más archivos en Cloudinary
+        ];
 
-    // Selecciona una canción aleatoria
-    const randomSong = songs[Math.floor(Math.random() * songs.length)];
-
-    // Crea el reproductor de música
-    const audio = new Audio(randomSong);
-    audio.autoplay = true;
-    audio.loop = true; // Repetir la canción indefinidamente
-
-    // Reproduce la música
-    audio.play();
+        // Reproducir música aleatoria
+        const audio = new Audio();
+        let currentSongIndex = Math.floor(Math.random() * songs.length);
+        audio.src = songs[currentSongIndex];
+        audio.autoplay = true;
+        audio.loop = true;  // Repetir la canción
+        audio.play();
     </script>
 </body>
 </html>
