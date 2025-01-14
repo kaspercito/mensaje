@@ -217,6 +217,12 @@
     let currentTime = 0; // Variable para el tiempo actual de la canción
     let duration = 0; // Variable para la duración de la canción
     let progressInterval; // Variable para el intervalo de progreso
+    let lastTrackInfo = { // Objeto para guardar la última canción
+        name: '',
+        artist: '',
+        image: '',
+        duration: 0
+    };
     
     async function fetchNowPlaying() {
         try {
@@ -231,21 +237,24 @@
                 // Solo actualizar si la canción ha cambiado
                 if (newTrackId !== currentTrackId) {
                     currentTrackId = newTrackId; // Actualizar el ID de la canción actual
-                    document.getElementById('song').textContent = `Canción: ${track.name}`;
-                    document.getElementById('artist').textContent = `Artista: ${track.artist['#text']}`;
-                    document.getElementById('album-image').src = track.image[2]['#text']; // Obtén la imagen más grande
+                    lastTrackInfo.name = track.name; // Guardar el nombre de la canción
+                    lastTrackInfo.artist = track.artist['#text']; // Guardar el artista
+                    lastTrackInfo.image = track.image[2]['#text']; // Guardar la imagen
+                    lastTrackInfo.duration = parseInt(track.duration) || 240; // Guardar la duración
     
-                    duration = parseInt(track.duration) || 240; // Duración de la canción
+                    document.getElementById('song').textContent = `Canción: ${lastTrackInfo.name}`;
+                    document.getElementById('artist').textContent = `Artista: ${lastTrackInfo.artist}`;
+                    document.getElementById('album-image').src = lastTrackInfo.image; // Mostrar la imagen del álbum
+    
+                    duration = lastTrackInfo.duration; // Asignar la duración de la canción
                     currentTime = 0; // Reiniciar el tiempo actual
                     clearInterval(progressInterval); // Limpiar el intervalo anterior
                     progressInterval = setInterval(updateProgress, 1000); // Iniciar un nuevo intervalo para actualizar el progreso
                 }
     
-                // Si la canción no está reproduciendo, detener el progreso
+                // Si la canción no está reproduciendo, mostrar la última canción y detener el progreso
                 if (!track['@attr']?.nowplaying) {
                     clearInterval(progressInterval); // Detener el intervalo de progreso
-                    currentTime = 0; // Reiniciar el tiempo actual
-                    document.getElementById('progress-bar').style.width = '0%'; // Reiniciar la barra de progreso
                 }
             } else {
                 document.getElementById('song').textContent = 'No se está reproduciendo ninguna canción.';
@@ -271,6 +280,16 @@
             clearInterval(progressInterval); // Detener el intervalo cuando la canción termine
         }
     }
+
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${minutes}:${secs.toString().padStart(2, '0')}`;
+    }
+    
+    fetchNowPlaying();
+    setInterval(fetchNowPlaying, 10000); // Actualizar cada 10 segundos para comprobar nuevas canciones
+    </script>
     
     function formatTime(seconds) {
         const minutes = Math.floor(seconds / 60);
