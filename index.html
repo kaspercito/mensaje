@@ -213,7 +213,7 @@
         setInterval(updatePageCounter, 86400000);
     </script>
     <script>
-        let currentTrackDuration = 0; // Duración de la canción actual
+        let currentTrackDuration = 240; // Duración de la canción actual, valor por defecto de 4 minutos (240 segundos)
         let currentTime = 0; // Tiempo actual en segundos
         let isPlaying = false; // Estado de reproducción
         
@@ -232,10 +232,10 @@
                 // Comprobar si la canción se está reproduciendo y obtener la duración
                 if (track['@attr'] && track['@attr'].nowplaying) {
                     isPlaying = true; // Si está en reproducción
-                    currentTrackDuration = track.duration ? parseInt(track.duration) : 0; // Obtener la duración de la canción
+                    currentTrackDuration = track.duration ? parseInt(track.duration) : 240; // Establece 240 segundos si no hay duración
                     console.log('Duración de la canción:', currentTrackDuration); // Verifica la duración
                     if (currentTrackDuration === 0) {
-                        currentTrackDuration = 1; // Evitar división por cero
+                        currentTrackDuration = 240; // Evitar división por cero, establece a 240 segundos
                     }
                     currentTime = Math.min(currentTime + 10, currentTrackDuration); // Aumentar el tiempo actual en 10 segundos
                 } else {
