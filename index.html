@@ -149,7 +149,52 @@
             background-color: #fff0f5;
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
         }
-
+        #day-by-day {
+            text-align: center;
+            margin-top: 30px;
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+        
+        #day-by-day button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        #day-by-day button:hover {
+            background-color: #45a049;
+        }
+        
+        #daily-life-section {
+            margin-top: 20px;
+            text-align: left;
+            background-color: #333333;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .daily-card {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border: 1px solid #a5d6a7;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            color: #333333;
+        }
+        
+        .daily-card span {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #666666;
+        }
     </style>
 </head>
 <body>
@@ -158,7 +203,7 @@
     <img src="https://i.imgur.com/iqt6Dbd.jpeg" alt="Perrito" style="width: 150px; border-radius: 10px; margin-top: 20px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
     
     <div class="messages">
-        <h2>Mensajes</h2>
+        <h2>📜 Mensajes Diarios</h2>
         <div class="message"><span>13/01/2025 20:31 p.m:</span> Este es el ultimo mensaje de hoy, queria comprobar que todo este bien hecho, espero este funcionando como debería, no se si lo leeras pero bueno, yo seguiré escribiendo aqui todos los días</div>
         <div class="message"><span>13/01/2025 19:34 p.m:</span> Al parecer el bot que hice comenzo a funcionar, fue lo mas dificil de hacer, pero supongo que esta todo bien hecho ahora</div>
         <div class="message"><span>13/01/2025:</span> No he podido dormir como deberia y quisiera, pero me he dado cuenta que el amor de mi vida, mi novia a quien yo amaba por siempre desaparecio, ella me amaba, me cuidaba, me gustaba cuidarla, ella si valoro lo que yo hacia, pero murió, te extraño mi ratón pequeño, me haces falta, me hace falta la mujer que yo conoci, espero poder levantarme con energías, te seguiré pensando donde estes, espero poder encontrarte donde sea que hayas ido, porque no te he visto, ni sentido, ahora no te conozco, pero TE EXTRAÑO COMO NO LO PUEDES IMAGINAR ❤️🤞🏻🐀</div>
@@ -170,6 +215,23 @@
     <p id="page-counter"></p>
     <p>Te esperaré el tiempo que sea necesario, pero extraño a mi novia, esa mujer que me amaba, que me llenaba de paz y alegría, porque mi amor por ti es infinito.</p>
     <div class="quote">"Cada día extraño saber como estás, como te va, recuerdo lo bueno, porque eso es lo que importa."</div>
+
+    <div id="day-by-day">
+        <button onclick="toggleDailyLife()">📖 Mi Día a Día</button>
+        <div id="daily-life-section" style="display: none;">
+            <h2>Mi Día a Día 🌟</h2>
+            <p>Este espacio lo hago para compartir contigo un poco de lo que hago cada día. No es mucho, pero es algo que quiero que sepas. ❤️</p>
+            <div class="daily-card">
+                <span>14/01/2025</span>
+                <p>15:09 p.m: Acabo de añadir esto, me costo demasiado hacer la parte de musica, quise hacer para que sepas cuando estoy lo diga automaticamente, pero bueno, algo es algo, ahora hice esto para que sepas un poco supongo de lo que voy haciendo, no se si lo vayas a leer pero bueno</p>
+            </div>
+            <!-- Aquí puedes ir agregando más registros, por ejemplo: -->
+            <!-- <div class="daily-card">
+                <p>Hoy cociné una receta especial, me acordé de ti mientras la preparaba. 🍝</p>
+                <span>13/01/2025</span>
+            </div> -->
+        </div>
+    </div>
 
     <div class="music-info">
         <h3>Lo que estoy escuchando ahora:</h3>
@@ -319,6 +381,15 @@
         setInterval(updateTime, 1000);
         updateTime();
     </script>
-    
+    <script>
+        function toggleDailyLife() {
+            const dailyLifeSection = document.getElementById('daily-life-section');
+            if (dailyLifeSection.style.display === 'none') {
+                dailyLifeSection.style.display = 'block';
+            } else {
+                dailyLifeSection.style.display = 'none';
+            }
+        }
+    </script>    
 </body>
 </html>
