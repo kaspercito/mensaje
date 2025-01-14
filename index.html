@@ -213,17 +213,13 @@
         setInterval(updatePageCounter, 86400000);
     </script>
     <script>
-    let currentTrackDuration = 0; // Duración de la canción actual
-    let currentTime = 0; // Tiempo actual en segundos
-    let isPlaying = false; // Estado de reproducción
-    
-    async function fetchNowPlaying() {
+        async function fetchNowPlaying() {
         const response = await fetch('https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=Mylosk&api_key=5b08afa13b775c295e820232b02c650a&format=json');
         const data = await response.json();
         console.log(data); // Agregar para verificar la respuesta
     
         const track = data.recenttracks.track[0];
-        
+    
         if (track) {
             document.getElementById('song').textContent = `Canción: ${track.name}`;
             document.getElementById('artist').textContent = `Artista: ${track.artist['#text']}`;
