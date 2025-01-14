@@ -15,12 +15,9 @@
     </script>
     <!-- Fin del Código de Google Analytics -->
     <!-- Reproductor de audio -->
-    <audio id="audioPlayer" autoplay loop>
-        <!-- Fuentes de música (MP3) -->
-        <source src="https://github.com/kaspercito/mensaje/raw/main/musica/song1.mp3" type="audio/mp3">
-        <source src="https://github.com/tu-usuario/tu-repositorio/raw/main/music/song2.mp3" type="audio/mp3">
-        <source src="https://github.com/tu-usuario/tu-repositorio/raw/main/music/song3.mp3" type="audio/mp3">
-        Tu navegador no soporta el reproductor de audio.
+    <audio id="audio-player" controls autoplay loop>
+    <source src="https://raw.githubusercontent.com/kaspercito/mensaje/472db5665835c9e2f0273e5c8e65d73b6fc08928/musica/song1.mp3" type="audio/mp3">
+    Tu navegador no soporta el elemento de audio.
     </audio>
     <style>
         body {
@@ -248,25 +245,22 @@
         updateTime();
     </script>
     <script>
-        // Lista de canciones (añade el nombre correcto de los archivos MP3)
-        const songs = [
-            "https://github.com/kaspercito/mensaje/raw/main/musica/song1.mp3",
-            "https://github.com/tu-usuario/tu-repositorio/raw/main/music/song2.mp3",
-            "https://github.com/tu-usuario/tu-repositorio/raw/main/music/song3.mp3"
-        ];
-        
-        // Función para elegir una canción aleatoria
-        function playRandomSong() {
-            const randomSong = songs[Math.floor(Math.random() * songs.length)];
-            
-            // Cambiar la fuente del reproductor de audio
-            const audioPlayer = document.getElementById("audioPlayer");
-            audioPlayer.src = randomSong;
-            audioPlayer.play();
-        }
+    // Lista de canciones (añade el nombre correcto de los archivos MP3)
+    const songs = [
+        "https://raw.githubusercontent.com/kaspercito/mensaje/472db5665835c9e2f0273e5c8e65d73b6fc08928/musica/song1.mp3"
+        // Agrega más canciones aquí si lo deseas
+    ];
 
-        // Reproducir una canción aleatoria al cargar la página
-        window.onload = playRandomSong;
+    // Selecciona una canción aleatoria
+    const randomSong = songs[Math.floor(Math.random() * songs.length)];
+
+    // Crea el reproductor de música
+    const audio = new Audio(randomSong);
+    audio.autoplay = true;
+    audio.loop = true; // Repetir la canción indefinidamente
+
+    // Reproduce la música
+    audio.play();
     </script>
 </body>
 </html>
