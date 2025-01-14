@@ -149,74 +149,53 @@
             background-color: #fff0f5;
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
         }
-        /* Estilo para el botón */
-    .toggle-btn {
-        display: inline-block;
-        padding: 15px 30px;
-        margin: 20px auto;
-        background-color: #ff69b4;
-        color: #fff;
-        font-size: 1.2em;
-        font-weight: bold;
-        text-align: center;
-        border-radius: 50px;
-        cursor: pointer;
-        border: none;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-    /* Hover del botón */
-    .toggle-btn:hover {
-        background-color: #e60073;
-        transform: scale(1.1);
-    }
-
-    /* Contenedor de los mensajes (inicialmente oculto) */
-    .messages-container {
-        display: none; /* Aquí aseguramos que el contenedor esté oculto al principio */
-        max-width: 800px;
-        margin: 30px auto;
-        padding: 20px;
-        background: #333333;
-        color: #ffffff;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        border: 1px solid #ddd;
-    }
-
-    /* Estilo de los cuadros de mensaje */
-    .message-box {
-        display: none;
-        background-color: #333333;
-        color: #ffffff;
-        padding: 20px;
-        margin-bottom: 20px;
-        border-radius: 10px;
-        border-left: 8px solid #ff69b4;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Fecha en el cuadro */
-    .message-date {
-        font-weight: bold;
-        color: #4a90e2;
-        font-size: 1.2em;
-    }
-        .message-boxx {
-            background-color: #333333;
-            color: #ffffff;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            text-align: left;
-        }            
-    /* Ajustes responsivos para pantallas más pequeñas */
-    @media screen and (max-width: 768px) {
-        .toggle-btn {
-            padding: 12px 25px;
-            font-size: 1em;
+        #day-by-day {
+            text-align: center;
+            margin-top: 30px;
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 20px;
         }
-    }
+        
+        #day-by-day button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        #day-by-day button:hover {
+            background-color: #45a049;
+        }
+        
+        #daily-life-section {
+            margin-top: 20px;
+            text-align: left;
+            background-color: #333333;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .daily-card {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border: 1px solid #a5d6a7;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            color: #333333;
+        }
+        
+        .daily-card span {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #666666;
+        }
+
     </style>
 </head>
 <body>
@@ -238,19 +217,20 @@
     <p>Te esperaré el tiempo que sea necesario, pero extraño a mi novia, esa mujer que me amaba, que me llenaba de paz y alegría, porque mi amor por ti es infinito.</p>
     <div class="quote">"Cada día extraño saber como estás, como te va, recuerdo lo bueno, porque eso es lo que importa."</div>
 
-    <!-- Botón para alternar los mensajes -->
-    <button class="toggle-btn" onclick="toggleMessages()">📝 Ver Mis Mensajes Diarios</button>
-
-    <!-- Contenedor de los mensajes (inicialmente oculto) -->
-    <div class="messages-container" id="messages-container">
-        <!-- Mensajes agregados manualmente -->
-        <div class="message-box">
-            <div class="message-date">14/01/2025 15:49 p.m:</div>
-            <div class="message-boxx">Bueno cree esta nueva sección para decir un poco de mi día a día, apartando los mensajes diarios, ahora saldré a acompañar a mi tía y mi hermana que tenemos que dejarla donde una amiga de ella porque se quedará a dormir allá unos días, creo</div>
+    <div id="day-by-day">
+    <button onclick="toggleDailyLife()">📖 Mi Día a Día</button>
+    <div id="daily-life-section" style="display: none;">
+        <h2>Mi Día a Día 🌟</h2>
+        <p>Este espacio lo hago para compartir contigo un poco de lo que hago cada día. No es mucho, ni se si lo veas, pero es algo que quiero que sepas. ❤️</p>
+        <div class="daily-card">
+            <span>14/01/2025 16:06 p.m.</span>
+            <p>Saldré para acompañar a mi tía y mi hermana que la dejaremos donde una amiga, supongo irá a dormir allá, ya que le queda mas cerca a la universidad</p>
         </div>
-
-
-        <!-- Puedes agregar más mensajes aquí manualmente -->
+        <!-- Aquí puedes ir agregando más registros, por ejemplo: -->
+        <!-- <div class="daily-card">
+            <p>Hoy cociné una receta especial, me acordé de ti mientras la preparaba. 🍝</p>
+            <span>13/01/2025</span>
+        </div> -->
     </div>
 
     <div class="music-info">
@@ -402,15 +382,14 @@
         updateTime();
     </script>
     <script>
-        function toggleMessages() {
-            var container = document.getElementById('messages-container');
-            // Alterna la visibilidad del contenedor de mensajes
-            if (container.style.display === 'none' || container.style.display === '') {
-                container.style.display = 'block';
-            } else {
-                container.style.display = 'none';
-            }
+        function toggleDailyLife() {
+        const dailyLifeSection = document.getElementById('daily-life-section');
+        if (dailyLifeSection.style.display === 'none') {
+            dailyLifeSection.style.display = 'block';
+        } else {
+            dailyLifeSection.style.display = 'none';
         }
+    }
     </script>
 </body>
 </html>
