@@ -105,3 +105,22 @@ img {
 .button:hover {
     background: #e75c3c;
 }
+
+.mensaje-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            text-align: center;
+        }
+        .mensaje-container p {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.5;
+        }
+        .mensaje-container blockquote {
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+        }
