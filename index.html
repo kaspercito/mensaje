@@ -17,6 +17,8 @@
     </script>
     <!-- Fin del Código de Google Analytics -->
     <style>
+    /* Fuentes modernas */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Raleway:wght@300;400;700&display=swap');
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
@@ -168,15 +170,27 @@
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
+
+    /* Animación de entrada */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    
+    /* Clase que se agregará al hacer scroll */
+    .show {
+        opacity: 1;
+        transform: translateY(0);
+    }
     </style>
 </head>
 <body>
-    <!-- Fondo animado de estrellas -->
-    <h1>Para mi Novia 🖤</h1>
+<h1 class="fade-in">Para mi Novia 🖤</h1>
     <p>Nuestro pequeño niño</p>
     <img src="https://i.imgur.com/iqt6Dbd.jpeg" alt="Perrito" style="width: 150px; border-radius: 10px; margin-top: 20px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
     
-    <div class="messages" id="messages">
+<div class="messages fade-in">
         <h2>📜 Mensajes Diarios</h2>
         <div class="message"><span>17/02/2025:</span> Mi tía aprovecho para ir a hacerse un examen que tiene para mañana, asi no nos toca venir de nuevo para eso, después de los examenes fuimos a la bahia, ese centro comercial que te comentaba, buscabamos la camisa de Barcelona de España, que mi hermana es fan, yo me busque una también, salimos con lluvia y regresamos con un calor intenso, pero bueno, espero estes bien, te haya ido bien en el trabajo, te amo ❤️🤞🏻🐁</div>
         <div class="message"><span>16/02/2025:</span> Mañana tengo que salir temprano, iré con mi tía a sus citas medicas y tengo que acompañarla, asi será la mayoria de días, pero bueno, es lo que necesita y espero que todo le salga bien, te amo</div>
@@ -509,6 +523,24 @@
             });
         });
     </script>
-    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    let elements = document.querySelectorAll('.fade-in');
+
+    function showElements() {
+        let scrollPosition = window.innerHeight;
+        elements.forEach(element => {
+            let position = element.getBoundingClientRect().top;
+            if (position < scrollPosition) {
+                element.classList.add('show');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', showElements);
+    showElements(); // Para mostrar los elementos que ya están en pantalla
+});
+</script>
+
 </body>
 </html>
