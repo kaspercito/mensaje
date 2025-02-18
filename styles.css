@@ -1,0 +1,166 @@
+    /* Fuentes modernas */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Raleway:wght@300;400;700&display=swap');
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+            background-color: #1c1c1c;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.8em;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin: 10px 0;
+        }
+        p {
+            font-size: 1.2em;
+            color: #ffffff;
+            margin: 15px 0;
+        }
+        .quote {
+            font-size: 1.4em;
+            font-style: italic;
+            color: #000000;
+            background-color: #87ceeb;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .date {
+            font-weight: bold;
+            color: #87ceeb;
+        }
+        .messages {
+            width: 100%;
+            max-width: 600px;
+            margin-top: 20px;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        .message {
+            background-color: #333333;
+            color: #ffffff;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .message span {
+            font-weight: bold;
+            color: #87ceeb;
+        }
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            background-color: #1a1a1a;
+            color: #87ceeb;
+            font-size: 0.9em;
+            width: 100%;
+            text-align: center;
+            border-top: 1px solid #333333;
+        }
+        #distance, #timezones, #connection, #flags {
+            margin: 10px 0;
+        }
+        .music-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 20px;
+            background-color: #333333;
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        .music-info img {
+            width: 200px;
+            height: 200px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .music-info h3 {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin: 10px 0;
+        }
+        .music-info p {
+            font-size: 1.3em;
+            color: #1977b5;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            p {
+                font-size: 1em;
+            }
+            .quote {
+                font-size: 1.2em;
+            }
+            .music-info img {
+                width: 150px;
+                height: 150px;
+            }
+        #page-counter {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            color: #ff69b4;
+            padding: 10px;
+            border: 2px solid #ff69b4;
+            border-radius: 10px;
+            background-color: #fff0f5;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
+        }
+    .messagess {
+            width: 80%;
+            max-width: 600px;
+            margin-top: 20px;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+    .messagesss {
+            width: 80%;
+            max-width: 600px;
+            margin-top: 20px;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+    /* Animación de entrada */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    
+    /* Clase que se agregará al hacer scroll */
+    .show {
+        opacity: 1;
+        transform: translateY(0);
+    }
