@@ -71,6 +71,35 @@ img {
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
+    }
+        .music-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 20px;
+            background-color: #333333;
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        .music-info img {
+            width: 200px;
+            height: 200px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .music-info h3 {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin: 10px 0;
+        }
+        .music-info p {
+            font-size: 1.3em;
+            color: #1977b5;
+        }
 }
 
 .button:hover {
