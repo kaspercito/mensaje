@@ -124,3 +124,19 @@ img {
             color: #666;
             margin-top: 10px;
         }
+
+        #distance, #timezones, #connection, #flags {
+            margin: 10px 0;
+        }
+
+        #page-counter {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            color: #ff69b4;
+            padding: 10px;
+            border: 2px solid #ff69b4;
+            border-radius: 10px;
+            background-color: #fff0f5;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
+        }
