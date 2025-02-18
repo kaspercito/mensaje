@@ -173,13 +173,56 @@
 </head>
 <body>
     <!-- Fondo animado de estrellas -->
-    <div id="particles-js"></div>
+    <div id="particles-js">
     <h1>Para mi Novia 🖤</h1>
     <p>Nuestro pequeño niño</p>
     <img src="https://i.imgur.com/iqt6Dbd.jpeg" alt="Perrito" style="width: 150px; border-radius: 10px; margin-top: 20px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
     
     <div class="messages" id="messages">
         <h2>📜 Mensajes Diarios</h2>
+<script>
+        // Configuración de partículas (fondo animado)
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80 },
+                size: { value: 2 },
+                move: { speed: 0.5 },
+                opacity: { value: 0.8 },
+                color: { value: "#ffffff" }
+            }
+        });
+
+        // Lista de mensajes
+        const messages = [
+            "17/02/2025: Hoy fuimos a un centro comercial buscando ropa...",
+            "16/02/2025: Mañana tengo que salir temprano, acompañaré a mi tía...",
+            "15/02/2025: Espero que hayas tenido un buen día en el trabajo...",
+            "14/02/2025: Te envié un regalo, espero que lo hayas recibido...",
+            "13/02/2025: Hoy trabajé en algo especial para ti, pronto te lo diré..."
+        ];
+
+        let container = document.getElementById("messages-container");
+        let delay = 1000; // Tiempo inicial de espera
+
+        messages.forEach((msg, index) => {
+            setTimeout(() => {
+                let messageDiv = document.createElement("div");
+                messageDiv.classList.add("message");
+                messageDiv.innerHTML = `<span>${msg.split(":")[0]}:</span> ${msg.split(":")[1]}`;
+                container.appendChild(messageDiv);
+
+                // Animación de aparición
+                setTimeout(() => {
+                    messageDiv.style.opacity = 1;
+                    messageDiv.style.transform = "translateY(0)";
+                }, 100);
+
+                // Scroll automático hacia el último mensaje
+                container.scrollTop = container.scrollHeight;
+            }, delay);
+            delay += 2000; // Agrega 2 segundos entre cada mensaje
+        });
+    </script>
         <div class="message"><span>17/02/2025:</span> Mi tía aprovecho para ir a hacerse un examen que tiene para mañana, asi no nos toca venir de nuevo para eso, después de los examenes fuimos a la bahia, ese centro comercial que te comentaba, buscabamos la camisa de Barcelona de España, que mi hermana es fan, yo me busque una también, salimos con lluvia y regresamos con un calor intenso, pero bueno, espero estes bien, te haya ido bien en el trabajo, te amo ❤️🤞🏻🐁</div>
         <div class="message"><span>16/02/2025:</span> Mañana tengo que salir temprano, iré con mi tía a sus citas medicas y tengo que acompañarla, asi será la mayoria de días, pero bueno, es lo que necesita y espero que todo le salga bien, te amo</div>
         <div class="message"><span>15/02/2025:</span> Ya que fuiste a trabajar, espero te haya ido todo bien, ya mañana regresas asi que cuidate nomás eso, espero regreses pronto y cada vez es mas terrible saber que no lo intentaste, pero bueno, yo si segui luchando</div>
@@ -325,7 +368,7 @@
         <p style="color: #ffffff; font-size: 1.1em;"><em>Las palabras de abajo y la barra cambiarán dependiendo de si estoy o no, para que lo sepas.</em></p>
         <p id="status-message" style="color: #ffffff; font-size: 1.1em;"></p>
     </div>
-    
+    </div>
     <footer>
         <div id="distance">
             <p>Entre nosotros hay aproximadamente <span id="kilometers">3800</span> km. Pero a mi corazón no le importa la distancia.</p>
