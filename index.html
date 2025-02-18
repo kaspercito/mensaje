@@ -497,5 +497,21 @@
             }
         });
     </script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let messages = document.querySelectorAll('.message');
+            let delay = 500; // Tiempo inicial de espera
+
+            messages.forEach((message, index) => {
+                setTimeout(() => {
+                    message.style.opacity = 1;
+                    message.style.transform = "translateY(0)";
+                }, delay);
+                delay += 2000; // Agrega 2 segundos entre cada mensaje
+            });
+        });
+    </script>
+    
 </body>
 </html>
