@@ -25,7 +25,6 @@
             text-align: center;
             overflow: hidden;
         }
-           
         #particles-js {
             position: fixed;
             width: 100%;
@@ -63,25 +62,29 @@
             color: #87ceeb;
         }
         .messages {
-            width: 100%;
+            width: 80%;
             max-width: 600px;
-            margin-top: 20px;
-            background-color: #1a1a1a;
+            height: 400px; /* Altura máxima */
+            overflow-y: auto; /* Scroll solo si es necesario */
+            background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            margin: auto;
+            text-align: left;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
         }
         .message {
-            background-color: #333333;
-            color: #ffffff;
+            background: rgba(255, 255, 255, 0.2);
             padding: 12px;
             border-radius: 8px;
             margin-bottom: 10px;
-            text-align: left;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
         .message span {
             font-weight: bold;
-            color: #87ceeb;
+            color: #ff69b4;
         }
         footer {
             margin-top: auto;
@@ -179,7 +182,7 @@
     <p>Nuestro pequeño niño</p>
     <img src="https://i.imgur.com/iqt6Dbd.jpeg" alt="Perrito" style="width: 150px; border-radius: 10px; margin-top: 20px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
     
-    <div class="messages">
+    <div class="messages" id="messages">
         <h2>📜 Mensajes Diarios</h2>
         <div class="message"><span>17/02/2025:</span> Mi tía aprovecho para ir a hacerse un examen que tiene para mañana, asi no nos toca venir de nuevo para eso, después de los examenes fuimos a la bahia, ese centro comercial que te comentaba, buscabamos la camisa de Barcelona de España, que mi hermana es fan, yo me busque una también, salimos con lluvia y regresamos con un calor intenso, pero bueno, espero estes bien, te haya ido bien en el trabajo, te amo ❤️🤞🏻🐁</div>
         <div class="message"><span>16/02/2025:</span> Mañana tengo que salir temprano, iré con mi tía a sus citas medicas y tengo que acompañarla, asi será la mayoria de días, pero bueno, es lo que necesita y espero que todo le salga bien, te amo</div>
