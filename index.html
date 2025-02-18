@@ -103,5 +103,88 @@
         <p>Es algo muy simple, pero lo hago con el 💙 porque eres lo más importante en mi vida y lo mereces.</p>
     </footer>
     <script src="script.js"></script>
+
+    <script>
+    let currentTrackDuration = 180; // Duración fija para la barra de progreso (3 minutos)
+    let currentTime = 0; // Tiempo actual en segundos
+    let isPlaying = false; // Estado de reproducción
+    let lastTrackName = ''; // Último nombre de la canción detectada
+    
+    async function fetchNowPlaying() {
+        try {
+            const response = await fetch('https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=Mylosk&api_key=5b08afa13b775c295e820232b02c650a&format=json');
+            const data = await response.json();
+    
+            const track = data.recenttracks.track[0];
+    
+            if (track) {
+                const currentTrackName = track.name;
+    
+                // Verifica si la canción ha cambiado
+                if (currentTrackName !== lastTrackName) {
+                    lastTrackName = currentTrackName;
+    
+                    // Actualiza la información de la canción
+                    document.getElementById('song').textContent = `Canción: ${track.name}`;
+                    document.getElementById('artist').textContent = `Artista: ${track.artist['#text']}`;
+                    document.getElementById('album-image').src = track.image[2]['#text']; // Imagen grande
+    
+                    if (track['@attr'] && track['@attr'].nowplaying) {
+                        isPlaying = true;
+                        currentTrackDuration = track.duration ? parseInt(track.duration) : 240; // Valor predeterminado
+                        currentTime = 0; // Reinicia el tiempo
+                    } else {
+                        isPlaying = false;
+                    }
+                }
+            } else {
+                isPlaying = false; // No hay pista disponible
+            }
+            updateProgressBar();
+        } catch (error) {
+            console.error('Error al obtener la canción:', error);
+        }
+    }
+    
+    function updateProgressBar() {
+        const progressBar = document.getElementById('progress-bar');
+        const timeInfo = document.getElementById('time-info');
+        const statusMessage = document.getElementById('status-message');
+    
+        if (currentTrackDuration > 0) {
+            const scaledTime = Math.min(currentTime, currentTrackDuration); // Limitar a la duración máxima
+            const progressPercent = (scaledTime / currentTrackDuration) * 100;
+            progressBar.style.width = `${progressPercent}%`;
+    
+            timeInfo.textContent = formatTime(scaledTime); // Formatear tiempo
+        } else {
+            progressBar.style.width = '0%'; // Sin duración válida
+            timeInfo.textContent = "0:00";
+        }
+    
+        // Mensaje de estado
+        if (!isPlaying) {
+            statusMessage.textContent = "No estoy escuchando musica asi que seguramente este ocupado, durmiendo o no estoy en casa, pero aun asi escribeme, te responderé a los segundos, a ser posible";
+        } else {
+            statusMessage.textContent = "Estoy escuchando musica asi que seguramente este en casa, disponible para lo que quieras";
+        }
+    }
+    
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${minutes}:${secs.toString().padStart(2, '0')}`;
+    }
+    
+    setInterval(() => {
+        if (isPlaying) {
+            currentTime = Math.min(currentTime + 1, currentTrackDuration); // Limita el tiempo
+            updateProgressBar();
+        }
+    }, 1000);
+    
+    fetchNowPlaying();
+    setInterval(fetchNowPlaying, 1000);
+    </script>
 </body>
 </html>
