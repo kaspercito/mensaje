@@ -140,3 +140,25 @@ img {
             background-color: #fff0f5;
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
         }
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            background-color: #1a1a1a;
+            color: #87ceeb;
+            font-size: 0.9em;
+            width: 100%;
+            text-align: center;
+            border-top: 1px solid #333333;
+        }
+
+        .quote {
+            font-size: 1.4em;
+            font-style: italic;
+            color: #000000;
+            background-color: #87ceeb;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
