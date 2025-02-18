@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para mi Novia 🖤</title>
     <link rel="icon" href="favicon.jpg" type="image/jpg">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 <!-- Código de Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6PWYGWW5J"></script>
     <script>
@@ -18,24 +19,27 @@
     <!-- Fin del Código de Google Analytics -->
     <style>
         body {
-            margin: 0;
             font-family: 'Poppins', sans-serif;
-            color: #ffffff;
-            background: linear-gradient(120deg, #1c1c1c, #3a3a3a);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            padding: 20px;
+            background-color: black;
+            color: white;
             text-align: center;
-            transition: background 0.5s ease;
+            overflow: hidden;
         }
+           
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
         h1 {
-            font-size: 2.8em;
-            color: #ffffff;
-            margin-bottom: 20px;
+            font-size: 3em;
+            color: #ff69b4;
         }
+        
         h2 {
             font-size: 1.5em;
             color: #ffffff;
@@ -49,13 +53,10 @@
         .quote {
             font-size: 1.4em;
             font-style: italic;
-            color: #000000;
-            background-color: #87ceeb;
+            background: rgba(255, 255, 255, 0.1);
             padding: 15px;
-            margin: 20px 0;
-            border-radius: 8px;
-            max-width: 600px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            margin: 20px;
         }
         .date {
             font-weight: bold;
@@ -172,6 +173,8 @@
     </style>
 </head>
 <body>
+    <!-- Fondo animado de estrellas -->
+    <div id="particles-js"></div>
     <h1>Para mi Novia 🖤</h1>
     <p>Nuestro pequeño niño</p>
     <img src="https://i.imgur.com/iqt6Dbd.jpeg" alt="Perrito" style="width: 150px; border-radius: 10px; margin-top: 20px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
@@ -475,6 +478,24 @@
             dailyContainer.style.display = 'none'; // Oculta el cuadro
         }
     });
+    </script>
+
+    <script>
+        // Fondo animado
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 100 },
+                size: { value: 2 },
+                move: { speed: 0.5 },
+                opacity: { value: 0.8 },
+                color: { value: "#ffffff" }
+            },
+            interactivity: {
+                events: {
+                    onhover: { enable: true, mode: "repulse" }
+                }
+            }
+        });
     </script>
 </body>
 </html>
