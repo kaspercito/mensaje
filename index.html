@@ -19,26 +19,23 @@
     <!-- Fin del Código de Google Analytics -->
     <style>
         body {
+            margin: 0;
             font-family: 'Poppins', sans-serif;
-            background-color: black;
-            color: white;
+            color: #ffffff;
+            background-color: #1c1c1c;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 20px;
             text-align: center;
-            overflow: hidden;
         }
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
-        
         h1 {
-            font-size: 3em;
-            color: #ff69b4;
+            font-size: 2.8em;
+            color: #ffffff;
+            margin-bottom: 20px;
         }
-        
         h2 {
             font-size: 1.5em;
             color: #ffffff;
@@ -52,39 +49,38 @@
         .quote {
             font-size: 1.4em;
             font-style: italic;
-            background: rgba(255, 255, 255, 0.1);
+            color: #000000;
+            background-color: #87ceeb;
             padding: 15px;
-            border-radius: 12px;
-            margin: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
         .date {
             font-weight: bold;
             color: #87ceeb;
         }
         .messages {
-            width: 80%;
+            width: 100%;
             max-width: 600px;
-            height: 400px; /* Altura máxima */
-            overflow-y: auto; /* Scroll solo si es necesario */
-            background: rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+            background-color: #1a1a1a;
             padding: 20px;
             border-radius: 12px;
-            margin: auto;
-            text-align: left;
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
         .message {
-            background: rgba(255, 255, 255, 0.2);
+            background-color: #333333;
+            color: #ffffff;
             padding: 12px;
             border-radius: 8px;
             margin-bottom: 10px;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            text-align: left;
         }
         .message span {
             font-weight: bold;
-            color: #ff69b4;
+            color: #87ceeb;
         }
         footer {
             margin-top: auto;
