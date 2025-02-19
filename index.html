@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para mi Novia 🖤</title>
     <link rel="icon" href="favicon.jpg" type="image/jpg">
-    
 <!-- Código de Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6PWYGWW5J"></script>
     <script>
@@ -19,9 +18,9 @@
     <style>
         body {
             margin: 0;
-            font-family: 'Poppins', sans-serif;
-            color: #ddd;
-            background: linear-gradient(to right, #222, #111);
+            font-family: 'Arial', sans-serif;
+            color: #ffffff;
+            background-color: #1c1c1c;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -64,20 +63,18 @@
             width: 100%;
             max-width: 600px;
             margin-top: 20px;
-            background: rgba(0, 0, 0, 0.8);
+            background-color: #1a1a1a;
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
         .message {
-            padding: 10px;
-            margin: 10px 0;
-            border-left: 5px solid #808080;
-            background: #222;
+            background-color: #333333;
+            color: #ffffff;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
             text-align: left;
-            border-radius: 5px;
-            transition: 0.3s;
-            color: #fff;
         }
         .message span {
             font-weight: bold;
@@ -122,7 +119,7 @@
         }
         .music-info p {
             font-size: 1.3em;
-            color: #ffffff;
+            color: #1977b5;
         }
         @media (max-width: 768px) {
             h1 {
@@ -170,37 +167,14 @@
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
-
-    .fade-in {
-        opacity: 0;
-        animation: fadeIn 2s forwards;
-    }
-    
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-    
-    img {
-        width: 150px;
-        border-radius: 10px;
-        margin-top: 20px;
-        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
-    }
-
-    .message:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
-    }
-       
     </style>
 </head>
 <body>
-    <h1 class="fade-in">Para mi Novia 🖤</h1>
-    <p class="fade-in">Nuestro pequeño niño</p>
+    <h1>Para mi Novia 🖤</h1>
+    <p>Nuestro pequeño niño</p>
     <img src="https://i.imgur.com/iqt6Dbd.jpeg" alt="Perrito" style="width: 150px; border-radius: 10px; margin-top: 20px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
     
-    <div class="messages fade-in">
+    <div class="messages">
         <h2>📜 Mensajes Diarios</h2>
         <div class="message"><span>17/02/2025:</span> Mi tía aprovecho para ir a hacerse un examen que tiene para mañana, asi no nos toca venir de nuevo para eso, después de los examenes fuimos a la bahia, ese centro comercial que te comentaba, buscabamos la camisa de Barcelona de España, que mi hermana es fan, yo me busque una también, salimos con lluvia y regresamos con un calor intenso, pero bueno, espero estes bien, te haya ido bien en el trabajo, te amo ❤️🤞🏻🐁</div>
         <div class="message"><span>16/02/2025:</span> Mañana tengo que salir temprano, iré con mi tía a sus citas medicas y tengo que acompañarla, asi será la mayoria de días, pero bueno, es lo que necesita y espero que todo le salga bien, te amo</div>
@@ -500,37 +474,5 @@
         }
     });
     </script>
-
-        <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let messages = document.querySelectorAll('.message');
-            let delay = 500; // Tiempo inicial de espera
-
-            messages.forEach((message, index) => {
-                setTimeout(() => {
-                    message.style.opacity = 1;
-                    message.style.transform = "translateY(0)";
-                }, delay);
-                delay += 2000; // Agrega 2 segundos entre cada mensaje
-            });
-        });
-
-    document.addEventListener("DOMContentLoaded", function() {
-    let elements = document.querySelectorAll('.fade-in');
-
-    function showElements() {
-        let scrollPosition = window.innerHeight;
-        elements.forEach(element => {
-            let position = element.getBoundingClientRect().top;
-            if (position < scrollPosition) {
-                element.classList.add('show');
-            }
-        });
-    }
-
-    window.addEventListener('scroll', showElements);
-    showElements(); // Para mostrar los elementos que ya están en pantalla
-});
- </script>
 </body>
 </html>
