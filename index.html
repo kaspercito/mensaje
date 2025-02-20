@@ -7,6 +7,8 @@
     <link rel="icon" href="favicon.jpg" type="image/jpg">
     <!-- Fuentes de Google para un toque elegante -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <!-- particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <!-- Código de Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6PWYGWW5J"></script>
     <script>
@@ -29,6 +31,16 @@
             min-height: 100vh;
             text-align: center;
             overflow-x: hidden;
+            position: relative;
+        }
+        /* Fondo de partículas */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
         }
         /* Encabezado con efecto de latido */
         h1 {
@@ -194,6 +206,9 @@
     </style>
 </head>
 <body>
+    <!-- Fondo de partículas -->
+    <div id="particles-js"></div>
+    
     <!-- Encabezado -->
     <h1>Para mi Novia 🖤</h1>
     <p class="subtitle">Mis pensamientos para ti, escritos con el corazón.</p>
@@ -208,7 +223,162 @@
             <span>18/02/2025</span>
             <p>Hoy me tocó hacerle un trabajo a mi primo, literalmente era hacer un plano 3D de su oficina, no sabía nada de eso, pero buscando lo logré hacer, no dormí casi nada, pero bueno, lo necesitaba para mañana espero esté todo bien.</p>
         </div>
-        <!-- Aquí van todos los demás mensajes diarios, mantenidos intactos -->
+        <div class="message">
+            <span>17/02/2025</span>
+            <p>Mi tía aprovechó para ir a hacerse un examen que tiene para mañana, así no nos toca venir de nuevo para eso, después de los exámenes fuimos a la bahía, ese centro comercial que te comentaba, buscábamos la camisa de Barcelona de España, que mi hermana es fan, yo me busqué una también, salimos con lluvia y regresamos con un calor intenso, pero bueno, espero estés bien, te haya ido bien en el trabajo, te amo ❤️🤞🏻🐁</p>
+        </div>
+        <div class="message">
+            <span>16/02/2025</span>
+            <p>Mañana tengo que salir temprano, iré con mi tía a sus citas médicas y tengo que acompañarla, así será la mayoría de días, pero bueno, es lo que necesita y espero que todo le salga bien, te amo.</p>
+        </div>
+        <div class="message">
+            <span>15/02/2025</span>
+            <p>Ya que fuiste a trabajar, espero te haya ido todo bien, ya mañana regresas así que cuídate nomás eso, espero regreses pronto y cada vez es más terrible saber que no lo intentaste, pero bueno, yo sí seguí luchando.</p>
+        </div>
+        <div class="message">
+            <span>14/02/2025</span>
+            <p>Espero hayas podido disfrutar de lo que te llegó hoy, espero lo hayas recibido bien, hayas compartido con tu papá, te lo mereces, es el pago que te tenía que dar por haberme ayudado a conseguir el unblacklist, tanto peleé, pero bueno espero algún día te des cuenta de eso.</p>
+        </div>
+        <div class="message">
+            <span>13/02/2025</span>
+            <p>Te dejé un mensaje, no respondiste hasta que ya fueron horas de la noche, pero bueno, supongo que estás muy ocupada, sigo trabajando en eso, ya estoy pensando en cómo darte el dinero, pero bueno, ya te avisaré supongo, qué triste que no veas cuánto te extraño y lo que quiero intentar realmente, pero vos no quieres.</p>
+        </div>
+        <div class="message">
+            <span>12/02/2025</span>
+            <p>Empecé un nuevo trabajo, al parecer es de contabilidad, o no sé, pero bueno, tengo que llevar los registros de unos pagos de una empresa y verificarlos que estén correctos, eso estoy revisando ahora, espero todo salga bien, mañana tendré que usar mi primer pago, pero bueno, supongo que lo tienes que usar con alguien que no sea un mentiroso como yo, pero te lo prometo que nunca te mentí como crees y no me cuesta nada demostrartelo.</p>
+        </div>
+        <div class="message">
+            <span>11/02/2025</span>
+            <p>Belen, espero leas esto, pero Dios, si tanto me amaste, si tanto te importa, si tanto era el hombre de tu vida, PIÉNSALO por favor, piénsalo, la vida no es cruel Belen, no entiendo por qué prefieres esto, cuando yo quiero ser feliz a tu lado, pero aunque te lo diga, no te importa Dios, no quieres cambiar de opinión, YO QUIERO SER FELIZ A TU LADO.</p>
+        </div>
+        <div class="message">
+            <span>10/02/2025</span>
+            <p>Hoy volvimos a hablar, te extraño Belen, no sé cuando leas esto pero te extraño con toda mi vida, siempre fui lo más sincero contigo, tuve muchos errores, fallos pero siempre quise lo mejor para vos, siempre te lo dije e intentaba ser lo mejor para vos y que seas feliz a mi lado, quería estar junto a tí, poder viajar.</p>
+        </div>
+        <div class="message">
+            <span>09/02/2025</span>
+            <p>Te extraño y te amo con todo mi corazón, pero estás ciega, no lo ves no te importa, me duele con el corazón saber que no es lo mismo para vos, que no valoras lo que he hecho, solo tienes lo malo cuando yo quise quedarme a tu lado, compartiendo para que veas que se podía pero no quisiste intentarlo.</p>
+        </div>
+        <div class="message">
+            <span>08/02/2025</span>
+            <p>Mañana elecciones espero gane Daniel Noboa en primera vuelta, tiene que ganarle al correísmo sino estamos jodidos, seguramente haya segunda vuelta, pero espero que no, pero la gente es necia, pero bueno nadie les quita esa mentalidad que tienen.</p>
+        </div>
+        <div class="message">
+            <span>07/02/2025</span>
+            <p>Espero te esté yendo bien en el trabajo, te estés cuidando, eso espero porque aún sigo pensando en ti pues, sigo queriendo saber cómo estás, pero ya no sé nada de tí, pero bueno.</p>
+        </div>
+        <div class="message">
+            <span>06/02/2025</span>
+            <p>Hoy mi hermana fue donde su amiga a festejar algo, yo di unos exámenes también los de mejoramiento que te dije, hoy también me tocaba, bueno di algunos y mejoré más de lo que tengo mis notas, no salí tan mal este semestre, como te había dicho que me iba a esforzar, lo he hecho.</p>
+        </div>
+        <div class="message">
+            <span>05/02/2025</span>
+            <p>Ya me dieron todas las notas, aprobé en todo, hice mejoramiento para subir nota, pero todo bien, ninguna nota baja por suerte, no sé cómo te ha ido a tí, pero espero te haya ido todo bien, espero te estés cuidando.</p>
+        </div>
+        <div class="message">
+            <span>04/02/2025</span>
+            <p>Hoy hablé con un amigo que hace mucho no sabía nada de él, pero hablamos conversamos un poco, ahora está un poco ocupado con lo de la u me comentó, por eso no ha estado jugando, pero bueno espero termine pronto como yo, ya aprobé todo lo de mi semestre.</p>
+        </div>
+        <div class="message">
+            <span>03/02/2025</span>
+            <p>Le hice una limpieza a mi móvil, y a mi pc, ya que terminé las clases, aproveché para borrar todo eso, porque ya notaba que iba un poco lageado, la universidad me hizo instalar muchos programas, etc, así que mejor ahora está un poco más limpio y mi cell también ya estaba sufriendo.</p>
+        </div>
+        <div class="message">
+            <span>02/02/2025</span>
+            <p>Hoy salimos a comer con mis tíos que vinieron a festejar el cumpleaños de mi hermana, entré un rato a mc a dejar unas cosas, pero no me quise quedar mucho, te he querido buscar pero no he podido, no sé qué tengo que hacer.</p>
+        </div>
+        <div class="message">
+            <span>01/02/2025</span>
+            <p>Nuevo mes, espero hayas podido aprobar en ese examen, seguramente sí, hoy me pusieron un suero, me dolió cuando me lo sacaron y cuando lo pusieron porque re sangre jajajaja, mi hermana lo hizo, pero bueno todo salió bien.</p>
+        </div>
+        <div class="message">
+            <span>31/01/2025</span>
+            <p>Tengo una vida muy mala, qué tengo que hacer para un día al menos sentirme bien, es que no puedo, solo pienso en vos, la mujer que yo quería en mi vida por siempre, eso es lo que pienso cada vez, cada segundo, te extraño Belen.</p>
+        </div>
+        <div class="message">
+            <span>30/01/2025</span>
+            <p>Te sigo esperando, cada día es más difícil disimular lo que siento, por vos lo siento todo por vos, te siento a vos, te pienso cada maldito segundo, espero cada día un mensaje tuyo, te espero cada día, es doloroso.</p>
+        </div>
+        <div class="message">
+            <span>29/01/2025</span>
+            <p>Ya no he sabido nada de tí, no sé cómo te ha estado yendo, no sé si diste tu examen, si lo hiciste espero te haya ido de 10, porque te lo mereces, como siempre, te mereces lo mejor supongo, te sigo extrañando, pensando, te extraño Belen.</p>
+        </div>
+        <div class="message">
+            <span>28/01/2025</span>
+            <p>Cada día esperando, esperando un mensaje, algún día, yo sé, porque yo sé que tú sí piensas en mí, yo sé que tú piensas en nosotros, me hicieron una pregunta, qué pasaría si vuelves a querer estar conmigo, yo te diría que sí, porque te necesito.</p>
+        </div>
+        <div class="message">
+            <span>27/01/2025</span>
+            <p>Nació la hija de mi prima, la fui a ver al hospital, pensando como siempre en voz también, no sales de mi cabeza, parezco un loco pensándote a cada rato, no entiendo qué me pasa.</p>
+        </div>
+        <div class="message">
+            <span>26/01/2025</span>
+            <p>Otro día más, después de mensaje que te dejé, es egoísta, sí, es egoísta cómo pasó todo, es doloroso ver todo como está ahora, pero estás bien, eso espero, que estés bien, pero la manera en la que quisiste estarlo, está mal.</p>
+        </div>
+        <div class="message">
+            <span>25/01/2025</span>
+            <p>Leerte me da una tranquilidad, no entiendo por qué, me importas tantooooo, te siento, mi corazón te siente con tanta necesidad, que no entiendo por qué me hace sentir así, te extraño Belen, con toda mi vida.</p>
+        </div>
+        <div class="message">
+            <span>24/01/2025</span>
+            <p>Hoy último día, qué difícil será no extrañarte, qué difícil será no pensar en toda la gente que se queda atrás, que me necesita, pero creo que es por mi bien, supongo que así será, aunque lo que deseo realmente es otra cosa, te deseo a vos.</p>
+        </div>
+        <div class="message">
+            <span>23/01/2025</span>
+            <p>Deseo una vida a tu lado, la sigo esperando, pero cada día siento que se aleja más, lo único que me queda es pensarte, y solo esperar algo que no va a llegar, que es lo que yo deseo en realidad.</p>
+        </div>
+        <div class="message">
+            <span>22/01/2025</span>
+            <p>Me hago tanto daño intentando evitar todo esto, para mí no es nada fácil, te extraño, aun así después de todo te extraño, no entiendo realmente mi vida te necesita, pero para vos esto es diferente, tú no piensas en mí un poco al parecer.</p>
+        </div>
+        <div class="message">
+            <span>21/01/2025</span>
+            <p>Bueno, supongo que todo esto, me habrá ayudado un poco a procesar todo lo que me sucede, todo lo que pienso, te extraño, pero tú no lo sientes así, ahora le das lo que a mí me dabas, el respeto, la prioridad a otra persona, es doloroso, pero supongo que será lo mejor para vos, aunque yo nunca te dejé de amar xd.</p>
+        </div>
+        <div class="message">
+            <span>20/01/2025</span>
+            <p>Qué bonito fue pensar en todo lo que habíamos pasado, te extraño mucho, nunca te quise perder, me siento como la mierda, pero aun así sigo esperando algo que no va a llegar, lo desearía con mi vida, pero tú no quieres lo mismo, eso es duro.</p>
+        </div>
+        <div class="message">
+            <span>19/01/2025</span>
+            <p>Te extraño demasiado, hoy lo que me diste me ayudó bastante, pero lo que más me gustó fue haberte escrito, supongo que lo necesitaba, me hizo sentir mejor de lo que me estaba sintiendo últimamente, te extraño demasiado, como no lo imaginas ❤️🤞🏻🐁</p>
+        </div>
+        <div class="message">
+            <span>18/01/2025</span>
+            <p>Mañana es el cumpleaños de mi primo, he estado jugando con los chicos, pero bueno sé que no quieres que sepa nada de vos, literalmente ya no hemos tenido contacto desde hace días, supongo que estás bien donde quiera que estés.</p>
+        </div>
+        <div class="message">
+            <span>17/01/2025</span>
+            <p>Supongo que te escribieron sobre lo que me había pasado, me dio un ataque de depresión, no entiendo por qué me dio un bajón, algo me decía que necesitaba un mensaje tuyo, saber algo de vos, al menos un Hola, es lo único que necesitaba, te extraño muchísimo.</p>
+        </div>
+        <div class="message">
+            <span>16/01/2025</span>
+            <p>Sigo pensando en tí, aunque sé que no lees esta página, lo sigo diciendo, lo sigo escribiendo, pero ya no te puedo buscar, solo quiero saber de vos, quiero volver a leer un te amo de vos, pero sé que no pasará ❤️🤞🏻🐁</p>
+        </div>
+        <div class="message">
+            <span>15/01/2025</span>
+            <p>Supongo que todavía esperaré a ver si algún día te fijas en esta página, supongo que no, pero bueno espero te guste todo lo que he estado añadiendo, hice algunas cosas nuevas, algunas no funcionaban, pero me puse a buscar y buscar a ver si lo solucionaba, algunas están arregladas ya, te sigo extrañando cada día más ❤️🤞🏻🐁</p>
+        </div>
+        <div class="message">
+            <span>14/01/2025</span>
+            <p>No sé si leas esto, pero decidí ponerme nuestra frase, la que te había dicho de colocarnos en discord, me hace bien recordar las cosas que compartíamos, con mi novia, como te extraño, solo pienso en vos cada día que pasa, me haces falta mi pequeña ratita blanca, te amo con todo mi ser ❤️🤞🏻🐁</p>
+        </div>
+        <div class="message">
+            <span>13/01/2025 20:31 p.m</span>
+            <p>Este es el último mensaje de hoy, quería comprobar que todo esté bien hecho, espero esté funcionando como debería, no sé si lo leerás pero bueno, yo seguiré escribiendo aquí todos los días.</p>
+        </div>
+        <div class="message">
+            <span>13/01/2025 19:34 p.m</span>
+            <p>Al parecer el bot que hice comenzó a funcionar, fue lo más difícil de hacer, pero supongo que está todo bien hecho ahora.</p>
+        </div>
+        <div class="message">
+            <span>13/01/2025</span>
+            <p>No he podido dormir como debería y quisiera, pero me he dado cuenta que el amor de mi vida, mi novia a quien yo amaba por siempre desapareció, ella me amaba, me cuidaba, me gustaba cuidarla, ella sí valoró lo que yo hacía, pero murió, te extraño mi ratón pequeño, me haces falta, me hace falta la mujer que yo conocí, espero poder levantarme con energías, te seguiré pensando donde estés, espero poder encontrarte donde sea que hayas ido, porque no te he visto, ni sentido, ahora no te conozco, pero TE EXTRAÑO COMO NO LO PUEDES IMAGINAR ❤️🤞🏻🐁</p>
+        </div>
+        <div class="message">
+            <span>12/01/2025 21:27 p.m</span>
+            <p>Acaba de ocurrir un sismo de 5.1, se sintió feo, el epicentro fue aquí, <a href="https://imgur.com/a/zjFehKj" target="_blank">ver imagen</a> pero estamos bien.</p>
+        </div>
         <div class="message">
             <span>12/01/2025</span>
             <p>Hoy he decidido crear esto, lo hago con el corazón, y mi vida porque realmente no puedo vivir sin saber de ti, no sé si lo vayas a leer siempre, pero me tomaré el tiempo de mi vida, cada minuto, cada segundo por vos, todos los días para escribirte, no quiero incomodarte ni llenarte de mensajes tu MD, pero aquí te demostraré que nadie cambiará lo que yo siento por vos, porque realmente eres la mujer de mi vida te lo repetiría mil veces y esperaré lo que haga falta, lo que más me costó fue el bot que envié los mensajes automáticamente pero bueno, espero puedas leer esto, pero yo te escribiré cada día que pase, te amo MBO, siempre lo haré ❤️🤞🏻🐁</p>
@@ -231,6 +401,7 @@
             <div id="progress-bar"></div>
         </div>
         <p id="time-info"></p>
+        <p id="status-message"></p>
     </div>
     
     <!-- Contador de días -->
@@ -252,10 +423,29 @@
     
     <!-- Footer -->
     <footer>
-        <p>Hecho con todo mi amor para ti, porque siempre serás mi mundo. 🖤</p>
+        <p>Es algo muy simple, pero lo hago con el 💙 porque eres lo más importante en mi vida y lo mereces.</p>
     </footer>
     
     <!-- Scripts -->
+    <script>
+        // Configuración de particles.js
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#87ceeb" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": true },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#87ceeb", "opacity": 0.4, "width": 1 },
+                "move": { "enable": true, "speed": 2, "direction": "none", "random": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "repulse" } },
+                "modes": { "repulse": { "distance": 100, "duration": 0.4 } }
+            }
+        });
+    </script>
     <script>
         // Contador de días
         const pageCreationDate = new Date(2025, 0, 12);
@@ -263,13 +453,13 @@
             const today = new Date();
             const diffTime = today - pageCreationDate;
             const daysPassed = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-            document.getElementById("page-counter").textContent = `Llevo ${daysPassed} días contándote sobre mí y lo que siento por ti.`;
+            document.getElementById("page-counter").textContent = `Llevo ${daysPassed} días contándote sobre mí y lo que siento por ti. Cada palabra escrita es un reflejo de mi amor eterno, un testimonio de mi compromiso de esperar por la mujer que llenaba mis días de paz y alegría.`;
         }
         updatePageCounter();
         setInterval(updatePageCounter, 86400000);
     </script>
     <script>
-        // Script para la música
+        // Script para la música y disponibilidad
         let currentTrackDuration = 180;
         let currentTime = 0;
         let isPlaying = false;
@@ -294,6 +484,8 @@
                             isPlaying = false;
                         }
                     }
+                } else {
+                    isPlaying = false;
                 }
                 updateProgressBar();
             } catch (error) {
@@ -303,11 +495,17 @@
         function updateProgressBar() {
             const progressBar = document.getElementById('progress-bar');
             const timeInfo = document.getElementById('time-info');
-            if (currentTrackDuration > 0) {
+            const statusMessage = document.getElementById('status-message');
+            if (isPlaying) {
                 const scaledTime = Math.min(currentTime, currentTrackDuration);
                 const progressPercent = (scaledTime / currentTrackDuration) * 100;
                 progressBar.style.width = `${progressPercent}%`;
                 timeInfo.textContent = formatTime(scaledTime);
+                statusMessage.textContent = "Estoy escuchando música, así que seguramente esté en casa, disponible para lo que quieras.";
+            } else {
+                progressBar.style.width = '0%';
+                timeInfo.textContent = "0:00";
+                statusMessage.textContent = "No estoy escuchando música, así que seguramente esté ocupado, durmiendo o no estoy en casa, pero aún así escríbeme, te responderé a los segundos, a ser posible.";
             }
         }
         function formatTime(seconds) {
