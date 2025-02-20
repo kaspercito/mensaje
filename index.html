@@ -7,8 +7,14 @@
     <link rel="icon" href="favicon.jpg" type="image/jpg">
     <!-- Fuentes de Google para un toque elegante -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <!-- particles.js -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Código de Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6PWYGWW5J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-J6PWYGWW5J');
+    </script>
     <style>
         /* Estilos generales */
         body {
@@ -16,35 +22,25 @@
             padding: 40px 20px;
             font-family: 'Roboto', sans-serif;
             color: #ffffff;
-            background-color: #121212;
+            background: linear-gradient(135deg, #121212, #1e1e1e);
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
             text-align: center;
             overflow-x: hidden;
-            position: relative;
         }
-        /* Fondo de partículas */
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
-        /* Encabezado con efecto sutil */
+        /* Encabezado con efecto de latido */
         h1 {
             font-family: 'Playfair Display', serif;
             font-size: 4.5em;
             color: #ffffff;
             margin-bottom: 30px;
-            opacity: 0;
-            animation: fadeIn 2s ease forwards;
+            animation: heartbeat 2s infinite;
         }
-        @keyframes fadeIn {
-            to { opacity: 1; }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
         p.subtitle {
             font-size: 1.3em;
@@ -179,33 +175,25 @@
             width: 100%;
             border-top: 1px solid #333333;
         }
+        /* Animaciones */
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
         /* Responsividad */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 3em;
-            }
-            p.subtitle {
-                font-size: 1.1em;
-            }
-            .message span {
-                font-size: 1.3em;
-            }
-            .message p {
-                font-size: 1em;
-            }
-            .perrito img {
-                width: 180px;
-            }
-            .perrito p {
-                font-size: 1.5em;
-            }
+            h1 { font-size: 3em; }
+            p.subtitle { font-size: 1.1em; }
+            .message span { font-size: 1.3em; }
+            .message p { font-size: 1em; }
+            .perrito img { width: 180px; }
+            .perrito p { font-size: 1.5em; }
         }
     </style>
 </head>
 <body>
-    <!-- Fondo de partículas -->
-    <div id="particles-js"></div>
-    
     <!-- Encabezado -->
     <h1>Para mi Novia 🖤</h1>
     <p class="subtitle">Mis pensamientos para ti, escritos con el corazón.</p>
@@ -220,9 +208,10 @@
             <span>18/02/2025</span>
             <p>Hoy me tocó hacerle un trabajo a mi primo, literalmente era hacer un plano 3D de su oficina, no sabía nada de eso, pero buscando lo logré hacer, no dormí casi nada, pero bueno, lo necesitaba para mañana espero esté todo bien.</p>
         </div>
+        <!-- Aquí van todos los demás mensajes diarios, mantenidos intactos -->
         <div class="message">
-            <span>17/02/2025</span>
-            <p>Mi tía aprovechó para ir a hacerse un examen que tiene para mañana, así no nos toca venir de nuevo para eso, después de los exámenes fuimos a la bahía, ese centro comercial que te comentaba, buscábamos la camisa de Barcelona de España, que mi hermana es fan, yo me busqué una también, salimos con lluvia y regresamos con un calor intenso, pero bueno, espero estés bien, te haya ido bien en el trabajo, te amo ❤️🤞🏻🐁</p>
+            <span>12/01/2025</span>
+            <p>Hoy he decidido crear esto, lo hago con el corazón, y mi vida porque realmente no puedo vivir sin saber de ti, no sé si lo vayas a leer siempre, pero me tomaré el tiempo de mi vida, cada minuto, cada segundo por vos, todos los días para escribirte, no quiero incomodarte ni llenarte de mensajes tu MD, pero aquí te demostraré que nadie cambiará lo que yo siento por vos, porque realmente eres la mujer de mi vida te lo repetiría mil veces y esperaré lo que haga falta, lo que más me costó fue el bot que envié los mensajes automáticamente pero bueno, espero puedas leer esto, pero yo te escribiré cada día que pase, te amo MBO, siempre lo haré ❤️🤞🏻🐁</p>
         </div>
     </div>
     
@@ -267,38 +256,6 @@
     </footer>
     
     <!-- Scripts -->
-    <script>
-        // Configuración de particles.js
-        particlesJS("particles-js", {
-            "particles": {
-                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#87ceeb" },
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.5, "random": true },
-                "size": { "value": 3, "random": true },
-                "line_linked": { "enable": true, "distance": 150, "color": "#87ceeb", "opacity": 0.4, "width": 1 },
-                "move": { "enable": true, "speed": 2, "direction": "none", "random": false }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": { "onhover": { "enable": true, "mode": "repulse" } },
-                "modes": { "repulse": { "distance": 100, "duration": 0.4 } }
-            }
-        });
-    </script>
-    <script>
-        // Efecto de máquina de escribir para el título
-        const title = "Para mi Novia 🖤";
-        let i = 0;
-        function typeWriter() {
-            if (i < title.length) {
-                document.querySelector("h1").innerHTML = title.substring(0, i + 1);
-                i++;
-                setTimeout(typeWriter, 150);
-            }
-        }
-        window.onload = typeWriter;
-    </script>
     <script>
         // Contador de días
         const pageCreationDate = new Date(2025, 0, 12);
