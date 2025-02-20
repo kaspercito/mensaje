@@ -15,158 +15,200 @@
         gtag('config', 'G-J6PWYGWW5J');
     </script>
     <!-- Fin del Código de Google Analytics -->
+    <<!-- Fuentes elegantes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        body {
+        * {
             margin: 0;
-            font-family: 'Arial', sans-serif;
-            color: #ffffff;
-            background-color: #1c1c1c;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1c2526 0%, #2d3b4e 100%);
+            color: #f5e6cc;
+            min-height: 100vh;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            padding: 20px;
-            text-align: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+            opacity: 0.1;
+            z-index: -1;
         }
         h1 {
-            font-size: 2.8em;
-            color: #ffffff;
+            font-family: 'Parisienne', cursive;
+            font-size: 3.5em;
+            color: #ff9999;
+            text-shadow: 0 2px 5px rgba(255, 153, 153, 0.5);
             margin-bottom: 20px;
         }
         h2 {
-            font-size: 1.5em;
-            color: #ffffff;
-            margin: 10px 0;
+            font-family: 'Parisienne', cursive;
+            font-size: 2em;
+            color: #ffd1dc;
+            margin: 20px 0;
         }
         p {
             font-size: 1.2em;
-            color: #ffffff;
-            margin: 15px 0;
+            line-height: 1.6;
+            color: #f5e6cc;
         }
-        .quote {
-            font-size: 1.4em;
-            font-style: italic;
-            color: #000000;
-            background-color: #87ceeb;
-            padding: 15px;
+        .intro-image {
+            width: 180px;
+            border-radius: 50%;
+            border: 5px solid #ff9999;
             margin: 20px 0;
-            border-radius: 8px;
-            max-width: 600px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(255, 153, 153, 0.3);
+            transition: transform 0.3s ease;
         }
-        .date {
-            font-weight: bold;
-            color: #87ceeb;
+        .intro-image:hover {
+            transform: scale(1.05);
         }
-        .messages {
+        .messages-container {
+            max-width: 700px;
             width: 100%;
-            max-width: 600px;
-            margin-top: 20px;
-            background-color: #1a1a1a;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
         }
         .message {
-            background-color: #333333;
-            color: #ffffff;
-            border-left: 5px solid #808080;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            text-align: left;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 5px solid #ff9999;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .message:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 153, 153, 0.2);
         }
         .message span {
             font-weight: bold;
-            color: #87ceeb;
+            color: #ffcccc;
         }
-        footer {
-            margin-top: auto;
+        .quote {
+            font-family: 'Parisienne', cursive;
+            font-size: 1.6em;
+            color: #2d3b4e;
+            background: #ffd1dc;
             padding: 20px;
-            background-color: #1a1a1a;
-            color: #87ceeb;
-            font-size: 0.9em;
-            width: 100%;
-            text-align: center;
-            border-top: 1px solid #333333;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 30px auto;
+            box-shadow: 0 5px 20px rgba(255, 209, 220, 0.4);
+            position: relative;
         }
-        #distance, #timezones, #connection, #flags {
-            margin: 10px 0;
+        .quote::before {
+            content: '"';
+            font-size: 3em;
+            color: #ff9999;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+        }
+        .quote::after {
+            content: '"';
+            font-size: 3em;
+            color: #ff9999;
+            position: absolute;
+            bottom: -20px;
+            right: 10px;
+        }
+        .date {
+            color: #ffcccc;
+            font-weight: bold;
         }
         .music-info {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            margin-top: 20px;
-            background-color: #333333;
-            padding: 20px;
-            border-radius: 12px;
             max-width: 600px;
             width: 100%;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
         }
         .music-info img {
             width: 200px;
             height: 200px;
-            border-radius: 8px;
-            margin-bottom: 15px;
+            border-radius: 10px;
+            border: 3px solid #ffd1dc;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(255, 209, 220, 0.3);
         }
         .music-info h3 {
-            font-size: 1.5em;
-            color: #ffffff;
-            margin: 10px 0;
+            font-family: 'Parisienne', cursive;
+            font-size: 1.8em;
+            color: #ffcccc;
         }
-        .music-info p {
-            font-size: 1.3em;
-            color: #ffffff;
+        #progress-container {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            height: 10px;
+            margin-top: 15px;
+        }
+        #progress-bar {
+            height: 100%;
+            background: #ff9999;
+            border-radius: 10px;
+            transition: width 1s linear;
+        }
+        #time-info, #status-message {
+            font-size: 1.1em;
+            color: #f5e6cc;
+            margin-top: 10px;
+        }
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            width: 100%;
+            text-align: center;
+            border-top: 2px solid rgba(255, 153, 153, 0.3);
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+        }
+        #page-counter {
+            font-family: 'Parisienne', cursive;
+            font-size: 1.8em;
+            color: #ff9999;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(255, 153, 153, 0.3);
+        }
+        #distance, #timezones, #connection, #flags {
+            margin: 15px 0;
+            font-size: 1.2em;
+        }
+        #flags img {
+            width: 60px;
+            margin: 0 10px;
+            vertical-align: middle;
         }
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.2em;
-            }
-            h2 {
-                font-size: 1.3em;
-            }
-            p {
-                font-size: 1em;
-            }
-            .quote {
-                font-size: 1.2em;
-            }
-            .music-info img {
-                width: 150px;
-                height: 150px;
-            }
-        #page-counter {
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-align: center;
-            color: #ff69b4;
-            padding: 10px;
-            border: 2px solid #ff69b4;
-            border-radius: 10px;
-            background-color: #fff0f5;
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
-        }
-    .messagess {
-            width: 80%;
-            max-width: 600px;
-            margin-top: 20px;
-            background-color: #1a1a1a;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-        }
-    .messagesss {
-            width: 80%;
-            max-width: 600px;
-            margin-top: 20px;
-            background-color: #1a1a1a;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 1.6em; }
+            p { font-size: 1em; }
+            .quote { font-size: 1.3em; }
+            .music-info img { width: 150px; height: 150px; }
+            .intro-image { width: 120px; }
         }
     </style>
 </head>
@@ -175,8 +217,8 @@
     <p>Nuestro pequeño niño</p>
     <img src="https://i.imgur.com/iqt6Dbd.jpeg" alt="Perrito" style="width: 150px; border-radius: 10px; margin-top: 20px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
     
-    <div class="messages">
-        <h2>📜 Mensajes Diarios</h2>
+    <div class="messages-container">
+        <h2>📜 Mis mensajes para ti</h2>
         <div class="message"><span>19/02/2025:</span> Mi primo me acaba de decir que le aprobaron los planos, que estuvieron bien hechos, me alegra, pues siempre estoy para apoyarlos cuando lo necesitan, yo también lo hago contigo, siempre te estaré apoyando Belen, no dudes en preguntarme, aunque la verdad es que te sigo extrañando aunque no lo creas</div>
         <div class="message"><span>18/02/2025:</span> Hoy me toco hacerle un trabajo a mi primo, literalmente era hacer un plano 3D de su oficina, no sabia nada de eso, pero buscando lo logre hacer, no dormi casi nada, pero bueno, lo necesitaba para mañana espero este todo bien</div>
         <div class="message"><span>17/02/2025:</span> Mi tía aprovecho para ir a hacerse un examen que tiene para mañana, asi no nos toca venir de nuevo para eso, después de los examenes fuimos a la bahia, ese centro comercial que te comentaba, buscabamos la camisa de Barcelona de España, que mi hermana es fan, yo me busque una también, salimos con lluvia y regresamos con un calor intenso, pero bueno, espero estes bien, te haya ido bien en el trabajo, te amo ❤️🤞🏻🐁</div>
@@ -221,95 +263,10 @@
         <div class="message"><span>12/01/2025:</span> Hoy he decidido crear esto, lo hago con el corazón, y mi vida porque realmente no puedo vivir sin saber de ti, no sé si lo vayas a leer siempre, pero me tomaré el tiempo de mi vida, cada minuto, cada segundo por vos, todos los días para escribirte, no quiero incomodarte ni llenarte de mensajes tu MD, pero aquí te demostraré que nadie cambiará lo que yo siento por vos, porque realmente eres la mujer de mi vida te lo repetiria mil veces y esperaré lo que haga falta, lo que mas me costo fue el bot que envié los mensajes automáticamente pero bueno, espero puedas leer esto, pero yo te escribiré cada día que pase, te amo MBO, siempre lo haré ❤️🤞🏻🐁</div>
     </div>
     
-    <h2>Desde el <span class="date">16 de septiembre de 2023</span>, mi corazón late solo por ti y siempre lo hará.</h2>
+    <h2>Desde el <span class="date">16 de septiembre de 2023</span>, mi corazón late solo por ti.</h2>
     <p id="page-counter"></p>
-    <p>Te esperaré el tiempo que sea necesario, pero extraño a mi novia, esa mujer que me amaba, que me llenaba de paz y alegría, porque mi amor por ti es infinito.</p>
-    <div class="quote">"Cada día extraño saber como estás, como te va, recuerdo lo bueno, porque eso es lo que importa."</div>
-
-    <!--<section id="mi-dia" style="padding: 20px; background-color: #1c1c1c; text-align: center;">
-    <h2 style="font-size: 2em; color: #ffffff;">🌞 Mi Día a Día</h2>
-    
-    <!-- Botón para alternar el cuadro -->
-    <!--<button id="toggle-daily" style="
-        background-color: #87ceeb; 
-        color: #1a1a1a; 
-        border: none; 
-        padding: 10px 20px; 
-        font-size: 1.2em; 
-        border-radius: 10px; 
-        cursor: pointer; 
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);">
-        Mostrar / Ocultar
-    </button>
-    <!-- Contenedor del cuadro de mensajes -->
-    <!--<div id="daily-container" style="
-        display: none; 
-        margin-top: 20px; 
-        background-color: #333333; 
-        color: #ffffff; 
-        padding: 20px; 
-        border-radius: 12px; 
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); 
-        text-align: left;">
-        <!-- Aquí puedes agregar mensajes dinámicos -->
-            <!--<div class="messagesss">
-                <div class="messagess"><h2>14/01/2025</h2>
-                <div class="message"><span>16:49 p.m:</span> Voy a salir para acompañar a mi tía y mi hermana que tiene que ir donde una amiga, asi no la dejo sola</div>
-                <div class="message"><span>19:26 p.m:</span> Acabamos de llegar habia demasiado trafico, recien entre a clases, habia empezado hace 1 hora pero bueno, veré si como también</div>
-                <div class="message"><span>19:42 p.m:</span> Comeré junto a mi tía ya, arroz con pollo, el platillo del día a día, espero comas algo rico y que te guste, provecho cuando lo hagas, te amo mi amor</div>
-                <div class="message"><span>19:46 p.m:</span> Cada día reviso esta página queriendo agregarle mas cosas, pero cada vez se me hace un poco complicado, pero lo intento, supongo que merece la pena hacerlo, ni se si lo vayas a leer, pero bueno</div>
-                <div class="message"><span>20:39 p.m:</span> Ya llegó mi hermana y mi primo del trabajo, ya termine de comer y estaba viendo la tele con mi tía un rato, nos pusimos ver videos de risa, a ella le gustan y mucho mas ver tiktok, hasta tiktoker es jajaja</div>
-                <div class="message"><span>22:56 p.m:</span> Me llego un correo que no se ha aceptado el regalo de steam todavia, que el 28 me harán devolución, no se como decirte la verdad, porque si me hacen devolución, ese dinero se quedará en steam y no me servira de nada, dinero perdido, pero bueno, supongo que pronto me iré a dormir</div>
-                </div> 
-                <div class="messagess"><h2>15/01/2025</h2>
-                <div class="message"><span>00:07 a.m:</span> Bueno ahora si me iré a dormir, me habia puesto a hacer unas tareas, espero estes durmiendo bien, descansa sueña con los angelitos, te amo con toda mi vida</div>
-                <div class="message"><span>08:59 a.m:</span> Buenos días, me acabo de levantar, veré si consigo algo para desayunar, aunque tengo un poco de sueño aun</div>
-                <div class="message"><span>10:49 a.m:</span> Dios esta haciendo un frio increíble, está lloviendo un poco fuerte, este clima me hace dar sueño</div>
-                <div class="message"><span>12:32 p.m:</span> Pedimos comida, comeré un arroz con fideo y pollo a la plancha, asi me dijeron, ni idea que será pero bueno, eso comerémos, aun no llega igual</div>
-                <div class="message"><span>12:32 p.m:</span> Ya llego la comida, comeré, espero vos también pronto</div>
-                <div class="message"><span>17:05 p.m:</span> Acabo de ver como terminó el partido del Barcelona, que barrida la verdad, esta dominando el Barca, el de aca es pura vergüenza (no soy fan)</div>
-                <div class="message"><span>18:29 p.m:</span> El profesor acaba de entrar a la clase ya, hoy tengo una lección, veremos como me sale</div>
-                <div class="message"><span>18:36 p.m:</span> Bueno, al parecer se cancelo, el profesor esta en cita medica, dijo que mañana nos dará la lección y clase, iré a ver si mi tía necesita ayuda con algo</div>
-                <div class="message"><span>21:36 p.m:</span> Entre hoy a jugar un rato con los muchachos en Survival, quise ayudarlos ya que estaban diciendo que los estaban matando, y bueno</div>
-                </div> 
-                <div class="messagess"><h2>16/01/2025</h2>
-                <div class="message"><span>01:12 a.m:</span> Supongo que hoy ya cumpliriamos un nuevo mes de aniversario, pero bueno, ya tuvieramos 1 año y 4 meses, aun asi sigo sintiendo lo mismo por vos, como siempre, Buenas noches, espero duermas bien cuando sea que duermas</div>
-                <div class="message"><span>10:28 a.m:</span> Buenos días, espero hayas dormido bien, supongo que hoy volveremos a Prison, los muchachos me buscaron dijeron que volvio Crazy, asi que veré si les ayudo</div>
-                <div class="message"><span>12:12 p.m:</span> Saldré con mi tía tiene que ir al hospital, supongo hacerse chequeos, escribiré aqui cuando vuelva</div>
-                <div class="message"><span>17:39 p.m:</span> Acabamos de llegar, tuvimos que ir al Sur, después al centro y de nuevo regresar, por eso demoramos demasiado</div>
-                <div class="messagess"><h2>17/01/2025</h2> 
-                <div class="message"><span>01:12 a.m:</span> Bueno me iré a dormir, mañana tengo que acompañar a mi tía al hospital, de nuevo, se hará una revisión le salio algo en el dedo, tiene que sacarselo porque puede ser molestoso después, Buenas noches, espero duermas bien</div>
-                <div class="message"><span>08:20 a.m:</span> No dormi nada, supongo que el desayuno me ayudará, ya saldremos, escribiré al volver</div>
-                <div class="message"><span>13:30 p.m:</span> Acabamos de llegar, no entiendo, me siento mal, siento que necesito un mensaje tuyo, no quiero hacer nada, no tengo animos para nada, no se que me pasa</div>
-                <div class="message"><span>20:17 p.m:</span> Ya estamos comiendo la merienda, llego mi hermana y mi primo, espero saber pronto de vos, te necesito</div>
-                </div> 
-                <div class="messagess"><h2>18/01/2025</h2> 
-                <div class="message"><span>12:23 a.m:</span> Intentaré dormir, lo que no pude dormir ayer, te necesito al menos saber un poco de vos, aunque eso ya no me debería interesar, bueno asi lo verías vos, pero a mi si me interesas como no te imaginas, Buenas noches, espero estes durmiendo bien</div>
-                <div class="message"><span>09:30 a.m:</span> Buenos días, ya me levante, buscaré desayunar algo</div>
-                <div class="message"><span>12:30 p.m:</span> Pues comeré, arroz con lenteja y pollo y minaré un poco con los muchachos</div>
-                <div class="message"><span>20:24 p.m:</span> Comeremos panes de yuca con galletas que hizo mi hermana, con un café</div>
-                <div class="message"><span>22:16 p.m:</span> Estaba rico, jugaré con los chicos un rato ahora que tengo tiempo</div>
-                </div>
-                <div class="messagess"><h2>18/01/2025</h2>
-                <div class="message"><span>02:20 a.m:</span> Bueno, supongo que me voy a dormir buenas noches, espero estes durmiendo bien y descansando, ya que supongo que estuviste en el trabajo, espero mañana regreses con cuidado</div>
-                <div class="message"><span>08:55 a.m:</span> Me acabo de levantar, Buenos días, desayunaré algo e iré a ayudar a los muchachos de nuevo</div>
-                <div class="message"><span>15:05 p.m:</span> Hoy mi primo cumple años, asi que le haremos una fiesta aqui en la casa y vienen algunos tíos y tías para festejar, espero llegues pronto a tu casa</div>
-                <div class="message"><span>18:28 p.m:</span> Supongo que solo agradecer lo que me diste hoy en Prison, me sirve de mucho, desearia poder volver a jugar juntos la verdad, sería una tranquilidad</div>
-                </div>
-                <div class="messagess"><h2>19/01/2025</h2>
-                <div class="message"><span>02:11 a.m:</span> Kosvac me escribio para bajar a pvp y al final quiso ver la pelicula de interstelar y le dije que se la transmitia jajaja, se unio hasta Deminage</div>
-                <div class="message"><span>08:20 a.m:</span> Buenos días, no dormi mucho, pero me levanté a ayudar a mi tía que ayer se habia tropezado y al parecer le duelen las piernas y le estoy ayudando, espero no se nada grave</div>
-                <div class="message"><span>12:45 p.m:</span> Comeré arroz con carne molida en tortilla, como un taco</div>
-                <div class="message"><span>16:45 p.m:</span> Veré algo con los muchachos que me dijeron para ver las pelis de John Wick, asi que les mostraré ya que yo me las vi todas jajaja</div>
-                <div class="message"><span>23:26 p.m:</span> Ya se fueron los muchachos, te extraño, no sé por que pienso ahora en ti, no debería porque me siento mal, pero bueno</div>
-                </div>
-                <div class="messagess"><h2>20/01/2025</h2>
-                <div class="message"><span>12:10 p.m:</span> Ayer dormi tardé y me levante tardé, no sé me siento perdido, solo siento una necesidad y lo único que me esta sucediendo es que no te saco de mi cabeza, cada vez te pienso mas y más, esto es muy difícil para mi</div>
-                </div>
-           </div>
-        </div>
-    </div>
-</section> -->
+    <p>Te esperaré eternamente, porque mi amor por ti no conoce límites. Extraño a la mujer que me llenaba de paz, que era mi todo.</p>
+    <div class="quote">"Cada día extraño saber cómo estás, cómo te va, recuerdo lo bueno, porque eso es lo que importa."</div>
     
     <div class="music-info">
         <h3>Lo que estoy escuchando ahora:</h3>
@@ -327,21 +284,21 @@
     
     <footer>
         <div id="distance">
-            <p>Entre nosotros hay aproximadamente <span id="kilometers">3800</span> km. Pero a mi corazón no le importa la distancia.</p>
+            <p>Entre nosotros hay <span id="kilometers">3800</span> km, pero mi amor cruza cada uno de ellos por ti.</p>
         </div>
         <div id="timezones">
             <p>Hora en Ecuador: <span id="ecuador-time">Cargando...</span></p>
             <p>Hora en Argentina: <span id="argentina-time">Cargando...</span></p>
         </div>
         <div id="connection">
-            <p>Desde <span style="color: #ffffff; background-color: #87ceeb; padding: 2px 6px; border-radius: 4px;">Ecuador</span> hasta <span style="color: #000000; background-color: #ffffff; padding: 2px 6px; border-radius: 4px;">Argentina</span>, mi amor siempre te encuentra.</p>
+            <p>De <span style="color: #fff; background: #ff9999; padding: 3px 8px; border-radius: 5px;">Ecuador</span> a <span style="color: #000; background: #fff; padding: 3px 8px; border-radius: 5px;">Argentina</span>, mi corazón siempre te busca.</p>
         </div>
         <div id="flags">
-            <img src="https://flagcdn.com/w320/ec.png" alt="Bandera de Ecuador" width="80">
-            <span style="font-size: 2em;">❤️</span>
-            <img src="https://flagcdn.com/w320/ar.png" alt="Bandera de Argentina" width="80">
+            <img src="https://flagcdn.com/w320/ec.png" alt="Bandera de Ecuador">
+            <span style="font-size: 2em; color: #ff9999;">❤️</span>
+            <img src="https://flagcdn.com/w320/ar.png" alt="Bandera de Argentina">
         </div>
-        <p>Es algo muy simple, pero lo hago con el 💙 porque eres lo más importante en mi vida y lo mereces.</p>
+        <p>Un rincón de mi alma hecho para ti, con todo el amor que aún guardo.</p>
     </footer>
     <script>
         const pageCreationDate = new Date(2025, 0, 12);
