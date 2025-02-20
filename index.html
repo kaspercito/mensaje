@@ -15,7 +15,7 @@
         gtag('config', 'G-J6PWYGWW5J');
     </script>
     <!-- Fin del Código de Google Analytics -->
-    <<!-- Fuentes elegantes de Google Fonts -->
+    <!-- Fuentes elegantes de Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -25,8 +25,8 @@
         }
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #1c2526 0%, #2d3b4e 100%);
-            color: #f5e6cc;
+            background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%); /* Negro y azul oscuro */
+            color: #e0e0e0; /* Gris claro para contraste */
             min-height: 100vh;
             padding: 40px 20px;
             display: flex;
@@ -42,34 +42,34 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
             opacity: 0.1;
             z-index: -1;
         }
         h1 {
             font-family: 'Parisienne', cursive;
             font-size: 3.5em;
-            color: #ff9999;
-            text-shadow: 0 2px 5px rgba(255, 153, 153, 0.5);
+            color: #468faf; /* Azul suave */
+            text-shadow: 0 2px 5px rgba(70, 143, 175, 0.5);
             margin-bottom: 20px;
         }
         h2 {
             font-family: 'Parisienne', cursive;
             font-size: 2em;
-            color: #ffd1dc;
+            color: #778da9; /* Azul grisáceo */
             margin: 20px 0;
         }
         p {
             font-size: 1.2em;
             line-height: 1.6;
-            color: #f5e6cc;
+            color: #e0e0e0;
         }
         .intro-image {
             width: 180px;
             border-radius: 50%;
-            border: 5px solid #ff9999;
+            border: 5px solid #468faf;
             margin: 20px 0;
-            box-shadow: 0 5px 15px rgba(255, 153, 153, 0.3);
+            box-shadow: 0 5px 15px rgba(70, 143, 175, 0.3);
             transition: transform 0.3s ease;
         }
         .intro-image:hover {
@@ -78,83 +78,106 @@
         .messages-container {
             max-width: 700px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.7); /* Negro translúcido */
             border-radius: 15px;
             padding: 25px;
             margin: 30px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(5px);
         }
         .message {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(27, 38, 59, 0.8); /* Azul oscuro */
             padding: 15px;
             border-radius: 10px;
             margin-bottom: 15px;
-            border-left: 5px solid #ff9999;
+            border-left: 5px solid #468faf;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .message:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(255, 153, 153, 0.2);
+            box-shadow: 0 5px 15px rgba(70, 143, 175, 0.3);
         }
         .message span {
             font-weight: bold;
-            color: #ffcccc;
+            color: #778da9;
+        }
+        .highlight-section {
+            max-width: 700px;
+            width: 100%;
+            background: linear-gradient(135deg, #0d1b2a, #1b263b); /* Negro a azul */
+            border: 2px solid #468faf;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        .highlight-section::before {
+            content: '✨';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2em;
+            color: #778da9;
+            opacity: 0.5;
+        }
+        .highlight-section h2 {
+            color: #468faf;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .highlight-section .date {
+            color: #778da9;
+            font-weight: bold;
+        }
+        .highlight-section p {
+            font-size: 1.3em;
+            text-align: center;
         }
         .quote {
             font-family: 'Parisienne', cursive;
             font-size: 1.6em;
-            color: #2d3b4e;
-            background: #ffd1dc;
+            color: #e0e0e0;
+            background: rgba(70, 143, 175, 0.2); /* Azul suave translúcido */
             padding: 20px;
             border-radius: 15px;
             max-width: 600px;
             margin: 30px auto;
-            box-shadow: 0 5px 20px rgba(255, 209, 220, 0.4);
+            box-shadow: 0 5px 20px rgba(70, 143, 175, 0.3);
             position: relative;
+            text-align: center;
         }
-        .quote::before {
+        .quote::before, .quote::after {
             content: '"';
             font-size: 3em;
-            color: #ff9999;
+            color: #468faf;
             position: absolute;
-            top: -10px;
-            left: 10px;
         }
-        .quote::after {
-            content: '"';
-            font-size: 3em;
-            color: #ff9999;
-            position: absolute;
-            bottom: -20px;
-            right: 10px;
-        }
-        .date {
-            color: #ffcccc;
-            font-weight: bold;
-        }
+        .quote::before { top: -10px; left: 10px; }
+        .quote::after { bottom: -20px; right: 10px; }
         .music-info {
             max-width: 600px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.7);
             padding: 25px;
             border-radius: 15px;
             margin: 30px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(5px);
         }
         .music-info img {
             width: 200px;
             height: 200px;
             border-radius: 10px;
-            border: 3px solid #ffd1dc;
+            border: 3px solid #468faf;
             margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(255, 209, 220, 0.3);
+            box-shadow: 0 5px 15px rgba(70, 143, 175, 0.3);
         }
         .music-info h3 {
             font-family: 'Parisienne', cursive;
             font-size: 1.8em;
-            color: #ffcccc;
+            color: #778da9;
         }
         #progress-container {
             width: 100%;
@@ -165,33 +188,24 @@
         }
         #progress-bar {
             height: 100%;
-            background: #ff9999;
+            background: #468faf;
             border-radius: 10px;
             transition: width 1s linear;
         }
         #time-info, #status-message {
             font-size: 1.1em;
-            color: #f5e6cc;
+            color: #e0e0e0;
             margin-top: 10px;
+            text-align: center;
         }
         footer {
             margin-top: 40px;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.7);
             width: 100%;
             text-align: center;
-            border-top: 2px solid rgba(255, 153, 153, 0.3);
-            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
-        }
-        #page-counter {
-            font-family: 'Parisienne', cursive;
-            font-size: 1.8em;
-            color: #ff9999;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 20px 0;
-            box-shadow: 0 5px 15px rgba(255, 153, 153, 0.3);
+            border-top: 2px solid #468faf;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5);
         }
         #distance, #timezones, #connection, #flags {
             margin: 15px 0;
@@ -215,10 +229,10 @@
 <body>
     <h1>Para mi Novia 🖤</h1>
     <p>Nuestro pequeño niño</p>
-    <img src="https://i.imgur.com/iqt6Dbd.jpeg" alt="Perrito" style="width: 150px; border-radius: 10px; margin-top: 20px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
+    <img src="https://i.imgur.com/iqt6Dbd.jpeg" alt="Perrito" class="intro-image">
     
     <div class="messages-container">
-        <h2>📜 Mis mensajes para ti</h2>
+        <h2>📜 Mensajes Diarios</h2>
         <div class="message"><span>19/02/2025:</span> Mi primo me acaba de decir que le aprobaron los planos, que estuvieron bien hechos, me alegra, pues siempre estoy para apoyarlos cuando lo necesitan, yo también lo hago contigo, siempre te estaré apoyando Belen, no dudes en preguntarme, aunque la verdad es que te sigo extrañando aunque no lo creas</div>
         <div class="message"><span>18/02/2025:</span> Hoy me toco hacerle un trabajo a mi primo, literalmente era hacer un plano 3D de su oficina, no sabia nada de eso, pero buscando lo logre hacer, no dormi casi nada, pero bueno, lo necesitaba para mañana espero este todo bien</div>
         <div class="message"><span>17/02/2025:</span> Mi tía aprovecho para ir a hacerse un examen que tiene para mañana, asi no nos toca venir de nuevo para eso, después de los examenes fuimos a la bahia, ese centro comercial que te comentaba, buscabamos la camisa de Barcelona de España, que mi hermana es fan, yo me busque una también, salimos con lluvia y regresamos con un calor intenso, pero bueno, espero estes bien, te haya ido bien en el trabajo, te amo ❤️🤞🏻🐁</div>
@@ -263,23 +277,26 @@
         <div class="message"><span>12/01/2025:</span> Hoy he decidido crear esto, lo hago con el corazón, y mi vida porque realmente no puedo vivir sin saber de ti, no sé si lo vayas a leer siempre, pero me tomaré el tiempo de mi vida, cada minuto, cada segundo por vos, todos los días para escribirte, no quiero incomodarte ni llenarte de mensajes tu MD, pero aquí te demostraré que nadie cambiará lo que yo siento por vos, porque realmente eres la mujer de mi vida te lo repetiria mil veces y esperaré lo que haga falta, lo que mas me costo fue el bot que envié los mensajes automáticamente pero bueno, espero puedas leer esto, pero yo te escribiré cada día que pase, te amo MBO, siempre lo haré ❤️🤞🏻🐁</div>
     </div>
     
-    <h2>Desde el <span class="date">16 de septiembre de 2023</span>, mi corazón late solo por ti.</h2>
-    <p id="page-counter"></p>
-    <p>Te esperaré eternamente, porque mi amor por ti no conoce límites. Extraño a la mujer que me llenaba de paz, que era mi todo.</p>
-    <div class="quote">"Cada día extraño saber cómo estás, cómo te va, recuerdo lo bueno, porque eso es lo que importa."</div>
+    <div class="highlight-section">
+        <h2>Desde el <span class="date">16 de septiembre de 2023</span>, mi corazón late solo por ti.</h2>
+        <p>Llevo 39 días contándote sobre mí y lo que siento por ti. Cada palabra escrita es un reflejo de mi amor eterno, un testimonio de mi compromiso de esperar por la mujer que llenaba mis días de paz y alegría.</p>
+        <p>Te esperaré eternamente, porque mi amor por ti no conoce límites. Extraño a la mujer que me llenaba de paz, que era mi todo.</p>
+    </div>
+       <div class="quote">"Cada día extraño saber cómo estás, cómo te va, recuerdo lo bueno, porque eso es lo que importa."</div>
+    
     
     <div class="music-info">
         <h3>Lo que estoy escuchando ahora:</h3>
         <img id="album-image" src="" alt="Portada del álbum">
-        <h3 id="song"></h3>
-        <p id="artist"></p>
-        <div id="progress-container" style="width: 100%; max-width: 600px; background-color: #444; border-radius: 10px; margin-top: 10px; height: 15px;">
-            <div id="progress-bar" style="width: 0%; height: 100%; background-color: #87ceeb; border-radius: 10px;"></div>
+        <h3 id="song">Canción: With You</h3>
+        <p id="artist">Artista: Dean Lewis</p>
+        <div id="progress-container">
+            <div id="progress-bar"></div>
         </div>
-        <p id="time-info" style="margin-top: 5px; color: #ccc;"></p>
-        <p style="color: #ffffff; font-size: 1.1em;"><strong>Disponibilidad:</strong></p>
-        <p style="color: #ffffff; font-size: 1.1em;"><em>Las palabras de abajo y la barra cambiarán dependiendo de si estoy o no, para que lo sepas.</em></p>
-        <p id="status-message" style="color: #ffffff; font-size: 1.1em;"></p>
+        <p id="time-info">0:00</p>
+        <p><strong>Disponibilidad:</strong></p>
+        <p><em>Las palabras de abajo y la barra cambiarán dependiendo de si estoy o no, para que lo sepas.</em></p>
+        <p id="status-message"></p>
     </div>
     
     <footer>
@@ -291,11 +308,11 @@
             <p>Hora en Argentina: <span id="argentina-time">Cargando...</span></p>
         </div>
         <div id="connection">
-            <p>De <span style="color: #fff; background: #ff9999; padding: 3px 8px; border-radius: 5px;">Ecuador</span> a <span style="color: #000; background: #fff; padding: 3px 8px; border-radius: 5px;">Argentina</span>, mi corazón siempre te busca.</p>
+            <p>De <span style="color: #fff; background: #468faf; padding: 3px 8px; border-radius: 5px;">Ecuador</span> a <span style="color: #fff; background: #0d1b2a; padding: 3px 8px; border-radius: 5px;">Argentina</span>, mi corazón siempre te busca.</p>
         </div>
         <div id="flags">
             <img src="https://flagcdn.com/w320/ec.png" alt="Bandera de Ecuador">
-            <span style="font-size: 2em; color: #ff9999;">❤️</span>
+            <span style="font-size: 2em; color: #468faf;">❤️</span>
             <img src="https://flagcdn.com/w320/ar.png" alt="Bandera de Argentina">
         </div>
         <p>Un rincón de mi alma hecho para ti, con todo el amor que aún guardo.</p>
