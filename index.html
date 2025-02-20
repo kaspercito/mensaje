@@ -65,21 +65,19 @@
             color: #e0e0e0;
         }
         .intro-image {
-            width: 200px; /* Aumentamos un poco el tamaño para más impacto */
-            height: 200px; /* Mantenemos proporciones cuadradas */
-            border-radius: 50%; /* Círculo perfecto */
-            border: 6px solid #468faf; /* Borde más grueso para destacar */
-            padding: 10px; /* Espacio interno para un efecto de marco */
-            background: radial-gradient(circle, rgba(70, 143, 175, 0.2) 0%, rgba(10, 10, 10, 0.9) 100%); /* Fondo degradado sutil */
-            box-shadow: 0 8px 20px rgba(70, 143, 175, 0.4), 0 0 30px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada */
-            margin: 25px auto; /* Centrado con más espacio arriba y abajo */
+            width: 250px; /* Tamaño más grande para mostrar la imagen completa */
+            border-radius: 15px; /* Bordes redondeados suaves, no círculo completo */
+            border: 5px solid #468faf; /* Borde azul elegante */
+            box-shadow: 0 10px 25px rgba(70, 143, 175, 0.5), 0 0 40px rgba(0, 0, 0, 0.6); /* Sombra suave y profunda */
+            margin: 30px auto; /* Centrado con más espacio */
             transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; /* Transiciones suaves */
-            display: block; /* Asegura centrado correcto */
+            display: block; /* Centrado correcto */
+            object-fit: cover; /* Asegura que la imagen se ajuste sin distorsión */
         }
         
         .intro-image:hover {
-            transform: scale(1.1) rotate(5deg); /* Escala y rotación leve para un efecto dinámico */
-            box-shadow: 0 12px 30px rgba(70, 143, 175, 0.6), 0 0 40px rgba(0, 0, 0, 0.7); /* Sombra más intensa */
+            transform: scale(1.1); /* Solo escala, sin rotación para mantenerla clara */
+            box-shadow: 0 15px 35px rgba(70, 143, 175, 0.7), 0 0 50px rgba(0, 0, 0, 0.8); /* Sombra más intensa */
             border-color: #b3cce6; /* Cambio de color al pasar el mouse */
         }
         .messages-container {
