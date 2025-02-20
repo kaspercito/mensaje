@@ -159,6 +159,9 @@
         .music-info {
             max-width: 600px;
             width: 100%;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
             background: rgba(0, 0, 0, 0.7);
             padding: 25px;
             border-radius: 15px;
@@ -279,10 +282,10 @@
     
     <div class="highlight-section">
         <h2>Desde el <span class="date">16 de septiembre de 2023</span>, mi corazón late solo por ti.</h2>
-        <p>Llevo 39 días contándote sobre mí y lo que siento por ti. Cada palabra escrita es un reflejo de mi amor eterno, un testimonio de mi compromiso de esperar por la mujer que llenaba mis días de paz y alegría.</p>
+        <p id="page-counter"></p>
         <p>Te esperaré eternamente, porque mi amor por ti no conoce límites. Extraño a la mujer que me llenaba de paz, que era mi todo.</p>
     </div>
-       <div class="quote">"Cada día extraño saber cómo estás, cómo te va, recuerdo lo bueno, porque eso es lo que importa."</div>
+       <div class="quote">Cada día extraño saber cómo estás, cómo te va, recuerdo lo bueno, porque eso es lo que importa.</div>
     
     
     <div class="music-info">
@@ -323,7 +326,7 @@
             const today = new Date();
             const diffTime = today - pageCreationDate;
             const daysPassed = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-            document.getElementById("page-counter").textContent = `Llevo ${daysPassed} días contandote sobre mi y lo que siento por ti. Cada palabra escrita es un reflejo de mi amor eterno, un testimonio de mi compromiso de esperar por la mujer que llenaba mis días de paz y alegría.`;
+            document.getElementById("page-counter").textContent = `Llevo ${daysPassed} días contandote sobre mi y lo que siento por ti. Cada palabra escrita es un reflejo de mi amor eterno, un testimonio de mi compromiso de esperar por la mujer que llenaba mis días de alegría.`;
         }
         updatePageCounter();
         setInterval(updatePageCounter, 86400000);
