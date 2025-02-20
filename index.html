@@ -25,8 +25,8 @@
         }
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%); /* Negro y azul oscuro */
-            color: #e0e0e0; /* Gris claro para contraste */
+            background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%); /* Más negro */
+            color: #e0e0e0;
             min-height: 100vh;
             padding: 40px 20px;
             display: flex;
@@ -56,7 +56,7 @@
         h2 {
             font-family: 'Parisienne', cursive;
             font-size: 2em;
-            color: #778da9; /* Azul grisáceo */
+            color: #b3cce6; /* Azul claro */
             margin: 20px 0;
         }
         p {
@@ -78,15 +78,15 @@
         .messages-container {
             max-width: 700px;
             width: 100%;
-            background: rgba(0, 0, 0, 0.7); /* Negro translúcido */
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 15px;
             padding: 25px;
             margin: 30px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(5px);
         }
         .message {
-            background: rgba(27, 38, 59, 0.8); /* Azul oscuro */
+            background: rgba(10, 10, 10, 0.9);
             padding: 15px;
             border-radius: 10px;
             margin-bottom: 15px;
@@ -99,17 +99,17 @@
         }
         .message span {
             font-weight: bold;
-            color: #778da9;
+            color: #b3cce6;
         }
         .highlight-section {
             max-width: 700px;
             width: 100%;
-            background: linear-gradient(135deg, #0d1b2a, #1b263b); /* Negro a azul */
+            background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
             border: 2px solid #468faf;
             border-radius: 15px;
             padding: 30px;
             margin: 30px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
             position: relative;
             overflow: hidden;
         }
@@ -119,7 +119,7 @@
             top: 10px;
             right: 10px;
             font-size: 2em;
-            color: #778da9;
+            color: #b3cce6;
             opacity: 0.5;
         }
         .highlight-section h2 {
@@ -128,7 +128,7 @@
             margin-bottom: 15px;
         }
         .highlight-section .date {
-            color: #778da9;
+            color: #b3cce6;
             font-weight: bold;
         }
         .highlight-section p {
@@ -139,12 +139,12 @@
             font-family: 'Parisienne', cursive;
             font-size: 1.6em;
             color: #e0e0e0;
-            background: rgba(70, 143, 175, 0.2); /* Azul suave translúcido */
+            background: rgba(70, 143, 175, 0.15);
             padding: 20px;
             border-radius: 15px;
             max-width: 600px;
             margin: 30px auto;
-            box-shadow: 0 5px 20px rgba(70, 143, 175, 0.3);
+            box-shadow: 0 5px 20px rgba(70, 143, 175, 0.2);
             position: relative;
             text-align: center;
         }
@@ -159,15 +159,15 @@
         .music-info {
             max-width: 600px;
             width: 100%;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             padding: 25px;
             border-radius: 15px;
             margin: 30px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centra todo horizontalmente */
         }
         .music-info img {
             width: 200px;
@@ -176,15 +176,19 @@
             border: 3px solid #468faf;
             margin-bottom: 20px;
             box-shadow: 0 5px 15px rgba(70, 143, 175, 0.3);
+            display: block; /* Asegura que sea un bloque */
+            margin-left: auto; /* Centra horizontalmente */
+            margin-right: auto; /* Centra horizontalmente */
         }
         .music-info h3 {
             font-family: 'Parisienne', cursive;
             font-size: 1.8em;
-            color: #778da9;
+            color: #b3cce6;
+            text-align: center;
         }
         #progress-container {
             width: 100%;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             height: 10px;
             margin-top: 15px;
@@ -204,11 +208,11 @@
         footer {
             margin-top: 40px;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             width: 100%;
             text-align: center;
             border-top: 2px solid #468faf;
-            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.6);
         }
         #distance, #timezones, #connection, #flags {
             margin: 15px 0;
@@ -291,8 +295,8 @@
     <div class="music-info">
         <h3>Lo que estoy escuchando ahora:</h3>
         <img id="album-image" src="" alt="Portada del álbum">
-        <h3 id="song">Canción: With You</h3>
-        <p id="artist">Artista: Dean Lewis</p>
+        <h3 id="song"></h3>
+        <p id="artist"></p>
         <div id="progress-container">
             <div id="progress-bar"></div>
         </div>
