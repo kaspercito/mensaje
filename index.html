@@ -501,5 +501,18 @@
         }
     });
     </script>
+
+    <script>
+  window.onload = function() {
+    var timestamp = new Date().toISOString().replace(/[:\-]/g, "").slice(0, 14); // Formato AAAAMMDDHHMMSS
+    var location = navigator.geolocation ? "Geolocalización no disponible" : navigator.language; // Aproximación básica
+    gtag('event', 'visit', {
+      'event_category': 'engagement',
+      'event_label': timestamp + ' - ' + location,
+      'value': 1
+    });
+  };
+</script>
+    
 </body>
 </html>
